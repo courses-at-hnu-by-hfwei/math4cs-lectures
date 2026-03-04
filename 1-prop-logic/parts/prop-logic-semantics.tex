@@ -24,7 +24,7 @@
 
     \pause
     \vspace{0.60cm}
-    某个公式$\alpha$的真假值取决于
+    某个公式 $\alpha$ 的\red{\bf 真假值}取决于
     \vspace{0.30cm}
     \begin{columns}
       \column{0.25\textwidth}
@@ -64,17 +64,6 @@
 
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{}
-  \begin{definition}[真值指派的扩张 ($\overline{v}$)]
-    令 $S$ 为一个命题符号的集合。
-    令 $\overline{S}$ 为只含有 $S$ 中命题符号的公式集。
-
-    $S$ 上的\red{\bf 真值指派 $v$ 的扩张}是一个从 $\overline{S}$ 到真假值的映射
-    \[
-      \overline{v}: \overline{S} \to \set{T, F}.
-    \]
-  \end{definition}
-
-  \pause
   \[
     \alpha = (B \to (A \to C)) \leftrightarrow ((B \land A) \to C)
   \]
@@ -93,6 +82,17 @@
     \qquad \overline{v}(B \land A) = ?
     \qquad \overline{v}((B \land A) \to C) = ?
   \]
+
+  \pause
+  \begin{definition}[真值指派的扩张 ($\overline{v}$)]
+    令 $S$ 为一个命题符号的集合。
+    令 $\overline{S}$ 为只含有 $S$ 中命题符号的公式集。
+
+    $S$ 上的\red{\bf 真值指派 $v$ 的扩张}是一个从 $\overline{S}$ 到真假值的映射
+    \[
+      \overline{v}: \overline{S} \to \set{T, F}.
+    \]
+  \end{definition}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 
@@ -145,6 +145,11 @@
   \[
     \alpha \text{ 在真值指派 $v$ 下的真值为}\; T
   \]
+
+  \pause
+  \begin{definition}[满足 (Satisfy)]
+    如果 $\overline{v}(\alpha) = T$, 则称真值指派 $v$ \red{\bf 满足}公式 $\alpha$。
+  \end{definition}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 
@@ -167,31 +172,6 @@
       (P \land Q) \lor (\lnot P \land \lnot Q)
     \]
   \end{exampleblock}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{}
-  \begin{definition}[满足 (Satisfy)]
-    如果 $\overline{v}(\alpha) = T$, 则称真值指派 $v$ \red{\bf 满足}公式 $\alpha$。
-  \end{definition}
-
-  \pause
-  \[
-    \alpha = (B \to (A \to C)) \leftrightarrow ((B \land A) \to C)
-  \]
-
-  \[
-    v(A) = v(B) = T, \quad v(C) = F
-  \]
-
-  \[
-    \red{\boxed{\overline{v}(\alpha) = T}}
-  \]
-
-  \[
-    \text{真值指派}\; v \text{ 满足 }\; \alpha
-  \]
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 

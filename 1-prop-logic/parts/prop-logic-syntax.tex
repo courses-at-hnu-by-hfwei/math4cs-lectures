@@ -25,8 +25,9 @@
           \item $1 + 1 = 2$
           \item $X + 6 = 0$
           \pause
-          \item ``万能青年旅店''是一个伟大的摇滚乐队
+          \item ``万能青年旅店''是一支伟大的摇滚乐队
           \item 张楚、窦唯、何勇并称``魔岩三杰''
+          \pause
           \item 你饿了吗?
           \item 你要好好休息
           \pause
@@ -84,7 +85,7 @@
   \begin{definition}[\gray{(合式; Well-formed)} 公式 (Formula)]
     \begin{enumerate}[(1)]
       \setlength{\itemsep}{8pt}
-      \item 每个命题符号 ($P$、$Q$) 都是公式;
+      \item 每个命题符号 (如 $P$、$Q$) 都是公式;
       \item 如果 $\alpha$ 和 $\beta$ 是公式,
         则 $(\alpha)$、$(\lnot \alpha)$、$(\alpha \land \beta)$、$(\alpha \lor \beta)$、
         $(\alpha \to \beta)$ 和 $(\alpha \leftrightarrow \beta)$ 也是公式;
@@ -160,14 +161,14 @@
     \begin{enumerate}[(1)]
       \setlength{\itemsep}{8pt}
       \item 如果 $\alpha$ 是命题符号, 则 $|\alpha| = 1$;
-      \item 如果 $\alpha = (\lnot \beta)$, 则 $|\alpha| = 1 + |\beta|$;
-      \item 如果 $\alpha = (\beta \ast \gamma)$, 则 $|\alpha| = 1 + |\beta| + |\gamma|$。
+      \item 如果 $\alpha$ 呈形 $(\lnot \beta)$, 则 $|\alpha| = 1 + |\beta|$;
+      \item 如果 $\alpha$ 呈形 $(\beta \ast \gamma)$, 则 $|\alpha| = 1 + |\beta| + |\gamma|$。
     \end{enumerate}
   \end{definition}
 
   \pause
   \vspace{0.30cm}
-  \begin{exampleblock}{小小的练习一下}
+  \begin{exampleblock}{轻轻地思考一下}
     假设公式 $\alpha$ 中不含 ``$\lnot$'' 符号。
 
     请证明, $\alpha$ 中超过四分之一的符号是命题符号。
@@ -210,7 +211,7 @@
     \vspace{1em}
     \red{不要过分依赖这些约定; 尽情地使用括号吧}
     \[
-      \xout{P \land Q \to R} \pause \qquad
+      \xout{P \land Q \to R} \qquad
       (P \land Q) \to R
     \]
   \end{center}

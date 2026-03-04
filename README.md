@@ -16,8 +16,8 @@ Lectures on [Mathematics for Computer Science@Hunan University](https://github.c
 | 周次 | 日期 (周四) | 主题 | 阅读材料 |
 | :---: | :---: | :---: | :---: |
 | 1 | 2026-03-03 | [0-overview](/0-overview) | |
-<!-- | 2 | 2021-03-11 | [1-prop-logic](/1-prop-logic) | |
-| 3 | 2021-03-18 | [2-predicate-logic](2-predicate-logic) | |
+| 1 | 2021-03-05 | [1-prop-logic](/1-prop-logic) | |
+<!-- | 3 | 2021-03-18 | [2-predicate-logic](2-predicate-logic) | |
 | 4 | 2021-03-25 | [3-mathematical-induction](/3-mathematical-induction) | |
 | 5 | 2021-04-01 | [4-set](/4-set) | |
 | 6 | 2021-04-08 | [5-relation](/5-relation) | |
