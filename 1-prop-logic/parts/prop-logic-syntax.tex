@@ -74,7 +74,7 @@
         %   \item[双蕴含符号] $\leftrightarrow$
         % \end{description}
         \input{tables/connectives}
-      \item 左括号、右括号
+      \item 左括号、右括号 \gray{(非必需)}
     \end{enumerate}
   \end{definition}
 \end{frame}
@@ -156,6 +156,10 @@
 
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{}
+  \begin{center}
+    \red{\large \bf 归纳定义}
+  \end{center}
+
   \begin{definition}[公式的长度]
     公式$\alpha$的长度 $|\alpha|$ 定义如下: \\[3pt]
     \begin{enumerate}[(1)]
@@ -186,10 +190,11 @@
   \vspace{0.20cm}
   \begin{center}
     关于``公式''的\blue{\bf 约定}
+    \pause
     \begin{columns}
       \column{0.15\textwidth}
       \column{0.70\textwidth}
-        \begin{itemize}
+        \begin{itemize}[<+->]
           \setlength{\itemsep}{6pt}
           \item 最外层的括号可以省略
             \[
@@ -208,7 +213,7 @@
     \end{columns}
 
     \pause
-    \vspace{1em}
+    \vspace{-0.30cm}
     \red{不要过分依赖这些约定; 尽情地使用括号吧}
     \[
       \xout{P \land Q \to R} \qquad

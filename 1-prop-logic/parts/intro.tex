@@ -9,13 +9,13 @@
     \vspace{0.30cm}
     \fig{width = 0.60\textwidth}{figs/euler-logic}
 
-    \vspace{0.30cm}
     \pause
-    将\red{\bf ``证明/推理''}作为数学对象, 研究其结构、性质、局限性等问题。
+    \vspace{0.30cm}
+    \red{\bf 一个基本问题: 什么样的推理(规则)是正确/合法 (Valid) 的?}
 
     \pause
     \vspace{0.50cm}
-    \red{\bf 基本问题: 什么样的推理是正确/合法 (Valid) 的?}
+    将\red{\bf ``证明/推理''}作为数学对象, 研究其结构、性质、\cyan{局限性}等问题。
   \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
@@ -39,14 +39,18 @@
   \]
 
   \pause
-  \vspace{0.50cm}
   \[
     \ndnoname{\text{如果 $P$ 是真的, 则 $Q$ 是真的} \qquad {\text{$P$ 是真的}}}{\text{$Q$ 是真的}}
     \qquad \ndnoname{P \;\red{\to}\; Q \qquad P}{Q}
   \]
 
   \pause
-  \vspace{0.50cm}
+  \[
+    \gray{\ndnoname{\text{如果 $P$ 是真的, 则 $Q$ 是真的} \qquad {\text{$Q$ 是真的}}}{\text{$P$ 是真的}}
+    \qquad \ndnoname{P \;\red{\to}\; Q \qquad Q}{P}}
+  \]
+
+  \pause
   \[
     \ndnoname{\text{如果 $P$ 是真的, 则 $Q$ 是真的} \qquad {\text{$Q$ 是假的}}}{\text{$P$ 是假的}}
     \qquad \ndnoname{P \to Q \qquad \red{\lnot}\; Q}{\red{\lnot}\; P}
@@ -101,7 +105,7 @@
 
     \pause
     \vspace{0.50cm}
-    先讲语法, 再讲语义, 再回到语法, 最后将二者统一起来
+    {\large \blue{\bf 螺旋上升:} 先讲语法, 再讲语义, 再回到语法, 最后将二者统一起来}
   \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
