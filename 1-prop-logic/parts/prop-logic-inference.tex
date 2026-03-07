@@ -3,7 +3,25 @@
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{}
   \begin{center}
+    {\Large ``再回到语法''}
+
+    \vspace{0.30cm}
+    \fig{width = 0.60\textwidth}{figs/syntax-semantics}
+    \vspace{0.30cm}
+
+    \pause
+    {\large 暂时\cyan{\bf 忘掉语义}!!! 一起来研究公式之间的\blue{\bf 推导}关系}
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{center}
     {\Large 命题逻辑的自然推理 (演绎; 推演) 系统}
+
+    \vspace{1em}
+    \fig{width = 0.40\textwidth}{figs/Gentzen-natural-deduction}
   \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
@@ -14,7 +32,7 @@
     从上往下看: 展示证明过程
 
     \[
-      \nd{\alpha \qquad \beta \qquad \dots \quad\text{(前提)}}{\gamma \quad\text{(结论)}}{\text{规则名称}}
+      \blue{\boxed{\nd{\alpha \qquad \beta \qquad \dots \quad\text{(前提)}}{\gamma \quad\text{(结论)}}{\text{规则名称}}}}
     \]
 
     \[
@@ -28,23 +46,31 @@
 %%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-  \[
-    \nd{}{[x : P]}{\text{assumption}}
-  \]
-
-  \vspace{0.50cm}
-  \begin{center}
-    所有引入的假设最终必须被``\red{\bf 释放}'' (discharged)
-  \end{center}
+\begin{frame}{}
+  \fig{width = 0.60\textwidth}{figs/natural-deduction-overview}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
+
+% %%%%%%%%%%%%%%%%%%%%
+% \begin{frame}
+%   \[
+%     \nd{}{[x : P]}{\text{assumption}}
+%   \]
+
+%   \vspace{0.50cm}
+%   \begin{center}
+%     所有引入的假设最终必须被``\red{\bf 释放}'' (discharged)
+%   \end{center}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{$\land$}
   \begin{gather*}
     \nd{P \qquad Q}{P \land Q}{\land\text{-intro}} \\[35pt]
+    \pause
     \nd{P \land Q}{P}{\land\text{-elim-left}} \\[35pt]
+    \pause
     \nd{P \land Q}{Q}{\land\text{-elim-right}}
   \end{gather*}
 \end{frame}
@@ -52,6 +78,8 @@
 
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{}
+  % Example 1.4
+  % Sequent: p \land q, r \vdash q \land r
   \begin{exampleblock}{``$\land$''推理规则的应用}
     \[
       \set{p \land q, r} \vdash q \land r
@@ -61,12 +89,19 @@
   \pause
   \vspace{0.50cm}
   \begin{proof}
-    \begin{align}
-      &p \land q &\text{前提} \label{eqn:pq} \\
-      &r &\text{前提} \label{eqn:r} \\
-      &q &\land{\text{-elim-right}\; (\ref{eqn:pq}}) \label{eqn:q} \\
-      &q \land r &\land{\text{-intro}}\; (\ref{eqn:q}), (\ref{eqn:r})
-    \end{align}
+    \begin{logicproof}{1}
+      p \land q & premise \\
+      r & premise \\
+      q & $\land \elimright$ 1 \\
+      q \land r & $\land \intro$ 3,2
+    \end{logicproof}
+
+    % \begin{align}
+    %   &p \land q &\text{前提} \label{eqn:pq} \\
+    %   &r &\text{前提} \label{eqn:r} \\
+    %   &q &\land{\text{-elim-right}\; (\ref{eqn:pq}}) \label{eqn:q} \\
+    %   &q \land r &\land{\text{-intro}}\; (\ref{eqn:q}), (\ref{eqn:r})
+    % \end{align}
   \end{proof}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
@@ -77,6 +112,7 @@
     \nd{\alpha}{\lnot \lnot \alpha}{\lnot\lnot\text{-intro}}
   \]
 
+  \pause
   \vspace{0.60cm}
   \[
     \nd{\lnot \lnot \alpha}{\alpha}{\lnot\lnot\text{-elem}}
@@ -86,24 +122,89 @@
 
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{}
-  \begin{exampleblock}{``$\lnot\lnot$''推理规则的应用}
+  % Example 1.5
+  % Sequent: p, \neg\neg(q \land r) \vdash \neg\neg p \land r
+  \begin{exampleblock}{``$\land$''推理规则的应用}
     \[
       \set{p, \lnot\lnot(q \land r)} \vdash \lnot\lnot p \land r
     \]
   \end{exampleblock}
+
+  \pause
+  \vspace{0.50cm}
+  \begin{proof}
+    \begin{logicproof}{1}
+      p & premise \\
+      \lnot\lnot(q \land r) & premise \\
+      \lnot\lnot p & $\lnot\lnot \intro$ 1 \\
+      q \land r & $\lnot\lnot \elim$ 2 \\
+      r & $\land \elimright$ 4 \\
+      \lnot\lnot p \land r & $\land \intro$ 3,5
+    \end{logicproof}
+  \end{proof}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  % Example 1.6
+  % Sequent: (p \land q) \land r, s \land t \vdash q \land s
+  \begin{exampleblock}{``$\lnot\lnot$''推理规则的应用}
+    \[
+      \set{(p \land q) \land r, s \land t} \vdash q \land s
+    \]
+  \end{exampleblock}
+
+  \pause
+  \vspace{0.50cm}
+  \begin{proof}
+    \begin{logicproof}{1}
+      (p \land q) \land r & premise \\
+      s \land t & premise \\
+      p \land q & $\land \elimleft$ 1 \\
+      q & $\land \elimright$ 3 \\
+      s & $\land \elimleft$ 2 \\
+      q \land s & $\land \intro$ 5, 6
+    \end{logicproof}
+  \end{proof}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{$\to$}
   \[
-    \nd{\alpha \to \beta \qquad \alpha}{\beta}{\to\text{-elim (modus ponens)}}
+    \nd{\alpha \to \beta \qquad \alpha}{\beta}{\to\text{-elim (\blue{MP}: modus ponens)}}
   \]
 
   \vspace{0.60cm}
   \[
-    \nd{\alpha \to \beta \qquad \lnot \beta}{\lnot \alpha}{\text{modus tollens}}
+    \nd{\alpha \to \beta \qquad \lnot \beta}{\lnot \alpha}{\text{\blue{MT}: modus tollens}}
   \]
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  % Example 1.7
+  % Sequent: p \to (q \to r), p, \lnot r \vdash \lnot q
+  \begin{exampleblock}{``$\to$''推理规则的应用}
+    \[
+      \set{p, p \to q, p \to (q \to r)} \vdash r
+    \]
+  \end{exampleblock}
+
+  \pause
+  \vspace{0.50cm}
+  \begin{proof}
+    \begin{logicproof}{1}
+      p \to (q \to r) & premise \\
+      p \to q & premise \\
+      p & premise \\
+      q \to r & $\to\elim$ 1, 3 \\
+      q & $\to\elim$ 2, 3 \\
+      r & $\to\elim$ 4, 5
+    \end{logicproof}
+  \end{proof}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 
@@ -114,11 +215,70 @@
       \set{p \to (q \to r), p, \lnot r} \vdash \lnot q
     \]
   \end{exampleblock}
+
+  \pause
+  \vspace{0.50cm}
+  \begin{proof}
+    \begin{logicproof}{1}
+      p \to (q \to r) & premise \\
+      p & premise \\
+      q \to r & $\to\elim$ 1, 3 \\
+      \lnot r & premise \\
+      \lnot q & $\text{MT}$ 3, 4
+    \end{logicproof}
+  \end{proof}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  % Example 1.8(a)
+  % Sequent: \lnot p \to q, \lnot q \vdash p
+  \begin{exampleblock}{``$\to$''推理规则的应用}
+    \[
+      \set{\lnot p \to q, \lnot q} \vdash p
+    \]
+  \end{exampleblock}
+
+  \pause
+  \vspace{0.50cm}
+  \begin{proof}
+    \begin{logicproof}{1}
+      \lnot p \to q & premise \\
+      \lnot q & premise \\
+      \lnot\lnot p & $\text{MT}$ 1, 2 \\
+      p & $\lnot\lnot\elim$ 3
+    \end{logicproof}
+  \end{proof}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  % Example 1.8(b)
+  % Sequent: p \to \lnot q, q \vdash \lnot p
+  \begin{exampleblock}{``$\to$''推理规则的应用}
+    \[
+      \set{p \to \lnot q, q} \vdash \lnot p
+    \]
+  \end{exampleblock}
+
+  \pause
+  \vspace{0.50cm}
+  \begin{proof}
+    \begin{logicproof}{1}
+      p \to \lnot q & premise \\
+      q & premise \\
+      \lnot\lnot q & $\lnot\lnot\intro$ 2 \\
+      \lnot p & $\text{MT}$ 1, 3
+    \end{logicproof}
+  \end{proof}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{$\to$}
+  TODO: $\to$-intro
   \begin{gather*}
     \nd{\stackrel{[x \;:\; \alpha]}{\stackrel{\vdots}{\beta}}}{\alpha \to \beta}{\to\text{-intro}/x} \\[10pt]
     \text{\blue{Assumption $x$ is discharged}}
@@ -133,24 +293,152 @@
       \vdash p \to p
     \]
   \end{exampleblock}
-
-  \pause
-  \vspace{0.80cm}
-  \begin{exampleblock}{``$\to$''推理规则的应用}
-    \[
-      \set{\lnot q \to \lnot p} \vdash p \to \lnot\lnot q
-    \]
-  \end{exampleblock}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{}
+  % Example 1.9
+  % Sequent: \lnot q \to \lnot p \vdash p \to \lnot\lnot q
+  \begin{exampleblock}{``$\to$''推理规则的应用}
+    \[
+      \set{\lnot q \to \lnot p} \vdash p \to \lnot\lnot q
+    \]
+  \end{exampleblock}
+
+  \pause
+  \vspace{0.50cm}
+  \begin{proof}
+    \begin{logicproof}{2}
+      \lnot q \to \lnot p & premise \\
+      \begin{subproof}
+        p & assumption \\
+        \lnot\lnot p & $\lnot\lnot\intro$ 2 \\
+        \lnot\lnot q & $\text{MT}$ 1, 3
+      \end{subproof}
+      p \to \lnot\lnot q & $\to\intro$ 2--4
+    \end{logicproof}
+  \end{proof}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  % Example 1.11
+  % Sequent: \vdash (q \to r) \to ((\lnot q \to \lnot p) \to (p \to r))
+  \begin{exampleblock}{``$\to$''推理规则的应用}
+    \[
+      \vdash (q \to r) \to ((\lnot q \to \lnot p) \to (p \to r))
+    \]
+  \end{exampleblock}
+
+  \pause
+  \begin{proof}
+    \begin{logicproof}{3}
+      \begin{subproof}
+        q \to r & assumption \\
+        \begin{subproof}
+          \lnot q \to \lnot p & assumption \\
+          \begin{subproof}
+            p & assumption \\
+            \lnot\lnot p & $\lnot\lnot\intro$ 3 \\
+            \lnot\lnot q & $\text{MT}$ 2, 4 \\
+            q & $\lnot\lnot\elim$ 5 \\
+            r & $\to\elim$ 1, 6
+          \end{subproof}
+          p \to r & $\to\intro$ 3--7
+        \end{subproof}
+        (\lnot q \to \lnot p) \to (p \to r) & $\to\intro$ 2--8
+      \end{subproof}
+      (q \to r) \to ((\lnot q \to \lnot p) \to (p \to r)) & $\to\intro$ 1--9
+    \end{logicproof}
+  \end{proof}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  % Example 1.13
+  % Sequent: p \land q \to r \vdash p \to (q \to r)
   \begin{exampleblock}{``$\to$''推理规则的应用}
     \[
       \set{p \land q \to r} \vdash p \to (q \to r)
     \]
   \end{exampleblock}
+
+  \pause
+  \vspace{0.50cm}
+  \begin{proof}
+    \begin{logicproof}{3}
+      p \land q \to r & premise \\
+      \begin{subproof}
+        p & assumption \\
+        \begin{subproof}
+          q & assumption \\
+          p \land q & $\land\intro$ 2, 3 \\
+          r & $\to\elim$ 1, 4
+        \end{subproof}
+        q \to r & $\to\intro$ 3--5
+      \end{subproof}
+      p \to (q \to r) & $\to\intro$ 2--6
+    \end{logicproof}
+  \end{proof}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  % Example 1.14
+  % Sequent: p \to (q \to r) \vdash p \land q \to r
+  \begin{exampleblock}{``$\to$''推理规则的应用}
+    \[
+      \set{p \to (q \to r)} \vdash p \land q \to r
+    \]
+  \end{exampleblock}
+
+  \pause
+  \vspace{0.50cm}
+  \begin{proof}
+    \begin{logicproof}{3}
+      p \to (q \to r) & premise \\
+      \begin{subproof}
+        p \land q & assumption \\
+        p & $\land\elimleft$ 2 \\
+        q & $\land\elimright$ 2 \\
+        q \to r & $\to\elim$ 1, 4 \\
+        r & $\to\elim$ 5, 3
+      \end{subproof}
+      p \land q \to r & $\to\intro$ 2--6
+    \end{logicproof}
+  \end{proof}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  % Example 1.15
+  % Sequent: p \to q \vdash (p \land r) \to (q \land r)
+  \begin{exampleblock}{``$\to$''推理规则的应用}
+    \[
+      \set{p \to q} \vdash (p \land r) \to (q \land r)
+    \]
+  \end{exampleblock}
+
+  \pause
+  \vspace{0.50cm}
+  \begin{proof}
+    \begin{logicproof}{3}
+      p \to q & premise \\
+      \begin{subproof}
+        p \land r & assumption \\
+        p & $\land\elimleft$ 2 \\
+        r & $\land\elimright$ 2 \\
+        q & $\to\elim$ 1, 3 \\
+        q \land r & $\land\intro$ 5, 4
+      \end{subproof}
+      (p \land r) \to (q \land r) & $\to\intro$ 2--6
+    \end{logicproof}
+  \end{proof}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 
@@ -311,6 +599,12 @@
     \lnot\lnot (p \lor \lnot p)   & \qquad (\lnot\text{-intro}) \\
     p \lor \lnot p                & \qquad (\lnot\lnot\text{-elim})
   \end{align}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \fig{width = 0.60\textwidth}{figs/natural-deduction-summary}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 
