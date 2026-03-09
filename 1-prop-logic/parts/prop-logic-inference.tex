@@ -535,21 +535,21 @@
         \uncover<4->{p \lor q} & \uncover<4->{assumption} \\
         \uncover<6->{\begin{subproof}
           \uncover<6->{p} & \uncover<6->{assumption} \\
-          \uncover<7->{p \lor (q \lor r)} & \uncover<8->{$\lor\introleft$ 3}
+          \uncover<7->{p \lor (q \lor r)} & \uncover<7->{$\lor\introleft$ 3}
         \end{subproof}}
-        \uncover<9->{\begin{subproof}
-          \uncover<9->{q} & \uncover<9->{assumption} \\
-          \uncover<11->{q \lor r} & \uncover<11->{$\lor\introleft$ 5} \\
-          \uncover<10->{p \lor (q \lor r)} & \uncover<12->{$\lor\introright$ 6}
+        \uncover<8->{\begin{subproof}
+          \uncover<8->{q} & \uncover<8->{assumption} \\
+          \uncover<9->{q \lor r} & \uncover<9->{$\lor\introleft$ 5} \\
+          \uncover<10->{p \lor (q \lor r)} & \uncover<10->{$\lor\introright$ 6}
         \end{subproof}}
-        \uncover<5->{p \lor (q \lor r)} & \uncover<13->{$\lor\elim$ 2, 3--4, 5--7}
+        \uncover<5->{p \lor (q \lor r)} & \uncover<11->{$\lor\elim$ 2, 3--4, 5--7}
       \end{subproof}}
-      \uncover<14->{\begin{subproof}
-        \uncover<14->{r} & \uncover<14->{assumption} \\
-        \uncover<16->{q \lor r} & \uncover<16->{$\lor\introright$ 9} \\
-        \uncover<15->{p \lor (q \lor r)} & \uncover<17->{$\lor\introright$ 10}
+      \uncover<12->{\begin{subproof}
+        \uncover<12->{r} & \uncover<12->{assumption} \\
+        \uncover<13->{q \lor r} & \uncover<13->{$\lor\introright$ 9} \\
+        \uncover<14->{p \lor (q \lor r)} & \uncover<14->{$\lor\introright$ 10}
       \end{subproof}}
-      \uncover<3->{p \lor (q \lor r)} & \uncover<18->{$\lor\elim$ 1, 2--8, 9--11}
+      \uncover<3->{p \lor (q \lor r)} & \uncover<15->{$\lor\elim$ 1, 2--8, 9--11}
     \end{logicproof}
   \end{proof}}
 \end{frame}
@@ -636,20 +636,20 @@
         \uncover<4->{\lnot p} & \uncover<4->{premise} \\
       \uncover<6->{\begin{subproof}
       \uncover<6->{p} & \uncover<6->{assumption} \\
-      \uncover<8->{\bot} & \uncover<8->{$\lnot\elim$ 3, 2} \\
-      \uncover<9->{q} & \uncover<9->{$\bot\elim$ 4}
+      \uncover<7->{\bot} & \uncover<7->{$\lnot\elim$ 3, 2} \\
+      \uncover<8->{q} & \uncover<8->{$\bot\elim$ 4}
       \end{subproof}}
-      \uncover<5->{p \to q} & \uncover<10->{$\to\intro$ 3--5}
+      \uncover<5->{p \to q} & \uncover<9->{$\to\intro$ 3--5}
       \end{subproof}}
-      \uncover<11->{\begin{subproof}
-      \uncover<11->{q} & \uncover<11->{premise} \\
-      \uncover<13->{\begin{subproof}
-      \uncover<13->{p} & \uncover<13->{assumption} \\
-      \uncover<14->{q} & \uncover<14->{copy\ 7}
+      \uncover<10->{\begin{subproof}
+      \uncover<10->{q} & \uncover<10->{premise} \\
+      \uncover<12->{\begin{subproof}
+      \uncover<12->{p} & \uncover<12->{assumption} \\
+      \uncover<13->{q} & \uncover<13->{copy\ 7}
       \end{subproof}}
-      \uncover<12->{p \to q} & \uncover<15->{$\to\intro$ 8--9}
+      \uncover<11->{p \to q} & \uncover<14->{$\to\intro$ 8--9}
       \end{subproof}}
-      \uncover<3->{p \to q} & \uncover<16->{$\lor\elim$ 1, 2--6, 7--10}
+      \uncover<3->{p \to q} & \uncover<15->{$\lor\elim$ 1, 2--6, 7--10}
     \end{logicproof}
   \end{proof}}
 \end{frame}
