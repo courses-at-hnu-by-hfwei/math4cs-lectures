@@ -210,7 +210,7 @@
 \begin{frame}
   % Example 1.8(a)
   % Sequent: \lnot p \to q, \lnot q \vdash p
-  \begin{exampleblock}{``$\to$''推理规则的应用}
+  \begin{exampleblock}{``$\to\elim$''推理规则的应用}
     \[
       \set{\lnot p \to q, \lnot q} \vdash p
     \]
@@ -232,7 +232,7 @@
 \begin{frame}
   % Example 1.8(b)
   % Sequent: p \to \lnot q, q \vdash \lnot p
-  \begin{exampleblock}{``$\to$''推理规则的应用}
+  \begin{exampleblock}{``$\to\elim$''推理规则的应用}
     \[
       \set{p \to \lnot q, q} \vdash \lnot p
     \]
@@ -255,14 +255,14 @@
 	\[
 		\nd{
 			\begin{array}{c}
-				\phi \\ \vdots \\ \psi
+				\alpha \\ \vdots \\ \beta
 			\end{array}
-		}{\phi \to \psi}{\to\text{-intro}}
+		}{\alpha \to \beta}{\to\text{-intro}}
 	\]
 
 	\pause
   \begin{gather*}
-    \text{\blue{The assumption $x$ is \red{(and should be)} discharged.}}
+    \text{\blue{The assumption $\alpha$ is \red{(and should be)} discharged.}}
   \end{gather*}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
@@ -436,33 +436,62 @@
     \nd{\alpha}{\alpha \lor \beta}{\lor\text{-intro-left}}
   \]
 
-  \vspace{0.60cm}
+  \vspace{0.30cm}
   \[
     \nd{\beta}{\alpha \lor \beta}{\lor\text{-intro-right}}
   \]
 
   \pause
-  TODO: $\lor$-elim
-  \vspace{0.60cm}
+  \vspace{0.50cm}
   \[
-    \nd{\alpha \lor \beta \qquad \alpha \to \gamma \qquad \beta \to \gamma}{\gamma}{\lor\text{-elim; (分情况分析)}}
+    \nd{\alpha \lor \beta \qquad \alpha \to \gamma \qquad \beta \to \gamma}
+		  {\gamma}{\lor\text{-elim; ({\it case analysis; 分情况讨论})}}
   \]
+
+	\pause
+	\[
+		\nd{
+			\alpha \lor \beta \qquad
+			\begin{array}{c}
+				\fbox{$\begin{array}{c}
+						\alpha \\[1mm]
+						\vdots \\[1mm]
+						\gamma
+					\end{array}$} \qquad
+				\fbox{$\begin{array}{c}
+						\beta \\[1mm]
+						\vdots \\[1mm]
+						\gamma
+					\end{array}$} \qquad
+			\end{array}
+		}{\gamma}{\lor\elim}
+	\]
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{}
-  \begin{exampleblock}{``$\lor$''推理规则的应用}
+  \begin{exampleblock}{``$\lor\elim$''推理规则的应用}
     \[
       p \lor q \vdash q \lor p
     \]
   \end{exampleblock}
 
-  TODO: $\lor$-elim
-  \vspace{0.50cm}
-  \[
-    \ndnoname{\uncover<2->{p \lor q} \qquad \uncover<4->{p \to q \lor p} \qquad \uncover<5->{q \to q \lor p}}{\uncover<3->{q \lor p}}
-  \]
+	\vspace{0.50cm}
+	\begin{proof}
+		\begin{logicproof}{3}
+			\uncover<2->{p \lor q} & \uncover<2->{premise} \\
+			\uncover<4->{\begin{subproof}
+				\uncover<4->{p} & \uncover<4->{assumption} \\
+				\uncover<5->{q \lor p} & \uncover<5->{$\lor\introright$ 2}
+			\end{subproof}}
+			\uncover<6->{\begin{subproof}
+				\uncover<6->{q} & \uncover<6->{assumption} \\
+				\uncover<7->{q \lor p} & \uncover<7->{$\lor\introleft$ 4}
+			\end{subproof}}
+			\uncover<3->{q \lor p} & \uncover<8->{$\lor\elim$ 1, 2--3, 4--5}
+		\end{logicproof}
+	\end{proof}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 
@@ -470,7 +499,7 @@
 \begin{frame}{}
   % Example 1.16
   % Sequent: q \to r \vdash p \lor q \to p \lor r
-  \begin{exampleblock}{``$\lor$''-推理规则的应用}
+  \begin{exampleblock}{``$\lor\elim$'' 推理规则的应用}
     \[
       q \to r \vdash (p \lor q) \to (p \lor r)
     \]
@@ -504,7 +533,7 @@
 \begin{frame}{}
   % Example 1.17
   % Sequent: (p \lor q) \lor r \vdash p \lor (q \lor r)
-  \begin{exampleblock}{``$\lor$''-推理规则的应用}
+  \begin{exampleblock}{``$\lor\elim$'' 推理规则的应用}
     \[
       (p \lor q) \lor r \vdash p \lor (q \lor r)
     \]
@@ -523,15 +552,15 @@
         \end{subproof}}
         \uncover<8->{\begin{subproof}
           \uncover<8->{q} & \uncover<8->{assumption} \\
-          \uncover<9->{q \lor r} & \uncover<9->{$\lor\introleft$ 5} \\
-          \uncover<10->{p \lor (q \lor r)} & \uncover<10->{$\lor\introright$ 6}
+          \uncover<10->{q \lor r} & \uncover<10->{$\lor\introleft$ 5} \\
+          \uncover<9->{p \lor (q \lor r)} & \uncover<9->{$\lor\introright$ 6}
         \end{subproof}}
         \uncover<5->{p \lor (q \lor r)} & \uncover<11->{$\lor\elim$ 2, 3--4, 5--7}
       \end{subproof}}
       \uncover<12->{\begin{subproof}
         \uncover<12->{r} & \uncover<12->{assumption} \\
-        \uncover<13->{q \lor r} & \uncover<13->{$\lor\introright$ 9} \\
-        \uncover<14->{p \lor (q \lor r)} & \uncover<14->{$\lor\introright$ 10}
+        \uncover<14->{q \lor r} & \uncover<14->{$\lor\introright$ 9} \\
+        \uncover<13->{p \lor (q \lor r)} & \uncover<13->{$\lor\introright$ 10}
       \end{subproof}}
       \uncover<3->{p \lor (q \lor r)} & \uncover<15->{$\lor\elim$ 1, 2--8, 9--11}
     \end{logicproof}
@@ -543,7 +572,7 @@
 \begin{frame}{}
   % Example 1.18
   % Sequent: p \land (q \lor r) \vdash (p \land q) \lor (p \land r)
-  \begin{exampleblock}{$\lor$-推理规则的应用}
+  \begin{exampleblock}{$\lor\elim$ 推理规则的应用}
     \[
       p \land (q \lor r) \vdash (p \land q) \lor (p \land r)
     \]
@@ -553,17 +582,17 @@
   \begin{proof}
     \begin{logicproof}{3}
       \uncover<2->{p \land (q \lor r)} & \uncover<2->{premise} \\
-      \uncover<4->{p} & \uncover<4->{$\land\elimleft$ 1} \\
+      \uncover<4->{\blue{p}} & \uncover<4->{$\land\elimleft$ 1} \\
       \uncover<5->{q \lor r} & \uncover<5->{$\land\elimright$ 1} \\
       \uncover<6->{\begin{subproof}
         \uncover<6->{q} & \uncover<6->{assumption} \\
-        \uncover<7->{p \land q} & \uncover<7->{$\land\intro$ 2, 4} \\
-        \uncover<8->{(p \land q) \lor (p \land r)} & \uncover<9->{$\lor\introleft$ 5}
+        \uncover<8->{\blue{p} \land q} & \uncover<8->{$\land\intro$ 2, 4} \\
+        \uncover<7->{(p \land q) \lor (p \land r)} & \uncover<9->{$\lor\introleft$ 5}
       \end{subproof}}
       \uncover<10->{\begin{subproof}
         \uncover<10->{r} & \uncover<10->{assumption} \\
-        \uncover<11->{p \land r} & \uncover<11->{$\land\intro$ 2, 7} \\
-        \uncover<12->{(p \land q) \lor (p \land r)} & \uncover<13->{$\lor\introright$ 8}
+        \uncover<12->{\blue{p} \land r} & \uncover<12->{$\land\intro$ 2, 7} \\
+        \uncover<11->{(p \land q) \lor (p \land r)} & \uncover<13->{$\lor\introright$ 8}
       \end{subproof}}
       \uncover<3->{(p \land q) \lor (p \land r)} & \uncover<14->{$\lor\elim$ 3, 4--6, 7--9}
     \end{logicproof}
@@ -574,7 +603,7 @@
 
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{}
-  \begin{exampleblock}{$\lor$-推理规则的应用 (请自行练习)}
+  \begin{exampleblock}{$\lor\elim$ 推理规则的应用 (请自行练习)}
     \[
       (p \land q) \lor (p \land r) \vdash p \land (q \lor r)
     \]
