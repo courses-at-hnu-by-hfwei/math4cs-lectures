@@ -212,54 +212,71 @@
 
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{}
-  motivation for substitution; and then for bound/free variables
-  \[
-    \forall x\; \phi \to \phi[t/x]
-  \]
-  \fig{width = 0.30\textwidth}{figs/substitution-red}
-
-  \pause
-  \[
-    \phi = \exists y\; x \neq y
-  \]
-
-  \pause
-  \[
-    \blue{t = z:} \forall x\; \exists y\; x \neq y \to \exists y \blue{z} \neq y
-  \]
-
-  \pause
-  \[
-    \red{t = y:} \forall x\; \exists y\; x \neq y \to \exists y \red{y} \neq y
-  \]
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{}
-  \begin{center}
-    以下概念与程序设计语言中相应概念类似
-  \end{center}
   \begin{columns}
     \column{0.50\textwidth}
-      \fig{width = 0.80\textwidth}{figs/bound-free}
+      \uncover<2->{\fig{width = 0.80\textwidth}{figs/motivation-with-arrow}}
     \column{0.50\textwidth}
-      \fig{width = 0.80\textwidth}{figs/integration}
+      \fig{width = 0.80\textwidth}{figs/substitution-red}
   \end{columns}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{}
-  \begin{exampleblock}{作用域 (Scope)、约束变元 (Bound)、自由变元 (Free)}
+  \[
+    \forall x\; \phi \to \phi[t/x]
+  \]
+  \fig{width = 0.30\textwidth}{figs/substitution-red}
+  \pause
+  \[
+    \phi: \quad \exists y\; y \neq x
+  \]
+
+  \pause
+  \[
+    \blue{\phi[z/x]:}\quad \forall x\; \exists y\; y \neq x \to
+      \exists y\; y \neq \blue{z}
+  \]
+  \pause
+  \[
+    \red{\phi[y/x]:}\quad \forall x\; \exists y\; y \neq x \to
+      \exists y\; y \neq \red{y}
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{columns}
+    \column{0.50\textwidth}
+      \begin{center}
+        \red{约束 (bound) 变元}
+        \fig{width = 0.60\textwidth}{figs/bound-free}
+        \green{自由 (free) 变元}
+      \end{center}
+    \column{0.50\textwidth}
+      \fig{width = 0.60\textwidth}{figs/integration}
+      \pause
+      \fig{width = 0.60\textwidth}{figs/for-i}
+  \end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{center}
+    \fig{width = 0.40\textwidth}{figs/examples}
+  \end{center}
+
+  \begin{exampleblock}{\red{约束 (Bound) 变元}、\green{自由 (Free) 变元}}
     \begin{enumerate}[(1)]
-      \setlength{\itemsep}{6pt}
-      \item $\forall \red{x}\; (P(\red{x}) \to Q(\red{x}))$
-      \item $(\forall \red{x}\; P(\red{x})) \to Q(\green{x})$
-      \item $\forall \red{x}\; \Big(P(\red{x}) \to \big(\exists \brown{y}\; R(\red{x}, \brown{y})\big)\Big)$
-      \item $\Big(\forall \red{x}\; \forall \brown{y}\; \big(P(\red{x}, \brown{y})
-        \land Q(\brown{y}, \green{z})\big)\Big) \land
-        \exists \violet{x}\; P(\violet{x}, \green{y})$
+      \setlength{\itemsep}{10pt}
+      \item<1-> $\forall \alt<2->{\red{x}}{x}\; (P(\alt<2->{\red{x}}{x}) \to Q(\alt<2->{\red{x}}{x}))$
+      \item<3-> $(\forall \alt<4->{\red{x}}{x}\; P(\alt<4->{\red{x}}{x})) \to Q(\alt<4->{\green{x}}{x})$
+      \item<5-> $\forall \alt<6->{\red{x}}{x}\; \Big(P(\alt<6->{\red{x}}{x}) \to \big(\exists \alt<6->{\brown{y}}{y}\; R(\alt<6->{\red{x}}{x}, \alt<6->{\brown{y}}{y})\big)\Big)$
+      \item<7-> $\Big(\forall \alt<8->{\red{x}}{x}\; \forall \alt<8->{\brown{y}}{y}\; \big(P(\alt<8->{\red{x}}{x}, \alt<8->{\brown{y}}{y})
+        \land Q(\alt<8->{\brown{y}}{y}, \alt<8->{\green{z}}{z})\big)\Big) \land
+        \exists \alt<8->{\violet{x}}{x}\; P(\alt<8->{\violet{x}}{x}, \alt<8->{\green{y}}{y})$
     \end{enumerate}
   \end{exampleblock}
 \end{frame}
@@ -271,17 +288,21 @@
     $x$ 在 $\phi$ 中\green{\bf 自由出现}当且仅当
     \begin{description}[$\phi$ 是原子公式:]
       \item[$\phi$ 是原子公式:]
-        $x$ 在 $\phi$ \purple{\bf 出现}。
+        $x$ 在 $\phi$ \purple{\bf 出现}
+        \hfill $P(\green{x}, y)$
       \item[$\phi = \lnot\psi$:]
-        $x$ 在 $\phi$ {自由出现}。
+        $x$ 在 $\psi$ {自由出现}
+        \hfill $\lnot P(\green{x}, y)$
       \item[$\phi = \psi \lor \gamma$:]
-        $x$ 在 $\phi$ {自由出现}
-        或 $x$ 在 $\gamma$ 中自由出现。
-      \item[$\phi = \forall v\; \psi$:]
-        $x$ 在 $\phi$ \teal{\bf 自由出现} 且 \teal{$x \neq v$}。
+        $x$ 在 $\psi$ 或 $\gamma$ 中{自由出现}
+        \hfill $P(\green{x}, y) \to Q(z)$
+      \item[$\phi = \forall/\exists y\; \psi$:]
+        $x$ 在 $\psi$ \teal{\bf 自由出现} 且 \teal{\bf $x \neq y$}。
+        \hfill $\forall x.\; P(\red{x}, y)$
     \end{description}
   \end{definition}
 
+  \pause
   \[
     \Big(\forall \red{x}\; \forall \brown{y}\; \big(P(\red{x}, \brown{y})
       \land Q(\brown{y}, \green{z})\big)\Big) \land
@@ -302,33 +323,123 @@
     为尽量避免重名, 可将\red{\bf 约束变元}\teal{\bf 改名}为\blue{新鲜(fresh)}变元
   \end{definition}
 
+  \fig{width = 0.50\textwidth}{figs/rename-error}
+
+  \pause
   \[
-    \Big(\forall x.\; \forall y.\; \big(P(x, y) \land Q(y, z)\big)\Big)
-      \land \exists \blue{t}.\; P(\blue{t}, \teal{v})
+    \Big(\forall \red{x}\; \forall \brown{y}\; \big(P(\red{x}, \brown{y})
+      \land Q(\brown{y}, \green{z})\big)\Big) \land
+      \exists \violet{x}\; P(\violet{x}, \green{y})
+  \]
+  \pause
+  \[
+    \Big(\forall \red{x}\; \forall \brown{y}\; \big(P(\red{x}, \brown{y})
+      \land Q(\brown{y}, \green{z})\big)\Big) \land
+      \exists \blue{t}\; P(\blue{t}, \green{y})
   \]
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{}
+  \begin{center}
+    \violet{$\phi[t/x]$} (或 $\phi^{x}_{t}$):
+      在 $\phi$ 中将 $x$ 的所有\green{\bf 自由出现}\purple{\bf 替换}为 $t$ 得到的公式
+  \end{center}
+
+  \begin{definition}[替换 (Substitution) 表达式]
+    \begin{description}[$\phi$ 是原子公式:]
+      \setlength{\itemsep}{6pt}
+      \item[$\phi$ 是原子公式:]
+        $\phi[t/x]$ 是将 $\phi$ 中所有的 $x$ 的出现
+        替换为 $t$ 得到的表达式
+      \item[$\phi = \lnot\psi$:]
+        \[
+          (\lnot\psi)[t/x] = \lnot\psi[t/x]
+        \]
+      \item[$\phi = \psi \ast \gamma$:]
+        \[
+          (\psi \ast \gamma)[t/x] = \psi[t/x] \ast \gamma[t/x]
+        \]
+      \item[$\phi = \forall/\exists y\; \psi$:]
+        \[
+          (\forall/\exists y\; \psi)[t/x] =
+          \begin{cases}
+            \quad\forall/\exists y\; \psi, & \red{x = y}; \\
+            \quad\forall/\exists y\; \psi[t/x], & \green{x \neq y}.
+          \end{cases}
+        \]
+    \end{description}
+  \end{definition}
+
+  \pause
+  \[
+    \phi: \Big(\forall \red{x}\; \forall \brown{y}\; \big(P(\red{x}, \brown{y})
+      \land Q(\brown{y}, \green{z})\big)\Big) \land
+      \exists \violet{x}\; P(\violet{x}, \green{y})
+  \]
+  \pause
+  \vspace{-0.30cm}
+  \[
+    \phi[P(u, v)/z] \pause\qquad
+    \phi[P(u, v)/x] \pause\qquad
+    \phi[P(x, v)/z]
+  \]
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{}
-  \begin{definition}[$t$ is free for $x$ in $\alpha$]
-    \[
-      y - 1 \text{ is \blue{free for} } x \text{ in } \exists z.\; (z < x)
-    \]
-
-    \[
-      y - 1 \text{ is \red{{\it not} free for} } x \text{ in } \exists y.\; (y < x)
-    \]
+  \begin{definition}[$t$ 在 $\phi$ 中可以无冲突地替换 $x$ ($t$ is free for $x$ in $\phi$)]
+    \begin{description}[$\phi$ 是原子公式:]
+      \setlength{\itemsep}{10pt}
+      \item[$\phi$ 是原子公式:] 无附加条件
+      \item[$\phi = \lnot\psi$:]
+        $t$ 在 $\psi$ 中可以无冲突地替换 $x$
+      \item[$\phi = \psi \ast \gamma$:]
+        $t$ 在 $\psi$ 与 $\gamma$ 中均可以无冲突地替换 $x$
+      \pause
+      \item[$\phi = \forall/\exists y\; \psi$:]
+        \begin{enumerate}[(a)]
+          \item \red{$x$ 不在 $\forall/\exists y\; \psi$ 中自由出现}; \teal{\bf 或者}
+          \item $y$ 不在 $t$ 中出现 且 $t$ 在 $\psi$ 中可以无冲突地替换 $x$
+        \end{enumerate}
+    \end{description}
   \end{definition}
 
-  \vspace{0.50cm}
+  \pause
   \begin{center}
-    在公式 $\alpha$ 中, 项 $t$ 可以替换变量 $x$ (\blue{$\alpha[t/x]$})
+    \brown{\bf 坏情况:} $y$ 在 $t$ 中\green{自由}, 替换进 $\phi$ 后被\red{约束}了
   \end{center}
+
+  \pause
+  \[
+    \phi: \Big(\forall \red{x}\; \forall \brown{y}\; \big(P(\red{x}, \brown{y})
+      \land Q(\brown{y}, \green{z})\big)\Big) \land
+      \exists \violet{x}\; P(\violet{x}, \green{y})
+  \]
+
+  \[
+    \phi[P(u, v)/z] \pause\qquad
+    \phi[P(u, v)/x] \pause\qquad
+    \phi[P(x, v)/z]
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{exampleblock}{自由变元、约束变元、替换、无冲突替换}
+    \[
+      \phi: \exists x\; (P(y, z) \land
+        (\forall y\; (\lnot Q(y, x) \lor P(y, z))))
+    \]
+
+    \pause
+    \[
+      \phi[w/x] \qquad \phi[w/y] \qquad
+      \phi[f(x)/y] \qquad \phi[g(y, z)/z]
+    \]
+  \end{exampleblock}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
