@@ -236,20 +236,27 @@
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{}
   \[
-    \forall x\; \phi \to \phi[t/x]
+    \forall x\; \phi \to \phi
   \]
   \fig{width = 0.30\textwidth}{figs/substitution-red}
   \pause
   \[
     \phi: \quad \exists y\; y \neq x
   \]
+  \pause
+  \vspace{-0.30cm}
+  \[
+    \quad \forall x\; \exists y\; y \neq x \to
+      \exists y\; y \neq x
+  \]
 
   \pause
   \[
-    \blue{\phi[z/x]:}\quad \forall x\; \exists y\; y \neq x \to
-      \exists y\; y \neq \blue{z}
+    \green{\phi[z/x]:}\quad \forall x\; \exists y\; y \neq x \to
+      \exists y\; y \neq \green{z}
   \]
   \pause
+  \vspace{-0.30cm}
   \[
     \red{\phi[y/x]:}\quad \forall x\; \exists y\; y \neq x \to
       \exists y\; y \neq \red{y}
@@ -305,12 +312,12 @@
       \item[$\phi = \lnot\psi$:]
         $x$ 在 $\psi$ {自由出现}
         \hfill $\lnot P(\green{x}, y)$
-      \item[$\phi = \psi \lor \gamma$:]
+      \item[$\phi = \psi \ast \gamma$:]
         $x$ 在 $\psi$ 或 $\gamma$ 中{自由出现}
         \hfill $P(\green{x}, y) \to Q(z)$
       \item[$\phi = \forall/\exists y\; \psi$:]
         $x$ 在 $\psi$ \teal{\bf 自由出现} 且 \teal{\bf $x \neq y$}。
-        \hfill $\forall x.\; P(\red{x}, y)$
+        \hfill $\forall x\; P(\red{x}, y)$
     \end{description}
   \end{definition}
 
@@ -349,6 +356,12 @@
     \Big(\forall \red{x}\; \forall \brown{y}\; \big(P(\red{x}, \brown{y})
       \land Q(\brown{y}, \green{z})\big)\Big) \land
       \exists \blue{t}\; P(\blue{t}, \green{y})
+  \]
+  \pause
+  \[
+    \gray{\Big(\forall \red{x}\; \forall \brown{y}\; \big(P(\red{x}, \brown{y})
+      \land Q(\brown{y}, \green{z})\big)\Big) \land
+      \exists \blue{P(u, v)}\; P(\blue{P(u, v)}, \green{y})}
   \]
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
