@@ -15,11 +15,13 @@
 \begin{frame}{}
   \begin{center}
     一阶谓词逻辑公式的\blue{\bf 语义}就是该公式的\red{``真假''}值
+
+    \pause
     \[
-      \forall x.\; Sx > {\bf 0}
+      \forall x\; Sx > {\bf 0}
     \]
     \[
-      \forall x.\; \exists y.\; (y < x)
+      \forall x\; \exists y\; (y < x)
     \]
     \[
       x > {\bf 0}
@@ -49,7 +51,7 @@
 
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{}
-  \begin{definition}[$(\U, s) \models \phi$]
+  \begin{definition}[\texorpdfstring{$(\U, s) \models \phi$}{(U, s) models phi}]
     \begin{center}
       $\U$ 与 $s$ 满足公式 $\phi$:
     \end{center}
@@ -59,9 +61,11 @@
     \begin{itemize}
       \setlength{\itemsep}{6pt}
       \item 将\red{量词}的论域 (\red{约束变元} 取值范围) 限制在集合 $|\U|$ 上,
-      \item 将$\phi$中的\teal{常数符号、函数符号、谓词符号}按照\red{\bf 结构} $\U$ 进行\purple{解释},
+      \item 将$\phi$中的\teal{常数符号、函数符号、谓词符号}按照\red{\bf 模型} $\U$ 进行\purple{解释},
       \item 将\green{自由变元} $x$ 解释为 $s(x)$,
     \end{itemize}
+
+    \vspace{1em}
     \begin{center}
       这样就将公式 $\phi$ 翻译成了某个(数学)领域中的命题, \\[6pt]
       然后, 根据(数学)领域知识, 我们可以判断公式 $\phi$ 是否成立
@@ -81,8 +85,8 @@
   \begin{center}
     $\phi$ 在数学结构 $\U \triangleq \Q$ 中为真
 
+    \pause
     \vspace{0.60cm}
-
     $\phi$ 在数学结构 $\U \triangleq \R$ 中为假
   \end{center}
 \end{frame}
@@ -125,6 +129,17 @@
       \end{description}
     \column{0.20\textwidth}
   \end{columns}
+
+  \pause
+  \vspace{1em}
+  \[
+    |\U| \triangleq \set{a, b, c} \qquad
+    i^{\U} \triangleq a \qquad
+    F^{\U} \triangleq \set{b, c}
+  \]
+  \[
+    R^{\U} \triangleq \set{(a, a), (a, b), (a, c), (b, c), (c, c)}
+  \]
 
   \pause
   \vspace{0.80cm}
@@ -185,7 +200,8 @@
     \begin{center}
       令 $\Sigma$ 为一个公式集, $\alpha$ 为一个公式。 \\[8pt]
       $\Sigma$ \red{\bf 语义蕴含} $\alpha$, 记为 $\Sigma \models \alpha$, \\[8pt]
-      如果\red{每个}满足$\Sigma$中\blue{所有}公式的\red{结构$\U$与赋值$s$}都满足$\alpha$。
+      如果\red{每个}满足$\Sigma$中\blue{所有}公式的
+       \red{结构$\U$与赋值$s$} 都满足$\alpha$。
     \end{center}
   \end{definition}
 
@@ -235,7 +251,7 @@
   \end{definition}
 
   \[
-    \lnot (\forall x.\; \alpha) \equiv \exists x.\; \lnot \alpha
+    \lnot (\forall x\; \alpha) \equiv \exists x\; \lnot \alpha
   \]
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
@@ -257,10 +273,10 @@
     普遍有效的公式在\red{所有可能的结构$\U$与所有可能的赋值$s$}下均为真。
 
     \[
-      (\forall x.\; P(x)) \to P(y) \text{ 是普遍有效的}
+      (\forall x\; P(x)) \to P(y) \text{ 是普遍有效的}
     \]
     \[
-      \forall x.\; P(x) \models P(y)
+      \forall x\; P(x) \models P(y)
     \]
   \end{center}
 \end{frame}
@@ -269,16 +285,16 @@
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{}
   \[
-    \red{\boxed{\lnot \forall x \alpha \leftrightarrow \exists x \lnot \alpha}}
+    \red{\boxed{\lnot \forall x\; \alpha \leftrightarrow \exists x\; \lnot \alpha}}
   \]
 
   \[
-    \red{\boxed{\lnot \exists x \alpha \leftrightarrow \forall x \lnot \alpha}}
+    \red{\boxed{\lnot \exists x\; \alpha \leftrightarrow \forall x\; \lnot \alpha}}
   \]
 
   \pause
   \[
-    \lnot (\forall x \in A.\; \alpha) \leftrightarrow \exists x \in A.\; \lnot \alpha
+    \lnot (\forall x \in A\; \alpha) \leftrightarrow \exists x \in A\; \lnot \alpha
   \]
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
@@ -286,11 +302,11 @@
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{}
   \[
-    \forall x \forall y \alpha \leftrightarrow \forall y \forall x \alpha
+    \forall x \forall y\; \alpha \leftrightarrow \forall y \forall x\; \alpha
   \]
 
   \[
-    \exists x \exists y \alpha \leftrightarrow \exists y \exists x \alpha
+    \exists x \exists y\; \alpha \leftrightarrow \exists y \exists x\; \alpha
   \]
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
@@ -316,11 +332,11 @@
   \]
 
   \[
-    \exists x \forall y \alpha \to \forall y \exists x \alpha
+    \exists x \forall y\; \alpha \to \forall y \exists x\; \alpha
   \]
 
   \[
-    \forall y \exists x \alpha \not\to \exists x \forall y \alpha
+    \forall y \exists x\; \alpha \not\to \exists x \forall y\; \alpha
   \]
 
   \pause
@@ -328,7 +344,7 @@
   \begin{center}
     反例: $U = \set{a, b}$, \qquad 关系 $P(a, b), P(b, a)$
     \[
-      \forall y \exists x P(y, x) \equiv T \qquad \exists x \forall y P(y, x) \equiv F
+      \forall y \exists x\; P(y, x) \equiv T \qquad \exists x \forall y\; P(y, x) \equiv F
     \]
   \end{center}
 \end{frame}
@@ -341,30 +357,33 @@
   \]
 
   \[
-    \exists x (\alpha \land \beta) \to \exists x \alpha \land \exists x \beta
+    \exists x\; (\alpha \land \beta) \to \exists x\; \alpha \land \exists x\; \beta
   \]
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{}
-  \begin{center}
-    要求: $\beta$ 中不含 $x$
-  \end{center}
+  \uncover<2->{
+    \begin{center}
+      \red{要求: $x$ 在 $\beta$ 中不自由出现}
+    \end{center}
+  }
 
   \[
-    \forall x.\; (\alpha \lor \beta) \leftrightarrow (\forall x.\; \alpha) \lor \beta
+    \forall x\; (\alpha \lor \beta) \leftrightarrow (\forall x\; \alpha) \lor \beta
   \]
   \[
-    \forall x.\; (\alpha \land \beta) \leftrightarrow (\forall x.\; \alpha) \land \beta
+    \forall x\; (\alpha \land \beta) \leftrightarrow (\forall x\; \alpha) \land \beta
   \]
 
-  \pause
-  \[
-    \exists x.\; (\alpha \lor \beta) \leftrightarrow (\exists x.\; \alpha) \lor \beta
-  \]
-  \[
-    \exists x.\; (\alpha \land \beta) \leftrightarrow (\exists x.\; \alpha) \land \beta
-  \]
+  \uncover<3->{
+    \[
+      \exists x\; (\alpha \lor \beta) \leftrightarrow (\exists x\; \alpha) \lor \beta
+    \]
+    \[
+      \exists x\; (\alpha \land \beta) \leftrightarrow (\exists x\; \alpha) \land \beta
+    \]
+  }
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%

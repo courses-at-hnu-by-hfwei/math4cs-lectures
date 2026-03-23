@@ -31,11 +31,33 @@
 
 \usepackage{logicproof}
 \newcommand{\intro}{\ensuremath{\text{-intro}}\;}
+\newcommand{\landintro}{\ensuremath{\land}\intro}
+\newcommand{\lnotelim}{\ensuremath{\lnot}\elim}
+\newcommand{\lnotintro}{\ensuremath{\lnot}\intro}
+\newcommand{\lorintroleft}{\ensuremath{\lor}\introleft}
+\newcommand{\lorintroright}{\ensuremath{\lor}\introright}
+\newcommand{\lorelim}{\ensuremath{\lor}\elim}
+\newcommand{\tointro}{\ensuremath{\to}\intro}
 \newcommand{\introleft}{\ensuremath{\text{-intro}_{l}}\;}
 \newcommand{\introright}{\ensuremath{\text{-intro}_{r}}\;}
 \newcommand{\elim}{\ensuremath{\text{-elim}}\;}
+\newcommand{\landelimleft}{\ensuremath{\land}\elimleft}
+\newcommand{\landelimright}{\ensuremath{\land}\elimright}
+\newcommand{\toelim}{\ensuremath{\to}\elim}
 \newcommand{\elimleft}{\ensuremath{\text{-elim}_{l}}\;}
 \newcommand{\elimright}{\ensuremath{\text{-elim}_{r}}\;}
+\newcommand{\forallintro}{\ensuremath{\forall\text{-intro}}\;}
+\newcommand{\forallelim}{\ensuremath{\forall\text{-elim}}\;}
+\newcommand{\existsintro}{\ensuremath{\exists\text{-intro}}\;}
+\newcommand{\existselim}{\ensuremath{\exists\text{-elim}}\;}
+\newcommand{\forallxintro}{\ensuremath{\forall x\text{-intro}}\;}
+\newcommand{\forallxelim}{\ensuremath{\forall x\text{-elim}}\;}
+\newcommand{\existsxintro}{\ensuremath{\exists x\text{-intro}}\;}
+\newcommand{\existsxelim}{\ensuremath{\exists x\text{-elim}}\;}
+\newcommand{\forallyintro}{\ensuremath{\forall y\text{-intro}}\;}
+\newcommand{\forallyelim}{\ensuremath{\forall y\text{-elim}}\;}
+\newcommand{\existsyintro}{\ensuremath{\exists y\text{-intro}}\;}
+\newcommand{\existsyelim}{\ensuremath{\exists y\text{-elim}}\;}
 
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
@@ -48,7 +70,7 @@
 
 \usepackage{hyperref}
 \hypersetup{
-  colorlinks = flase,
+  colorlinks = false,
   linkcolor = blue,
   filecolor = magenta,
   urlcolor = teal,

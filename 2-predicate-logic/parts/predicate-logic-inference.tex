@@ -19,180 +19,242 @@
 \begin{frame}{}
   \begin{center}
     {\Large 一阶谓词逻辑的自然推理 (演绎; 推演) 系统} \\[10pt]
-    \teal{\large (简化版本)}
   \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%
-\begin{frame}{$\forall\text{-elim}$}
+\begin{frame}{\texorpdfstring{\forallxelim}{forall x-elim}}
   \begin{center}
     \[
-      \nd{\forall x.\; \alpha}{\alpha[t/x]}{\forall x\text{-elim}}
+      \nd{\forall x\; \phi}{\phi[t/x]}{\forallxelim}
     \]
 
-    where $t$ is \red{free} for $x$ in $\alpha$
+    where $t$ is \red{free} for $x$ in $\phi$
   \end{center}
 
   \pause
   \[
-    \forall x.\; \blue{P(x)} \vdash P(\blue{c}) \quad (c \;\text{是任意常元符号})
+    \forall x\; \blue{P(x)} \vdash P(\blue{c}) \quad (c \;\text{是任意常元符号})
   \]
-
   \pause
   \[
-    \forall x.\; \blue{\exists y.\; (x < y)} \vdash \exists y.\; (\blue{c} < y)
-      \quad (c \;\text{是任意常元符号})
+    \forall x\; \blue{\exists y\; (x < y)} \vdash
+      \exists y\; (\blue{c} < y) \quad (c \;\text{是任意常元符号})
   \]
-
   \pause
   \[
-    \forall x.\; \blue{\exists y.\; (x < y)} \vdash \exists y.\; (\blue{z} < y)
+    \forall x\; \blue{\exists y\; (x < y)} \vdash
+      \exists y\; (\blue{z} < y)
       \quad (z \neq y \;\text{是任意变元符号})
   \]
-
   \pause
   \[
-    \forall x.\; \blue{\exists y.\; (x < y)} \nvdash \exists y.\; (\red{y} < y)
-      \quad (y \;\text{is {\it not} free for } x \text{ in } \alpha)
+    \forall x\; \blue{\exists y\; (x < y)} \nvdash
+      \exists y.\; (\red{y} < y)
+      \quad (y \;\text{is {\it not} free for } x \text{ in } \phi)
   \]
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%
-\begin{frame}{$\forall$\text{-elim}推理规则的应用}
+\begin{frame}{\texorpdfstring{\forallxelim}{forall x-elim} 推理规则的应用}
   \[
     \ndnoname{\text{每个人都是要死的 \qquad 苏格拉底是人}}{\text{苏格拉底是要死的}}
   \]
 
   \vspace{0.80cm}
   \[
-    \ndnoname{\forall x.\; (H(x) \to M(x)) \qquad H(s)}{M(s)}
+    \ndnoname{\forall x\; (H(x) \to M(x)) \qquad H(s)}{M(s)}
   \]
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%
-\begin{frame}{$\forall$\text{-intro}}
-  \begin{center}
-    \[
-      \nd{\stackrel{[t]}{\stackrel{\vdots}{\alpha[t/x]}}}
-        {\forall x.\; \alpha}{\forall x\text{-intro}}
-    \]
-    where, $t$ is a \red{fresh} variable
+\begin{frame}{\texorpdfstring{\forallintro}{forall-intro}}
+  \[
+    \nd{
+      \fbox{%
+        $\begin{array}{c}
+          x_{0} \;\text{\red{fresh}} \\[1mm]
+          \vdots \\[1mm]
+          \phi[x_0/x]
+        \end{array}$%
+      }
+    }{\forall x\;\phi}{\forallxintro}
+  \]
 
-    \vspace{0.80cm}
-    ``任取 $t$, 如果能证明 $\alpha$ 对 $t$ 成立, 则 $\alpha$ 对所有 $x$ 成立''
+  \vspace{2em}
+  \begin{center}
+    $x_0$ is a \red{\bf fresh} variable,
+    representing an \blue{\bf arbitrary} term
   \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{}
-  \begin{exampleblock}{$\forall$-推理规则的应用}
-    \[
-      \Big\{P(t), \forall x (P(x) \to \lnot Q(x))\Big\} \vdash \lnot Q(t)
-    \]
-  \end{exampleblock}
-
-  \pause
-  \setcounter{equation}{0}
-  \begin{align}
-    P(t) & \quad (\text{前提}) \label{eq:1} \\[6pt]
-    \forall x.\; (P(x) \to \lnot Q(x)) & \quad \text{(前提)} \label{eq:2} \\[6pt]
-    \uncover<3->{P(t) \to \lnot Q(t) & \quad (\forall\text{-elim}, (\ref{eq:2})) \label{eq:3} \\[6pt]}
-    \uncover<4->{\lnot Q(t) & \quad (\to\text{-elim}, (\ref{eq:1}), (\ref{eq:3})) \label{eq:4}}
-  \end{align}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{}
-  \begin{exampleblock}{$\forall$-推理规则的应用}
-    \[
-      \Big\{\forall x.\; (P(x) \to Q(x)), \forall x.\; P(x)\Big\} \vdash \forall x.\; Q(x)
-    \]
-  \end{exampleblock}
-
-  \pause
-  \setcounter{equation}{0}
-  \begin{align}
-    \forall x.\; (P(x) \to Q(x)) & \quad (\text{前提}) \label{eq:1} \\[6pt]
-    \forall x.\; P(x) & \quad (\text{前提}) \label{eq:2} \\[6pt]
-    \uncover<3->{[x_{0}] & \quad (\text{引入变量}) \label{eq:3} \\[6pt]}
-    \uncover<4->{P(x_{0}) \to Q(x_{0}) &
-      \quad (\forall\text{-elim}, (\ref{eq:1}), (\ref{eq:3})) \label{eq:4} \\[6pt]}
-    \uncover<5->{P(x_{0}) & \quad (\forall\text{-elim}, (\ref{eq:2}), (\ref{eq:3})) \label{eq:5} \\[6pt]}
-    \uncover<6->{Q(x_{0}) & \quad (\to\text{-elim}, (\ref{eq:4}), (\ref{eq:5})) \label{eq:6} \\[6pt]}
-    \uncover<7->{\forall x.\; Q(x) & \quad (\forall\text{-intro}, (\ref{eq:3})-(\ref{eq:6})) \label{eq:7}}
-  \end{align}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{$\exists\text{-intro}$}
   \begin{center}
-    \[
-      \nd{\alpha[t/x]}{\exists x.\; \alpha}{\exists x\text{-intro}}
-    \]
-    where $t$ is \red{free} for $x$ in $\alpha$
-  \end{center}
-
-  \vspace{0.30cm}
-  \begin{center}
-    ``如果 $\alpha$ 对某个项 $t$ 成立, 则 $\exists x.\; \alpha$ 成立。''
+    Everyone loves Bob Dylan. \\[8pt]
+    Therefore, everyone loves themselves.
   \end{center}
 
   \pause
   \[
-    P(\blue{c}) \vdash \exists x.\; P(x)
+    \forall x\; L(x, B) \vdash \forall x\; L(x, x)
+  \]
+
+  \vspace{2em}
+  \begin{logicproof}{2}
+    \uncover<3->{\forall x\; L(x, B)} & \uncover<3->{premise} \\
+    \uncover<5->{
+    \begin{subproof}
+      \uncover<6->{B} & \uncover<6->{\red{fresh}} \\
+      \uncover<7->{L(B, B)} & \uncover<7->{\forallxelim 1}
+    \end{subproof}}
+    \uncover<4->{\forall x\; L(x, x)} & \uncover<8->{\forallxintro 2--3}
+  \end{logicproof}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{exampleblock}{\texorpdfstring{$\forallintro$}{forall-intro} 推理规则的应用}
+    \[
+      \forall x(P(x)\to Q(x)),\ \forall x P(x) \vdash \forall x Q(x)
+    \]
+  \end{exampleblock}
+
+  \pause
+  \vspace{2em}
+  \begin{logicproof}{2}
+    \uncover<2->{\forall x(P(x)\to Q(x))} & \uncover<2->{premise} \\
+    \uncover<2->{\forall x P(x)} & \uncover<2->{premise} \\
+    \uncover<4->{
+    \begin{subproof}
+      \uncover<5->{x_0} & \uncover<5->{\blue{\text{fresh}}} \\
+      \uncover<7->{P(x_0)\to Q(x_0)} & \uncover<7->{\forallxelim 1} \\
+      \uncover<8->{P(x_0)} & \uncover<8->{\forallxelim 2} \\
+      \uncover<6->{Q(x_0)} & \uncover<9->{\toelim 4, 5}
+    \end{subproof}}
+    \uncover<3->{\forall x Q(x)} & \uncover<10->{\forallxintro 3--6}
+  \end{logicproof}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  % P111 in LICS
+  \begin{exampleblock}{\texorpdfstring{$\forallintro$}{forall-intro} 推理规则的应用}
+    \[
+      \Big\{P(t), \forall x\; (P(x) \to \lnot Q(x))\Big\}
+        \vdash \lnot Q(t)
+    \]
+  \end{exampleblock}
+
+  \pause
+  \vspace{2em}
+  \begin{logicproof}{2}
+    P(t) & premise \\
+    \forall x(P(x)\to \lnot Q(x)) & premise \\
+    \uncover<4->{P(t)\to \lnot Q(t)} & \uncover<4->{\forallxelim 2} \\
+    \uncover<3->{\lnot Q(t)} & \uncover<5->{\toelim 3, 1}
+  \end{logicproof}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{\texorpdfstring{\existsintro}{exists-intro}}
+  \begin{center}
+    \[
+      \nd{\phi[t/x]}{\exists x\; \phi}
+        {\existsxintro}
+    \]
+  \end{center}
+
+  \pause
+  \[
+    P(\blue{c}) \vdash \exists x\; P(x)
       \quad c \text{ 是任意常元符号}
   \]
 
   \pause
   \[
-    \teal{\forall y.\; (y = y)} \nvdash \exists x.\; \teal{\forall y.\; (x = y)}
-      \quad (y \text{ is \red{\it not} free for } x \text{ in } \teal{\alpha})
+    \teal{\forall y\; (y = y)} \nvdash
+      \exists x\; \teal{\forall y\; (x = y)}
   \]
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%
-\begin{frame}{$\exists\text{-elim}$}
-  \begin{center}
-    \[
-      \nd{\exists x.\; \alpha \qquad [x_{0}] \qquad
-        \stackrel{\big[\alpha[x_{0}/x]\big]}{\stackrel{\vdots}{\beta}}}{\beta}{\exists\text{-elim}}
-    \]
-    where $x_{0}$ is \red{free} for $x$ in $\alpha$
+\begin{frame}{\texorpdfstring{$\exists\text{-elim}$}{exists-elim}}
+  \[
+    \nd{
+      \begin{array}{c}
+        \exists x\,\phi
+        \qquad
+        \fbox{%
+          $\begin{array}{c}
+            x_0 \ \text{fresh} \\[1mm]
+            \phi[x_0/x] \\[1mm]
+            \vdots \\[1mm]
+            \phi
+          \end{array}$%
+        }
+      \end{array}
+    }{\phi}{\existsxelim}
+  \]
 
-    \vspace{1.00cm}
-    ``\red{假设} $x_{0}$ 使得 $\alpha$ 成立, 如果从 $\alpha[x_{0}/x]$ 可以推导出 $\beta$, \\[6pt]
-      则从 $\exists x.\; \alpha$ 可以推导出 $\beta$''
+  \vspace{1em}
+  \begin{center}
+    \red{$x_{0}$ {\it cannot} occur outside its box
+      (in particular, cannot occur in $\phi$)}
   \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{}
-  \begin{exampleblock}{$\exists$\text{-推理规则的应用}}
+  \begin{center}
+    Bob Dylan is a poet. \\[5pt]
+    Someone is not a poet. \\[5pt]
+    Therefore, Bob Dylan is both a poet and not a poet.
+  \end{center}
+
+  \pause
+  \[
+    \left\{P(B), \exists x\; \lnot P(x) \vdash
+      P(B)\land \lnot P(B) \right\}
+  \]
+
+  \vspace{2em}
+  \begin{logicproof}{2}
+    \uncover<3->{P(B)} & \uncover<3->{premise} \\
+    \uncover<3->{\exists x \lnot P(x)} & \uncover<3->{premise} \\
+    \uncover<5->{
+    \begin{subproof}
+      \uncover<6->{B\; (\text{\blue{fresh}}),\; \lnot P(B)} & \uncover<6->{assumption} \\
+      \uncover<7->{P(B) \land \lnot P(B)} & \uncover<7->{\landintro 1, 3}
+    \end{subproof}}
+    \uncover<4->{P(B) \land \lnot P(B)} & \uncover<8->{\existsxelim 2, 3--4}
+  \end{logicproof}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{exampleblock}{$\existsintro$ 推理规则的应用}
     \[
-      \forall x.\; P(x) \vdash \exists x.\; P(x)
+      \forall x\; P(x) \vdash \exists x\; P(x)
     \]
   \end{exampleblock}
 
-  \pause
-  \setcounter{equation}{0}
-  \begin{align}
-    \forall x.\; P(x) & \quad (\text{前提})
-      \label{eq:1} \\[6pt]
-    \uncover<3->{[x_{0}] & \quad (\text{引入变量})
-      \label{eq:2} \\[6pt]}
-    \uncover<4->{P(x_{0}) & \quad (\forall\text{-elim}, (\ref{eq:1}), (\ref{eq:2}))
-      \label{eq:3} \\[6pt]}
-    \uncover<5->{\exists x.\; P(x) & \quad (\exists\text{-intro}, (\ref{eq:3}))
-      \label{eq:4}}
-  \end{align}
+  \vspace{2em}
+  \begin{logicproof}{1}
+    \uncover<2->{\forall x \phi} & \uncover<2->{premise} \\
+    \uncover<4->{\phi[x/x]} & \uncover<4->{\forallxelim 1} \\
+    \uncover<3->{\exists x \phi} & \uncover<5->{\existsxintro 2}
+  \end{logicproof}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 
@@ -200,68 +262,282 @@
 \begin{frame}{}
   \begin{exampleblock}{$\forall, \exists$\text{-推理规则的应用}}
     \[
-      \Big\{\forall x.\; (P(x) \to Q(x)), \exists x.\; P(x)\Big\}
-        \vdash \exists x.\; Q(x)
+      \Big\{\forall x\; (P(x) \to Q(x)), \exists x\; P(x)\Big\}
+        \vdash \exists x\; Q(x)
     \]
   \end{exampleblock}
 
-  \pause
-  \setcounter{equation}{0}
-  \begin{align}
-    \forall x.\; (P(x) \to Q(x)) & \quad (\text{前提})
-      \label{eq:1} \\[6pt]
-    \exists x.\; P(x) & \quad (\text{前提})
-      \label{eq:2} \\[6pt]
-    \uncover<3->{\red{[x_{0}] \quad [P(x_{0})]} & \quad (\text{引入变量与假设})
-      \label{eq:3} \\[6pt]}
-    \uncover<4->{P(x_{0}) \to Q(x_{0}) & \quad (\forall\text{-elim}, (\ref{eq:1}), (\ref{eq:3}))
-      \label{eq:4} \\[6pt]}
-    \uncover<5->{Q(x_{0}) & \quad (\to\text{-elim}, (\ref{eq:3}), (\ref{eq:4}))
-      \label{eq:5} \\[6pt]}
-    \uncover<6->{\red{\exists x.\; Q(x)} & \quad (\exists\text{-intro}, (\ref{eq:5}))
-      \label{eq:6} \\[6pt]}
-    \uncover<7->{\exists x.\; Q(x) & \quad (\exists\text{-elim}, (\ref{eq:2}),
-      (\ref{eq:3})-(\ref{eq:6})) \label{eq:7}}
-  \end{align}
+  \vspace{2em}
+  \begin{logicproof}{2}
+    \uncover<2->{\forall x(P(x)\to Q(x))} & \uncover<2->{premise} \\
+    \uncover<3->{\exists x P(x)} & \uncover<3->{premise} \\
+    \uncover<5->{
+    \begin{subproof}
+      \uncover<6->{x_0\; (\text{\blue{fresh}}),\; P(x_0)} & \uncover<6->{assumption} \\
+      \uncover<8->{P(x_0)\to Q(x_0)} & \uncover<8->{\forallxelim 1} \\
+      \uncover<9->{Q(x_0)} & \uncover<9->{\toelim 4, 3} \\
+      \uncover<7->{\exists x Q(x)} & \uncover<10->{\existsxintro 5}
+    \end{subproof}}
+    \uncover<4->{\exists x Q(x)} & \uncover<11->{\existsxelim 2, 3--6}
+  \end{logicproof}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%
 \begin{frame}{}
-  \begin{exampleblock}{$\forall, \exists$-推理规则的应用}
+  \begin{exampleblock}{$\forall, \exists$\text{-推理规则的 (\red{\bf 错误}) 应用}}
     \[
-      \Big\{\exists x.\; P(x), \forall x.\; \forall y.\; (P(x) \to Q(y))\Big\}
-        \vdash \forall y.\; Q(y)
+      \Big\{\forall x\; (P(x) \to Q(x)), \exists x\; P(x)\Big\}
+        \vdash \exists x\; Q(x)
     \]
   \end{exampleblock}
 
-  \pause
-  \vspace{-0.60cm}
-  \setcounter{equation}{0}
-  \begin{align}
-    \exists x.\; P(x) & \quad \text{(前提)}
-      \label{eq:1} \\[6pt]
-    \forall x.\; \forall y.\; (P(x) \to Q(y)) & \quad \text{(前提)}
-      \label{eq:2} \\[6pt]
-    \uncover<3->{\red{[x_{0}] \quad [P(x_{0})]} & \quad \text{(引入变量与假设)}
-      \label{eq:3} \\[6pt]}
-    \uncover<4->{\forall y.\; (P(x_{0}) \to Q(y)) & \quad (\forall\text{-elim}, (\ref{eq:2}), (\ref{eq:3}))
-      \label{eq:4} \\[6pt]}
-    \uncover<5->{\blue{[y_{0}]} & \quad \text{(引入变量)}
-      \label{eq:5} \\[6pt]}
-    \uncover<6->{P(x_{0}) \to Q(y_{0}) & \quad (\forall\text{-elim}, (\ref{eq:4}), (\ref{eq:5}))
-      \label{eq:6} \\[6pt]}
-    \uncover<7->{Q(y_{0}) & \quad (\to\text{-elim}, (\ref{eq:3}), (\ref{eq:6}))
-      \label{eq:7} \\[6pt]}
-    \uncover<8->{\red{Q(y_{0})} & \quad (\exists\text{-elim}, (\ref{eq:1}), (\ref{eq:3})-(\ref{eq:7}))
-      \label{eq:8} \\[6pt]}
-    \uncover<9->{\forall y.\; Q(y) & \quad (\forall\text{-intro}, (\ref{eq:5})-(\ref{eq:8}))}
-  \end{align}
+  \vspace{2em}
+  \begin{logicproof}{2}
+    \uncover<2->{\forall x\; (P(x) \to Q(x))} & \uncover<2->{premise} \\
+    \uncover<3->{\exists x\; P(x)} & \uncover<3->{premise} \\
+    \uncover<5->{
+    \begin{subproof}
+      \uncover<6->{x_0\; (\text{\blue{fresh}}),\; P(x_0)} & \uncover<6->{assumption} \\
+      \uncover<7->{P(x_0) \to Q(x_0)} & \uncover<7->{\forallxelim 1} \\
+      \uncover<8->{Q(x_0)} & \uncover<8->{\toelim 4, 3}
+    \end{subproof}}
+    \uncover<9->{Q(x_0)} & \uncover<9->{\existsxelim 2, 3--5} \\
+    \uncover<4->{\exists x\; Q(x)} & \uncover<10->{\existsxintro 6}
+  \end{logicproof}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%
-\begin{frame}{$\forall, \exists$-推理规则的应用}
+\begin{frame}{}
+  \begin{exampleblock}{$\forallxintro$ 推理规则的应用}
+    \[
+      \forall x(Q(x)\to R(x)),\ \exists x(P(x)\land Q(x)) \vdash
+        \exists x(P(x)\land R(x))
+    \]
+  \end{exampleblock}
+
+  \begin{logicproof}{2}
+    \uncover<2->{\forall x\; (Q(x) \to R(x))} & \uncover<2->{premise} \\
+    \uncover<2->{\exists x\; (P(x) \land Q(x))} & \uncover<2->{premise} \\
+    \uncover<4->{
+    \begin{subproof}
+      \uncover<5->{x_0 \;(\text{\blue{fresh}})\; P(x_0) \land Q(x_0)} & \uncover<5->{assumption} \\
+      \uncover<10->{Q(x_0)\to R(x_0)} & \uncover<10->{\forallxelim 1} \\
+      \uncover<11->{Q(x_0)} & \uncover<11->{\landelimright 3} \\
+      \uncover<9->{R(x_0)} & \uncover<12->{\toelim 4, 5} \\
+      \uncover<8->{P(x_0)} & \uncover<13->{\landelimleft 3} \\
+      \uncover<7->{P(x_0)\land R(x_0)} & \uncover<14->{\landintro 7, 6} \\
+      \uncover<6->{\exists x\; (P(x)\land R(x))} & \uncover<15->{\existsxintro 8}
+    \end{subproof}}
+    \uncover<3->{\exists x\; (P(x)\land R(x))} & \uncover<16->{\existsxelim 2, 3--9}
+  \end{logicproof}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{exampleblock}{$\forallxintro$ 推理规则的应用}
+    \[
+      \Big\{\exists x\; P(x), \forall x \forall y\; (P(x) \to Q(y))\Big\}
+        \vdash \forall y\; Q(y)
+    \]
+  \end{exampleblock}
+
+  \pause
+  \begin{logicproof}{2}
+    \uncover<2->{\exists x\;P(x)} & \uncover<2->{premise} \\
+    \uncover<2->{\forall x\forall y\; (P(x) \to Q(y))} & \uncover<2->{premise} \\
+    \uncover<4->{
+    \begin{subproof}
+      \uncover<5->{y_0} & \uncover<5->{\blue{fresh}} \\
+      \uncover<7->{
+      \begin{subproof}
+        \uncover<8->{x_0\; (\text{\blue{fresh}})} & \uncover<8->{assumption} \\
+        \uncover<10->{\forall y(P(x_0)\to Q(y))} & \uncover<10->{\forallxelim 2} \\
+        \uncover<11->{P(x_0)\to Q(y_0)} & \uncover<11->{\forallyelim 5} \\
+        \uncover<9->{Q(y_0)} & \uncover<12->{\toelim 6, 4}
+      \end{subproof}}
+      \uncover<6->{Q(y_0)} & \uncover<13->{\existsxelim 1, 4--7}
+    \end{subproof}}
+    \uncover<3->{\forall y Q(y)} & \uncover<14->{\forallyintro 3--8}
+  \end{logicproof}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{exampleblock}{$\existselim$ 推理规则的 (\red{\bf 错误}) 应用}
+    \[
+      \exists x\; P(x),\ \forall x\; (P(x) \to Q(x)) \vdash \forall y\; Q(y)
+    \]
+  \end{exampleblock}
+
+  \begin{logicproof}{2}
+    \uncover<2->{\exists x P(x)} & \uncover<2->{premise} \\
+    \uncover<2->{\forall x(P(x)\to Q(x))} & \uncover<2->{premise} \\
+    \uncover<4->{
+    \begin{subproof}
+      \uncover<5->{x_0} & \uncover<5->{fresh} \\
+      \uncover<7->{
+      \begin{subproof}
+        \uncover<8->{x_{0}\; (\text{\blue{fresh}}),\; P(x_0)} & \uncover<8->{assumption} \\
+        \uncover<10->{P(x_0)\to Q(x_0)} & \uncover<10->{\forallxelim 2} \\
+        \uncover<9->{Q(x_0)} & \uncover<11->{\toelim 5, 4}
+      \end{subproof}}
+      \uncover<6->{Q(x_0)} & \uncover<12->{\existsxelim 1, 4--6}
+    \end{subproof}}
+    \uncover<3->{\forall y\ Q(y)} & \uncover<13->{\forallyintro 3--7}
+  \end{logicproof}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{exampleblock}{}
+    \[
+      \lnot \forall x\; P(x) \vdash \exists x\; \lnot P(x)
+    \]
+  \end{exampleblock}
+
+  \begin{logicproof}{3}
+    \uncover<2->{\lnot \forall x\; P(x)} & \uncover<2->{premise} \\
+    \uncover<4->{
+    \begin{subproof}
+      \uncover<5->{\lnot \exists x\; \lnot P(x)} & \uncover<5->{assumption} \\
+      \uncover<8->{
+      \begin{subproof}
+        \uncover<9->{x_0} & \uncover<9->{fresh} \\
+        \uncover<11->{
+        \begin{subproof}
+          \uncover<12->{\lnot P(x_0)} & \uncover<12->{assumption} \\
+          \uncover<14->{\exists x\; \lnot P(x)} & \uncover<14->{\existsxintro 4} \\
+          \uncover<13->{\bot} & \uncover<15->{\lnotelim 5, 2}
+        \end{subproof}}
+      \uncover<10->{P(x_0)} & \uncover<16->{PBC 4-6}
+      \end{subproof}}
+      \uncover<7->{\forall x\; P(x)} & \uncover<17->{\forallxintro 3--7} \\
+      \uncover<6->{\bot} & \uncover<18->{\lnotelim 8, 1}
+    \end{subproof}}
+    \uncover<3->{\exists x\; \lnot P(x)} & \uncover<19->{PBC 2--9}
+  \end{logicproof}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{exampleblock}{}
+    \[
+      \lnot \forall x\; \phi \vdash \exists x\; \lnot \phi
+    \]
+  \end{exampleblock}
+
+  \pause
+  \begin{logicproof}{3}
+    \uncover<2->{\lnot \forall x\; \phi} & \uncover<2->{premise} \\
+    \uncover<4->{
+    \begin{subproof}
+      \uncover<5->{\lnot \exists x\; \lnot \phi} & \uncover<5->{assumption} \\
+      \uncover<8->{
+      \begin{subproof}
+        \uncover<9->{x_0} & \uncover<9->{fresh} \\
+        \uncover<11->{
+        \begin{subproof}
+          \uncover<12->{\lnot \phi[x_0/x]} & \uncover<12->{assumption} \\
+          \uncover<14->{\exists x\; \lnot \phi} & \uncover<14->{\existsxintro 4} \\
+          \uncover<13->{\bot} & \uncover<15->{\lnotelim 5, 2}
+        \end{subproof}}
+      \uncover<10->{\phi[x_0/x]} & \uncover<16->{PBC 4-6}
+      \end{subproof}}
+      \uncover<7->{\forall x\; \phi} & \uncover<17->{\forallxintro 3--7} \\
+      \uncover<6->{\bot} & \uncover<18->{\lnotelim 8, 1}
+    \end{subproof}}
+    \uncover<3->{\exists x\; \lnot \phi} & \uncover<19->{PBC 2--9}
+  \end{logicproof}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{exampleblock}{}
+    \[
+      \exists x\; \lnot \phi \vdash \lnot \forall x\; \phi
+    \]
+  \end{exampleblock}
+
+  \begin{logicproof}{2}
+    \uncover<2->{\exists x\; \lnot \phi} & \uncover<2->{assumption} \\
+    \uncover<4->{
+    \begin{subproof}
+      \uncover<5->{\forall x\; \phi} & \uncover<5->{assumption} \\
+      \uncover<7->{
+      \begin{subproof}
+        \uncover<8->{x_0} & \uncover<8->{fresh} \\
+        \uncover<8->{\lnot \phi[x_0/x]} & \uncover<8->{assumption} \\
+        \uncover<10->{\phi[x_0/x]} & \uncover<10->{\forallxelim 2} \\
+        \uncover<9->{\bot} & \uncover<11->{\lnotelim 5, 4}
+      \end{subproof}}
+      \uncover<6->{\bot} & \uncover<12->{\existsxelim 1, 3--6}
+    \end{subproof}}
+    \uncover<3->{\neg \forall x\; \phi} & \uncover<13->{\lnotintro 2--7}
+  \end{logicproof}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{exampleblock}{}
+    \[
+      \exists x\;(\phi\lor\psi) \vdash
+        (\exists x\;\phi)\lor(\exists x\;\psi)
+    \]
+  \end{exampleblock}
+
+  \begin{logicproof}{3}
+    \uncover<2->{\exists x\; (\phi \lor \psi)} & \uncover<2->{premise} \\
+    \uncover<4->{
+    \begin{subproof}
+      \uncover<5->{x_0} & \uncover<5->{fresh} \\
+      \uncover<5->{(\phi \lor \psi)[x_0/x]} & \uncover<5->{assumption} \\
+      \uncover<7->{\phi[x_0/x] \lor \psi[x_0/x]} & \uncover<7->{identical\ to\ 3} \\
+      \uncover<8->{
+      \begin{subproof}
+        \uncover<9->{\phi[x_0/x]} & \uncover<9->{assumption} \\
+        \uncover<11->{\exists x\; \phi} & \uncover<11->{\existsxintro 5} \\
+        \uncover<10->{(\exists x\;\phi)\lor(\exists x\;\psi)} & \uncover<12->{\lorintroleft 6}
+      \end{subproof}}
+      \uncover<13->{
+      \begin{subproof}
+        \uncover<14->{\psi[x_0/x]} & \uncover<14->{assumption} \\
+        \uncover<16->{\exists x\; \psi} & \uncover<16->{\existsxintro 8} \\
+        \uncover<15->{(\exists x\;\phi)\lor(\exists x\;\psi)} & \uncover<17->{\lorintroright 9}
+      \end{subproof}}
+      \uncover<6->{(\exists x\;\phi)\lor(\exists x\;\psi)} & \uncover<18->{\lorelim 4, 5--7, 8--10}
+    \end{subproof}}
+    \uncover<3->{(\exists x\;\phi)\lor(\exists x\;\psi)} & \uncover<19->{\existsxelim 1, 2--11}
+  \end{logicproof}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{exampleblock}{\teal{留作练习了}}
+    \[
+      (\exists x\;\phi)\lor(\exists x\;\psi) \vdash
+        \exists x\;(\phi\lor\psi)
+    \]
+
+    \pause
+    \[
+      \exists x\;\exists y\; \phi \vdash
+        \exists y\;\exists x\; \phi
+    \]
+  \end{exampleblock}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{\texorpdfstring{$\forall, \exists$}{forall, exists}-推理规则的应用}
   \begin{exampleblock}{请使用一阶谓词逻辑公式表达下列命题与推理}
     给定如下``前提'', 请判断``结论''是否有效, 并说明理由。\\[10pt]
     {\bf 前提:}
@@ -284,75 +560,75 @@
   \]
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{}
-  \setcounter{equation}{0}
-  \begin{align}
-    \forall x.\; A(x) \lor K(x) & \quad (\text{前提})
-      \label{eq:1} \\[6pt]
-    \forall x.\; J(x) \to \lnot A(x) & \quad (\text{前提})
-      \label{eq:2} \\[6pt]
-    \exists x.\; \lnot K(x) & \quad (\text{前提})
-      \label{eq:3} \\[6pt]
-    \uncover<2->{\red{[x_{0}] \quad [\lnot K(x_{0})]} & \quad (\text{引入变量与假设})
-      \label{eq:4} \\[6pt]}
-    \uncover<3->{A(x_{0}) \lor K(x_{0}) & \quad (\forall\text{-elim}, (\ref{eq:1}), (\ref{eq:4}))
-      \label{eq:5} \\[6pt]}
-    \uncover<4->{A(x_{0}) & \quad ((\ref{eq:4}), (\ref{eq:5}))
-      \label{eq:6} \\[6pt]}
-    \uncover<5->{J(x_{0}) \to \lnot A(x_{0}) & \quad (\forall\text{-elim}, (\ref{eq:2}), (\ref{eq:4}))
-      \label{eq:7} \\[6pt]}
-    \uncover<6->{\lnot J(x_{0}) & \quad ((\ref{eq:6}), (\ref{eq:7}))
-      \label{eq:8} \\[6pt]}
-    \uncover<7->{\red{\exists x.\; \lnot J(x)} & \quad (\exists\text{-intro}, (\ref{eq:8}))
-      \label{eq:9} \\[6pt]}
-    \uncover<8->{\exists x.\; \lnot J(x) & \quad (\exists\text{-elim}, (\ref{eq:3})-(\ref{eq:8}))
-      \label{eq:10}}
-  \end{align}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{}
+%   \setcounter{equation}{0}
+%   \begin{align}
+%     \forall x.\; A(x) \lor K(x) & \quad (\text{前提})
+%       \label{eq:1} \\[6pt]
+%     \forall x.\; J(x) \to \lnot A(x) & \quad (\text{前提})
+%       \label{eq:2} \\[6pt]
+%     \exists x.\; \lnot K(x) & \quad (\text{前提})
+%       \label{eq:3} \\[6pt]
+%     \uncover<2->{\red{[x_{0}] \quad [\lnot K(x_{0})]} & \quad (\text{引入变量与假设})
+%       \label{eq:4} \\[6pt]}
+%     \uncover<3->{A(x_{0}) \lor K(x_{0}) & \quad (\forall\text{-elim}, (\ref{eq:1}), (\ref{eq:4}))
+%       \label{eq:5} \\[6pt]}
+%     \uncover<4->{A(x_{0}) & \quad ((\ref{eq:4}), (\ref{eq:5}))
+%       \label{eq:6} \\[6pt]}
+%     \uncover<5->{J(x_{0}) \to \lnot A(x_{0}) & \quad (\forall\text{-elim}, (\ref{eq:2}), (\ref{eq:4}))
+%       \label{eq:7} \\[6pt]}
+%     \uncover<6->{\lnot J(x_{0}) & \quad ((\ref{eq:6}), (\ref{eq:7}))
+%       \label{eq:8} \\[6pt]}
+%     \uncover<7->{\red{\exists x.\; \lnot J(x)} & \quad (\exists\text{-intro}, (\ref{eq:8}))
+%       \label{eq:9} \\[6pt]}
+%     \uncover<8->{\exists x.\; \lnot J(x) & \quad (\exists\text{-elim}, (\ref{eq:3})-(\ref{eq:8}))
+%       \label{eq:10}}
+%   \end{align}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{}
-  \setcounter{equation}{0}
-  \begin{align}
-    \forall x.\; A(x) \lor K(x) \label{eq:1} \\[3pt]
-    \forall x.\; J(x) \to \lnot A(x) \label{eq:2} \\[3pt]
-    \exists x.\; \lnot K(x) \label{eq:3}
-  \end{align}
+% %%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{}
+%   \setcounter{equation}{0}
+%   \begin{align}
+%     \forall x.\; A(x) \lor K(x) \label{eq:1} \\[3pt]
+%     \forall x.\; J(x) \to \lnot A(x) \label{eq:2} \\[3pt]
+%     \exists x.\; \lnot K(x) \label{eq:3}
+%   \end{align}
 
-  \pause
-  \begin{center}
-    根据 (\ref{eq:3}), 不妨设 $\lnot K(x)$ 对 $x_{0}$ 成立:
-    \begin{align}
-      \lnot K(x_{0}) \label{eq:4}
-    \end{align}
-    \begin{columns}
-      \column{0.45\textwidth}
-        \pause
-        根据 (\ref{eq:1}), 有
-        \begin{align}
-          A(x_{0}) \lor K(x_{0}) \label{eq:5}
-        \end{align}
-        \pause
-        根据 (\ref{eq:4}) 与 (\ref{eq:5}), 有
-        \begin{align}
-          A(x_{0}) \label{eq:6}
-        \end{align}
-      \column{0.45\textwidth}
-        \pause
-        根据 (\ref{eq:2}), 有
-        \begin{align}
-          J(x_{0}) \to \lnot A(x_{0}) \label{eq:7}
-        \end{align}
-        \pause
-        根据 (\ref{eq:6}) 与 (\ref{eq:7}), 有
-        \begin{align}
-          \lnot J(x_{0}) \label{eq:8}
-        \end{align}
-        \pause
-        因此, $\exists x.\; \lnot J(x)$
-    \end{columns}
-  \end{center}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%
+%   \pause
+%   \begin{center}
+%     根据 (\ref{eq:3}), 不妨设 $\lnot K(x)$ 对 $x_{0}$ 成立:
+%     \begin{align}
+%       \lnot K(x_{0}) \label{eq:4}
+%     \end{align}
+%     \begin{columns}
+%       \column{0.45\textwidth}
+%         \pause
+%         根据 (\ref{eq:1}), 有
+%         \begin{align}
+%           A(x_{0}) \lor K(x_{0}) \label{eq:5}
+%         \end{align}
+%         \pause
+%         根据 (\ref{eq:4}) 与 (\ref{eq:5}), 有
+%         \begin{align}
+%           A(x_{0}) \label{eq:6}
+%         \end{align}
+%       \column{0.45\textwidth}
+%         \pause
+%         根据 (\ref{eq:2}), 有
+%         \begin{align}
+%           J(x_{0}) \to \lnot A(x_{0}) \label{eq:7}
+%         \end{align}
+%         \pause
+%         根据 (\ref{eq:6}) 与 (\ref{eq:7}), 有
+%         \begin{align}
+%           \lnot J(x_{0}) \label{eq:8}
+%         \end{align}
+%         \pause
+%         因此, $\exists x.\; \lnot J(x)$
+%     \end{columns}
+%   \end{center}
+% \end{frame}
+% %%%%%%%%%%%%%%%%%%%%
