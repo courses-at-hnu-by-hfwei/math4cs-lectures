@@ -1,0 +1,298 @@
+% relation-property.tex
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{center}
+    \teal{\Large 7 Properties}
+
+    \[
+      \red{R \subseteq X \times X}
+    \]
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{definition}[自反的 (Reflexive)]
+    $R \subseteq X \times X$ is \red{\it reflexive} if
+    \[
+      \forall a \in X.\; (a, a) \in R
+    \]
+
+    \fig{width = 0.20\textwidth}{figs/reflexive}
+  \end{definition}
+
+  \pause
+  \[
+    \le \;\subseteq \R \times \R \text{ is reflexive}
+  \]
+  \pause
+  \[
+    \text{三角形上的\red{全等关系}是自反的}
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{definition}[反自反 (Irreflexive)]
+    $R \subseteq X \times X$ is \red{\it irreflexive} if
+    \[
+      \forall a \in X.\; (a, a) \notin R
+    \]
+  \end{definition}
+
+  \pause
+  \[
+    < \;\subseteq \R \times \R \text{ is irreflexive}
+  \]
+  \pause
+  \[
+    > \;\subseteq \R \times \R \text{ is irreflexive}
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \[
+    \blue{A = \set{1, 2, 3} \qquad R \subseteq A \times A}
+  \]
+
+  \[
+    \set{(1, 1), (1, 3), (2, 1), (2, 2), (3, 3)}
+  \]
+
+  \pause
+  \[
+    \set{(1, 2), (2, 3), (3, 1)}
+  \]
+
+  \pause
+  \[
+    \set{(1, 2), (2, 2), (2, 3), (3, 1)}
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{definition}[对称 (Symmetric)]
+    $R \subseteq X \times X$ is \red{\it symmetric} if
+    \[
+      \forall a, b \in X.\; a R b \to b R a
+    \]
+
+    \fig{width = 0.25\textwidth}{figs/symmetric}
+
+    \pause
+    \[
+      \forall a, b \in X.\; a R b \leftrightarrow b R a
+    \]
+  \end{definition}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \[
+    \blue{A = \set{1, 2, 3} \qquad R \subseteq A \times A}
+  \]
+
+  \pause
+  \[
+    \set{(1, 1), (1, 2), (1, 3), (2, 1), (3, 1), (3, 3)}
+  \]
+
+  \pause
+  \[
+    \set{(1, 2), (2, 3), (2, 2), (3, 1)}
+  \]
+
+  \pause
+  \[
+    \set{(1, 1), (2, 2), (3, 3)}
+  \]
+
+  \pause
+  \[
+    \set{(1, 2), (2, 1), (2, 3)}
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{definition}[反对称 (AntiSymmetric)]
+    $R \subseteq X \times X$ is \red{\it antisymmetric} if
+    \[
+      \forall a, b \in X.\; (a R b \land b R a) \to a = b
+    \]
+  \end{definition}
+
+  \pause
+  \[
+    \red{\ge}\; \text{is antisymmetric}
+  \]
+  \pause
+  \[
+    \red{\mid}\; \text{is antisymmetric}
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \[
+    \blue{A = \set{1, 2, 3} \qquad R \subseteq A \times A}
+  \]
+
+  \pause
+  \[
+    \set{(1, 1), (1, 2), (1, 3), (2, 1), (3, 1), (3, 3)}
+  \]
+
+  \pause
+  \[
+    \set{(1, 2), (2, 3), (2, 2), (3, 1)}
+  \]
+
+  \pause
+  \[
+    \set{(1, 1), (2, 2), (3, 3)}
+  \]
+
+  \pause
+  \[
+    \set{(1, 2), (2, 1), (2, 3)}
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{definition}[传递的 (Transitive)]
+    $R \subseteq X \times X$ is \red{\it transitive} if
+    \[
+      \forall a, b, c \in X.\; (a R b \land b R c \to a R c)
+    \]
+
+    \fig{width = 0.30\textwidth}{figs/transitive}
+  \end{definition}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \[
+    \blue{A = \set{1, 2, 3} \qquad R \subseteq A \times A}
+  \]
+
+  \pause
+  \[
+    \set{(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3)}
+  \]
+
+  \pause
+  \[
+    \set{(1, 2), (2, 3), (3, 1)}
+  \]
+
+  \pause
+  \[
+    \set{(1, 3)}
+  \]
+
+  \pause
+  \[
+    \emptyset
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{definition}[连接的 (Connex)]
+    $R \subseteq X \times X$ is \red{\it connex} if
+    \[
+      \forall a, b \in X.\; (a R b \lor b R a)
+    \]
+  \end{definition}
+
+  \pause
+  \vspace{0.60cm}
+  \begin{definition}[三分的 (Trichotomous)]
+    $R \subseteq X \times X$ is \red{\it trichotomous} if
+    \[
+      \forall a, b \in X.\;
+        (\text{\red{exactly one of}}\; a R b, b R a, \;\text{or}\; a = b \text{ holds})
+    \]
+  \end{definition}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}
+  \begin{theorem}
+    \[
+      R \text{ is reflexive} \iff I \subseteq R
+    \]
+  \end{theorem}
+  \[
+    I = \set{(a, a) \in A \times A \mid a \in A}
+  \]
+
+  \pause
+  \vspace{0.60cm}
+  \begin{theorem}
+    \[
+      R \text{ is symmetric} \iff R^{-1} = R
+    \]
+  \end{theorem}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{theorem}
+    \[
+      R \text{ is transitive} \iff R \circ R \;\red{\subseteq}\; R
+    \]
+  \end{theorem}
+
+  \pause
+  \[
+    R = \set{(1, 2), (2, 3), (1, 3), (4, 4)}
+  \]
+
+  \pause
+  \red{对任意 $(a, b)$,}
+  \setcounter{equation}{0}
+  \begin{align}
+    &(a, b) \in R \circ R \\[6pt]
+    \uncover<3->{\implies& \exists c.\; (a, c) \in R \land (b, c) \in R \\[6pt]}
+    \uncover<4->{\implies& (a, b) \in R}
+  \end{align}
+
+  \vspace{0.30cm}
+  \uncover<5->{
+    \red{对任意 $a, b, c$}
+    \[
+      (a, b) \in R \land (b, c) \in R
+      \uncover<6->{\implies (a, c) \in R \circ R}
+      \uncover<7->{\implies (a, c) \in R}
+    \]
+  }
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{theorem}
+    \[
+      \teal{R \text{ is symmetric and transitive} \iff R = R^{-1} \circ R}
+    \]
+  \end{theorem}
+\end{frame}
+%%%%%%%%%%%%%%%

@@ -1,0 +1,123 @@
+% pair.tex
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{definition}[有序对\red{\bf 公理} (Ordered Pairs)]
+    \[
+      (a, b) = (c, d) \iff a = c \land b = d
+    \]
+  \end{definition}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{definition}[Ordered Pairs \teal{(Norbert Wiener; 1914)}]
+    \[
+      (a, b) \;\red{\triangleq}\; \Bset{\bset{\set{a}, \emptyset}, \bset{\set{b}}}
+    \]
+  \end{definition}
+
+  \fig{width = 0.40\textwidth}{figs/wiener}
+
+  \pause
+  \begin{theorem}
+    \[
+      (a, b) = (c, d) \iff a = c \land b = d
+    \]
+  \end{theorem}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{definition}[Ordered Pairs \teal{(Kazimierz Kuratowski; 1921)}]
+    \[
+      (a, b) \;\red{\triangleq}\; \bset{\set{a}, \set{a, b}}
+    \]
+  \end{definition}
+
+  \fig{width = 0.25\textwidth}{figs/Kuratowski}
+
+  \pause
+  \begin{theorem}
+    \[
+      (a, b) = (c, d) \iff a = c \land b = d
+    \]
+  \end{theorem}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{theorem}
+    \[
+      (a, b) = (c, d) \iff a = c \land b = d
+    \]
+  \end{theorem}
+
+  \pause
+  \[
+    \Big(\bset{\set{a}, \set{a, b}} = \bset{\set{c}, \set{c, d}}\Big) \iff (a = c \land b = d)
+  \]
+
+  \pause
+
+  \begin{align*}
+    \onslide<3->{&\bset{\set{a}, \set{a, b}} = \bset{\set{c}, \set{c, d}} \\[6pt]}
+    \onslide<4->{\iff& (\set{a} = \set{c} \lor \set{a} = \set{c, d}) \land (\set{a, b} = \set{c} \lor \set{a, b} = \set{c, d}) \\[6pt]}
+    \onslide<5->{\iff& (\set{a} = \set{c} \land \set{a, b} = \set{c}) \;\lor \\[3pt]
+                     & (\set{a} = \set{c} \land \set{a, b} = \set{c, d}) \;\lor \\[3pt]
+                     & (\set{a} = \set{c, d} \land \set{a, b} = \set{c}) \;\lor \\[3pt]
+                     & (\set{a} = \set{c, d} \land \set{a, b} = \set{c, d})}
+  \end{align*}
+
+  % \begin{columns}
+  %   \column{0.50\textwidth}
+  %     \[
+  %       \blue{\textsc{Case I}: a = b}
+  %     \]
+  %   \column{0.50\textwidth}
+  %     \[
+  %       \blue{\textsc{Case II}: a \neq b}
+  %     \]
+  % \end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{definition}[$n$-元组 (n-ary tuples)]
+    \[
+      (x, y, z) \triangleq ((x, y), z)
+    \]
+
+    \pause
+    \[
+      (x_{1}, x_{2}, \dots, x_{n-1}, x_{n})
+        \triangleq ((x_{1}, x_{2}, \dots, x_{n-1}), x_{n})
+    \]
+  \end{definition}
+
+  \pause
+  \vspace{0.60cm}
+  \begin{theorem}
+    \[
+      (x_{1}, \dots, x_{n}) = (y_{1}, \dots, y_{n})
+      \iff x_{1} = y_{1} \land \dots x_{n} = y_{n}
+    \]
+  \end{theorem}
+
+  \pause
+  \vspace{0.20cm}
+  \begin{center}
+    By mathematical induction.
+  \end{center}
+
+  \pause
+  \vspace{0.30cm}
+  \begin{center}
+    \blue{多数情况下, 我们仅处理``二元关系'', 因此也仅使用``有序对''}
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%
