@@ -5,11 +5,11 @@ pushd "%~dp0"
 
 set "MAIN="
 for %%F in (*.tex) do (
-	findstr /b /c:"\documentclass" "%%F" >nul 2>&1
-	if not errorlevel 1 (
-		set "MAIN=%%~nF"
-		goto :main_found
-	)
+    findstr /b /c:"\documentclass" "%%F" >nul 2>&1
+    if not errorlevel 1 (
+        set "MAIN=%%~nF"
+        goto :main_found
+    )
 )
 
 echo No LaTeX main file found in "%CD%".
@@ -25,9 +25,9 @@ del /q "%HANDOUT_JOB%.aux" "%HANDOUT_JOB%.log" "%HANDOUT_JOB%.nav" "%HANDOUT_JOB
 
 where xelatex >nul 2>&1
 if errorlevel 1 (
-	echo xelatex was not found in PATH.
-	popd
-	exit /b 1
+    echo xelatex was not found in PATH.
+    popd
+    exit /b 1
 )
 
 > "%HANDOUT_WRAPPER%" echo \PassOptionsToClass{handout}{beamer}
