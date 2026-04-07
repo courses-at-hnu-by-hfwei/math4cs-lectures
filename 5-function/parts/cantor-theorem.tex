@@ -55,12 +55,12 @@
   \begin{description}
     \item[Onto]
       \[
-        \forall B \in 2^{A}.\; \Big(\exists a \in A.\; f(a) = B\Big)
+        \forall B \in 2^{A}\; \Big(\exists a \in A\; f(a) = B\Big)
       \]
     \pause
     \item[Not Onto]
       \[
-        \red{\exists} B \in 2^{A}.\; \Big(\red{\forall} a \in A.\; f(a) \neq B\Big)
+        \red{\exists} B \in 2^{A}\; \Big(\red{\forall} a \in A\; f(a) \neq B\Big)
       \]
   \end{description}
 \end{frame}
@@ -81,7 +81,7 @@
 
   \pause
   \[
-    B = \set{x \in \set{1, 2, 3} \mid x \notin f(x)} = \set{2, 3}
+    B = \set{x \mid x \in A \land x \notin f(x)} = \set{2, 3}
   \]
 \end{frame}
 %%%%%%%%%%%%%%%
@@ -93,7 +93,7 @@
   \end{theorem}
 
   \[
-    \red{\exists} B \in 2^{A}.\; \Big(\red{\forall} a \in A.\; f(a) \neq B\Big)
+    \red{\exists} B \in 2^{A}\; \Big(\red{\forall} a \in A\; f(a) \neq B\Big)
   \]
 
   \pause
@@ -106,7 +106,7 @@
           \]
         \item<4-> By contradiction (\red{$\forall$}):
           \[
-            \exists a \in A.\; f(a) = B.
+            \exists a \in A\; f(a) = B.
           \]
       \end{itemize}
     \column{0.40\textwidth}

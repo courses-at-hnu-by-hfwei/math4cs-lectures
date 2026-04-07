@@ -23,7 +23,7 @@
   \]
 
   \[
-    \forall x \in A \cap X.\; f|_{X}(x) = f(x)
+    \forall x \in A \cap X\; f|_{X}(x) = f(x)
   \]
 \end{frame}
 %%%%%%%%%%%%%%%
@@ -33,7 +33,7 @@
   \begin{definition}[像 (Image)]
     The \red{\it image} of $X$ under a function $f: A \to B$ is the set
     \[
-      {f(X) = \set{y \mid \exists \purple{x \in X}.\; (x, y) \in f}}
+      {f(X) = \set{y \mid \exists \purple{x \in X}\; (x, y) \in f}}
     \]
   \end{definition}
 
@@ -60,13 +60,13 @@
   \begin{definition}[像 (Image)]
     The \red{\it image} of $X$ under a function $f: A \to B$ is the set
     \[
-      {f(X) = \set{y \mid \exists \purple{x \in X}.\; (x, y) \in f}}
+      {f(X) = \set{y \mid \exists \purple{x \in X}\; (x, y) \in f}}
     \]
   \end{definition}
 
   \vspace{0.30cm}
   \[
-    \red{\boxed{y \in f(X) \iff \exists x \in X.\; y = f(x)}}
+    \red{\boxed{y \in f(X) \iff \exists x \in X\; y = f(x)}}
   \]
 \end{frame}
 %%%%%%%%%%%%%%%
@@ -76,7 +76,7 @@
   \begin{definition}[逆像 (Inverse Image)]
     The \red{\it inverse image} of $Y$ under a function $f: A \to B$ is the set
     \[
-      {f^{-1}(Y) = \set{x \mid \exists \purple{y \in Y}.\; (x, y) \in f}}
+      {f^{-1}(Y) = \set{x \mid \exists \purple{y \in Y}\; (x, y) \in f}}
     \]
   \end{definition}
 
@@ -105,7 +105,7 @@
   \begin{definition}[逆像 (Inverse Image)]
     The \red{\it inverse image} of $Y$ under a function $f: A \to B$ is the set
     \[
-      {f^{-1}(Y) = \set{x \mid \exists \purple{y \in Y}.\; (x, y) \in f}}
+      {f^{-1}(Y) = \set{x \mid \exists \purple{y \in Y}\; (x, y) \in f}}
     \]
   \end{definition}
 
@@ -119,7 +119,7 @@
 %%%%%%%%%%%%%%%
 \begin{frame}{}
   \[
-    \red{\boxed{y \in f(X) \iff \exists x \in X.\; y = f(x)}}
+    \red{\boxed{y \in f(X) \iff \exists x \in X\; y = f(x)}}
   \]
 
   \[
@@ -184,8 +184,8 @@
   \setcounter{equation}{0}
   \begin{align}
     &b \in f(A_{1}) \\[6pt]
-    \uncover<3->{\iff & \exists a \in A_{1}.\; b = f(a) \\[6pt]}
-    \uncover<4->{\red{\implies} & \exists a \in A_{2}.\; b = f(a) \\[6pt]}
+    \uncover<3->{\iff & \exists a \in A_{1}\; b = f(a) \\[6pt]}
+    \uncover<4->{\red{\implies} & \exists a \in A_{2}\; b = f(a) \\[6pt]}
     \uncover<5->{\iff & b \in f(A_{2})}
   \end{align}
 \end{frame}
@@ -208,9 +208,9 @@
   \setcounter{equation}{0}
   \begin{align}
     &b \in f(A_1 \cap A_2) \\[6pt]
-    \onslide<3->{\iff & \exists a \in A_1 \cap A_2.\; b = f(a) \\[6pt]}
-    \onslide<4->{\red{\implies}& \big(\exists a \in A_{1}.\; b = f(a)\big)
-      \land \big(\exists a \in A_{2}.\; b = f(a)\big) \\[6pt]}
+    \onslide<3->{\iff & \exists a \in A_1 \cap A_2\; b = f(a) \\[6pt]}
+    \onslide<4->{\red{\implies}& \big(\exists a \in A_{1}\; b = f(a)\big)
+      \land \big(\exists a \in A_{2}\; b = f(a)\big) \\[6pt]}
     \onslide<5->{\iff & b \in f(A_{1}) \land b = f(A_{2}) \\[6pt]}
     \onslide<6->{\iff & b \in f(A_1) \cap f(A_2)}
   \end{align}
@@ -240,9 +240,9 @@
   \begin{align}
     &b \in f(A_{1}) \setminus f(A_{2}) \\[6pt]
     \uncover<3->{\iff & b \in f(A_{1}) \land b \notin f(A_{2}) \\[6pt]}
-    \uncover<4->{\iff & (\exists a_{1} \in A_{1}.\; b = f(a_{1})) \land
-      (\forall a_{2} \in A_{2}.\; b \neq f(a_{2})) \\[6pt]}
-    \uncover<6->{\red{\implies} & \exists a \in A_{1} \setminus A_{2}.\; b = f(a) \\[6pt]}
+    \uncover<4->{\iff & (\exists a_{1} \in A_{1}\; b = f(a_{1})) \land
+      (\forall a_{2} \in A_{2}\; b \neq f(a_{2})) \\[6pt]}
+    \uncover<6->{\red{\implies} & \exists a \in A_{1} \setminus A_{2}\; b = f(a) \\[6pt]}
     \uncover<5->{\iff & b \in f(A_{1} \setminus A_{2})}
   \end{align}
 \end{frame}
@@ -383,8 +383,8 @@
 %   \setcounter{equation}{0}
 %   \begin{align}
 %     &b \in f(f^{-1}(B_0)) \\[6pt]
-%     \onslide<3->{\iff & \exists a \in f^{-1}(B_0).\; b = f(a) \\[6pt]}
-%     \onslide<4->{\iff & \exists a \in A.\; f(a) \in B_0 \land b = f(a) \\[6pt]}
+%     \onslide<3->{\iff & \exists a \in f^{-1}(B_0)\; b = f(a) \\[6pt]}
+%     \onslide<4->{\iff & \exists a \in A\; f(a) \in B_0 \land b = f(a) \\[6pt]}
 %     \onslide<5->{\red{\implies} & b \in B_0}
 %   \end{align}
 % 

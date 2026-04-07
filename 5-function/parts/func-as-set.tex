@@ -16,13 +16,13 @@
     \]
     \[
       f = g \iff \dom(f) = \dom(g)
-        \land \big(\forall x \in \dom(f).\; f(x) = g(x) \big)
+        \land \big(\forall x \in \dom(f)\; f(x) = g(x) \big)
     \]
   \end{theorem}
 
   \pause
   \[
-    f = g \iff \forall (a, b).\; ((a, b) \in f \leftrightarrow (a, b) \in g).
+    f = g \iff \forall (a, b)\; ((a, b) \in f \leftrightarrow (a, b) \in g).
   \]
 
   \pause
@@ -45,10 +45,10 @@
   \pause
   \begin{theorem}[Intersection of Functions]
     \[
-      A = \set{x \mid x \in A \cap C \land f(x) = g(x)}
+      E = \set{x \mid x \in A \cap C \land f(x) = g(x)}
     \]
     \[
-      f \cap g = \set{(x, y) \mid x \in A, y = f(x) = g(x)}
+      f \cap g = \set{(x, y) \mid x \in E, y = f(x) = g(x)}
     \]
   \end{theorem}
 \end{frame}
@@ -68,7 +68,7 @@
   \begin{theorem}[Union of Functions]
     {\[
       f \cup g: (A \cup C) \to (B \cup D) \iff
-      \forall x \in \dom(f) \cap \dom(g).\; f(x) = g(x)
+      \forall x \in \dom(f) \cap \dom(g)\; f(x) = g(x)
     \]}
   \end{theorem}
 

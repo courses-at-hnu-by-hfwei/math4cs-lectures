@@ -26,7 +26,38 @@
     $f \subseteq A \times B$ is a \red{\it function} \blue{from $A$ to $B$} if
 
     \[
-      \red{\forall} a \in A.\; \red{\exists!} \;b \in B.\; (a, b) \in f.
+      \red{\forall} a \in A\; \red{\exists!} \;b \in B\; (a, b) \in f.
+    \]
+  \end{definition}
+
+  \vspace{0.30cm}
+  \begin{alertblock}{For Proof:}
+    \pause
+    \[
+      \red{\forall a \in A}
+    \]
+    \[
+      \forall a \in A\; \exists b \in B\; (a, b) \in f
+    \]
+
+    \pause
+    \[
+      \red{\exists! b \;\in B}
+    \]
+    \[
+      \forall b, b' \in B\; (a, b) \in f \land (a, b') \in f \to b = b'
+    \]
+  \end{alertblock}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{definition}[Function]
+    $f \subseteq A \times B$ is a \red{\it function} \blue{from $A$ to $B$} if
+
+    \[
+      \red{\forall} a \in A\; \red{\exists!} \;b \in B\; (a, b) \in f.
     \]
   \end{definition}
 
@@ -48,39 +79,8 @@
     f: a \mapsto b
   \]
   \[
-    f(a) \triangleq b
+    f(a) = b
   \]
-\end{frame}
-%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%
-\begin{frame}{}
-  \begin{definition}[Function]
-    $f \subseteq A \times B$ is a \red{\it function} \blue{from $A$ to $B$} if
-
-    \[
-      \red{\forall} a \in A.\; \red{\exists!} \;b \in B.\; (a, b) \in f.
-    \]
-  \end{definition}
-
-  \vspace{0.30cm}
-  \begin{alertblock}{For Proof:}
-    \pause
-    \[
-      \red{\forall a \in A.}
-    \]
-    \[
-      \forall a \in A.\; \exists b \in B. (a, b) \in f
-    \]
-
-    \pause
-    \[
-      \red{\exists! b \;\in B.}
-    \]
-    \[
-      \forall b, b' \in B.\; (a, b) \in f \land (a, b') \in f \implies b = b'
-    \]
-  \end{alertblock}
 \end{frame}
 %%%%%%%%%%%%%%%
 
@@ -96,7 +96,7 @@
   \end{center}
 
   \[
-    \forall x \in X.\; I_{X}(x) = x
+    \forall x \in X\; I_{X}(x) = x
   \]
 \end{frame}
 %%%%%%%%%%%%%%%
@@ -135,6 +135,12 @@
   \[
     |X| = x \quad |Y| = y, \qquad |Y^{X}| = \pause y^{x}
   \]
+
+  \pause
+  \vspace{0.30cm}
+  \[
+    \mathcal{P}(X) = 2^{X} = \set{0, 1}^{X}
+  \]
 \end{frame}
 %%%%%%%%%%%%%%%
 
@@ -148,7 +154,7 @@
   \end{definition}
 
   \[
-    \forall Y.\; Y^{\emptyset} = \pause \set{\emptyset}
+    \forall Y\; Y^{\emptyset} = \pause \set{\emptyset}
   \]
 
   \pause
@@ -159,7 +165,7 @@
 
   \pause
   \[
-    \forall X \neq \emptyset.\; \emptyset^{X} = \pause \emptyset
+    \forall X \neq \emptyset\; \emptyset^{X} = \pause \emptyset
   \]
 \end{frame}
 %%%%%%%%%%%%%%%
@@ -191,10 +197,10 @@
     \]
   \end{definition}
 
-  \pause
-  \begin{center}
-    \red{$Q:$ Is there a set consisting of all functions?}
-  \end{center}
+  % \pause
+  % \begin{center}
+  %   \red{$Q:$ Is there a set consisting of all functions?}
+  % \end{center}
 
   \pause
   \begin{theorem}
