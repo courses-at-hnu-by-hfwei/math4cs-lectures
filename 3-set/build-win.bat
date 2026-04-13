@@ -40,6 +40,8 @@ call :compile_regular
 if errorlevel 1 goto :cleanup
 
 echo Build finished: "%HANDOUT_JOB%.pdf" and "%MAIN%.pdf"
+call :git_sync
+if errorlevel 1 goto :cleanup
 set "EXITCODE=0"
 goto :cleanup
 
@@ -64,6 +66,58 @@ xelatex -halt-on-error -interaction=nonstopmode "%MAIN%.tex"
 if errorlevel 1 exit /b 1
 
 exit /b 0
+
+:git_sync
+where git >nul 2>&1
+if errorlevel 1 (
+    echo git was not found in PATH.
+    exit /b 1
+)
+
+git rev-parse --is-inside-work-tree >nul 2>&1
+if errorlevel 1 (
+    echo Current directory is not inside a Git repository.
+    exit /b 1
+)
+
+git status --porcelain --untracked-files=normal -- . | findstr "." >nul
+if errorlevel 1 (
+    echo No Git changes detected in the current directory. Skipping git commit and git push.
+    exit /b 0
+)
+
+setlocal DisableDelayedExpansion
+set "COMMIT_MSG="
+set /p "COMMIT_MSG=Commit message (leave empty to skip git commit/push): "
+if not defined COMMIT_MSG (
+    echo Skipping git commit and git push.
+    endlocal & exit /b 0
+)
+
+git add -A .
+if errorlevel 1 (
+    endlocal & exit /b 1
+)
+
+git diff --cached --quiet --exit-code -- .
+if not errorlevel 1 (
+    echo No changes staged in the current directory. Skipping git commit and git push.
+    endlocal & exit /b 0
+)
+
+git commit -m "%COMMIT_MSG%"
+if errorlevel 1 (
+    endlocal & exit /b 1
+)
+
+git push
+set "GIT_EXIT=%ERRORLEVEL%"
+if not "%GIT_EXIT%"=="0" (
+    endlocal & exit /b %GIT_EXIT%
+)
+
+echo Git sync finished.
+endlocal & exit /b 0
 
 :cleanup
 if exist "%HANDOUT_WRAPPER%" del /q "%HANDOUT_WRAPPER%"

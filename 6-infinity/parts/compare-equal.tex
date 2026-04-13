@@ -32,33 +32,42 @@
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
-  \begin{definition}[$|A| = |B| \;(A \approx B)$ (1878)]
-    $A$ and $B$ are \red{\it equipotent} if there exists a \purple{\it bijection} from $A$ to $B$.
-  \end{definition}
-
-  \vspace{0.30cm}
+  \fig{width = 0.45\textwidth}{figs/girl-bijection}
   \begin{center}
-    \red{$Q:$ Is ``$\approx$'' an equivalence relation?}
+    {\it \scriptsize oops, it is not a bijection.}
   \end{center}
-
-  \pause
-  \begin{theorem}[\uncover<3->{\purple{The ``Equivalence Concept'' of Equipotent}}]
-    For any sets $A$, $B$, $C$:
-    \begin{enumerate}[(a)]
-      \item $A \approx B$
-      \item $A \approx B \implies B \approx A$
-      \item $A \approx B \land B \approx C \implies A \approx C$
-    \end{enumerate}
-  \end{theorem}
-
-  \vspace{0.30cm}
-  \uncover<4->{
-    \begin{center}
-      \cyan{Do not care too much.}
-    \end{center}
-  }
 \end{frame}
 %%%%%%%%%%%%%%%
+
+% %%%%%%%%%%%%%%%
+% \begin{frame}{}
+%   \begin{definition}[$|A| = |B| \;(A \approx B)$ (1878)]
+%     $A$ and $B$ are \red{\it equipotent} if there exists a \purple{\it bijection} from $A$ to $B$.
+%   \end{definition}
+
+%   \vspace{0.30cm}
+%   \begin{center}
+%     \red{$Q:$ Is ``$\approx$'' an equivalence relation?}
+%   \end{center}
+
+%   \pause
+%   \begin{theorem}[\uncover<3->{\purple{The ``Equivalence Concept'' of Equipotent}}]
+%     For any sets $A$, $B$, $C$:
+%     \begin{enumerate}[(a)]
+%       \item $A \approx B$
+%       \item $A \approx B \implies B \approx A$
+%       \item $A \approx B \land B \approx C \implies A \approx C$
+%     \end{enumerate}
+%   \end{theorem}
+
+%   \vspace{0.30cm}
+%   \uncover<4->{
+%     \begin{center}
+%       \cyan{Do not care too much.}
+%     \end{center}
+%   }
+% \end{frame}
+% %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
@@ -107,7 +116,7 @@
   \end{definition}
 
   \pause
-  \begin{theorem}[\red{Existence of Infinite Sets!}]
+  \begin{theorem}[\red{Existence of Infinite Sets!!!}]
     $\N$ is infinite. \uncover<9->{\cyan{(So are $\Z$, $\Q$, $\R$.)}}
   \end{theorem}
 
@@ -177,7 +186,7 @@
 \begin{frame}{}
   \begin{theorem}[$\Z$ is Countable.]
     \[
-      |\Z| = |\N|
+      |\Z| = |\N| = \aleph_{0}
     \]
   \end{theorem}
 
@@ -194,7 +203,7 @@
 \begin{frame}{}
   \begin{theorem}[$\Q$ is Countable. (Cantor 1873-11; Published in 1874)]
     \[
-      |\Q| = |\N|
+      |\Q| = |\N| = \aleph_{0}
     \]
   \end{theorem}
 
@@ -208,8 +217,9 @@
     \vspace{-0.30cm}
     \begin{columns}
       \column{0.50\textwidth}
-        \fig{width = 0.55\textwidth}{figs/cantor-monumento}
+        \fig{width = 0.55\textwidth}{figs/Q-a-b}
       \column{0.50\textwidth}
+        \pause
         \fig{width = 0.65\textwidth}{figs/counting-Q}
     \end{columns}
   \end{exampleblock}
@@ -220,7 +230,7 @@
 \begin{frame}{}
   \begin{theorem}[$\N \times \N$ is Countable.]
     \[
-      |\N \times \N| = |\N|
+      |\N \times \N| = |\N| = \aleph_{0}
     \]
   \end{theorem}
 
@@ -240,6 +250,9 @@
       \[
         \pi(2, 1) = 7
       \]
+      \[
+        \blue{\pi(0, 0) \triangleq 0}
+      \]
   \end{columns}
 
   \pause
@@ -253,7 +266,7 @@
 \begin{frame}{}
   \begin{theorem}[$\N^{n}$ is Countable.]
     \[
-      |\N^{n}| = |\N|
+      |\N^{n}| = |\N| = \aleph_{0}
     \]
   \end{theorem}
 
@@ -274,7 +287,7 @@
 
   \pause
   \[
-    \pi^{2}(k_1, k_2) = \frac{1}{2} (k_1 + k_2)(k_1 + k_2 + 1) + k_2
+    \pi^{(2)}(k_1, k_2) = \frac{1}{2} (k_1 + k_2)(k_1 + k_2 + 1) + k_2
   \]
   \pause
   \[
@@ -294,6 +307,14 @@
   \[
     A = \set{a_n \mid n \in \N} \quad B = \set{b_n \mid n \in \N} \quad C = \set{c_n \mid n \in \N}
   \]
+
+  \pause
+  \[
+    a_0 \quad a_1 \quad a_2 \cdots \quad b_0 \quad b_1 \quad b_2 \cdots
+  \]
+
+  \pause
+  \fig{width = 0.30\textwidth}{figs/does-not-work}
 
   \pause
   \[
@@ -337,7 +358,7 @@
 
   \pause
   \vspace{0.50cm}
-  \fig{width = 0.30\textwidth}{figs/very-important}
+  \fig{width = 0.30\textwidth}{figs/important}
 
   \pause
   \begin{center}
