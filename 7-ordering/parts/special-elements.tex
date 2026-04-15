@@ -9,14 +9,14 @@
     \pause
     如果
     \[
-      \forall x \in X.\; \lnot \big(a \prec x \big),
+      \forall x \in X\; \lnot \big(a \prec x \big),
     \]
     则称 $a$ 是 $X$ 的\red{极大元}。\\[10pt]
 
     \pause
     如果
     \[
-      \forall x \in X.\; \lnot \big(x \prec a \big),
+      \forall x \in X\; \lnot \big(x \prec a \big),
     \]
     则称 $a$ 是 $X$ 的\red{极小元}。
   \end{definition}
@@ -26,12 +26,6 @@
   \begin{center}
     \red{$Q:$ 极大/极小元是否一定存在? 如果存在, 是否唯一?}
   \end{center}
-\end{frame}
-%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%
-\begin{frame}{}
-  \fig{width = 0.60\textwidth}{figs/powerset}
 \end{frame}
 %%%%%%%%%%%%%%%
 
@@ -63,18 +57,33 @@
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
+  \begin{center}
+    \fig{width = 0.40\textwidth}{figs/Hasse-Powerset}
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \fig{width = 0.60\textwidth}{figs/powerset}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
   \begin{exampleblock}{}
     \[
       (\set{2, 3, 4, \dots} = \N \setminus \set{0, 1}, \mid)
     \]
-    \pause
-    \begin{center}
-      无极大元、有无穷多个极小元 (所有的素数)
-    \end{center}
   \end{exampleblock}
 
   \pause
   \fig{width = 0.40\textwidth}{figs/infinite-divisors}
+
+  \pause
+  \begin{center}
+    无极大元、有无穷多个极小元 (所有的素数)
+  \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%
 
@@ -87,14 +96,14 @@
     \pause
     如果
     \[
-      \forall x \in X.\; x \preceq a,
+      \forall x \in X\; x \preceq a,
     \]
     则称 $a$ 是 $X$ 的\red{最大元}。\\[10pt]
 
     \pause
     如果
     \[
-      \forall x \in X.\; a \preceq x,
+      \forall x \in X\; a \preceq x,
     \]
     则称 $a$ 是 $X$ 的\red{最小元}。
   \end{definition}
@@ -132,11 +141,22 @@
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.80\textwidth}{figs/Hasse-Powerset}
+    \column{0.50\textwidth}
+      \fig{width = 0.80\textwidth}{figs/powerset}
+  \end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
   \begin{definition}[线性拓展 (Linear Extension)]
     设 $(X, \preceq)$ 是偏序集, $(X, \preceq')$ 是全序集。
     如果
     \[
-      \forall x, y \in X.\; x \preceq y \to x \preceq' y,
+      \forall x, y \in X\; x \preceq y \to x \preceq' y,
     \]
     则称 $\preceq'$ 是 $\preceq$ 的\red{线性拓展}。
   \end{definition}
@@ -160,9 +180,13 @@
   \fig{width = 0.40\textwidth}{figs/dag-topo}
 
   \pause
-  \vspace{0.30cm}
+  \begin{center}
+    \blue{\bf Topological sorting}: iteratively remove minimal elements
+  \end{center}
+
+  \pause
   \begin{theorem}
-    设 $(X, \preceq)$ 是偏序集且 \red{$X$是有限集}, 则极小元一定存在。
+    设 $(X, \preceq)$ 是偏序集且 \red{$X$是有限集}, 则极小元 (极大元) 一定存在。
   \end{theorem}
 \end{frame}
 %%%%%%%%%%%%%%%
@@ -172,7 +196,7 @@
   \begin{definition}[上界 (Upper Bound) 与下界 (Lower Bound)]
     设 $(X, \preceq)$ 是\blue{偏序集}。对于 $Y \subseteq X$, 如果
     \[
-      \exists \red{x \in X}.\; \forall y \in Y.\; y \preceq x,
+      \exists \red{x \in X}\; \forall y \in Y\; y \preceq x,
     \]
     则称 $x$ 为 $Y$ 的\red{上界}。
 
@@ -180,7 +204,7 @@
     \vspace{0.30cm}
     类似地, 如果
     \[
-      \exists \red{x \in X}.\; \forall y \in Y.\; x \preceq y,
+      \exists \red{x \in X}\; \forall y \in Y\; x \preceq y,
     \]
     则称 $x$ 为 $Y$ 的\red{下界}。
   \end{definition}
@@ -195,8 +219,8 @@
   \begin{definition}[最小上界 (Least Upper Bound; LUB)]
     设 $(X, \preceq)$ 是\blue{偏序集}, $Y \subseteq X$ 是 $X$ 的子集,
     $x \in X$ 是 $Y$ 的\cyan{上界}。 \pause\\[5pt]
-    如果对于 $Y$ 的所有\cyan{上界} $x'$, 均有 $x \preceq x'$,
-    则称 $x$ 是 $Y$ 的\red{最小上界}。
+    若对于 $Y$ 的所有\cyan{上界} $x'$, 均有 $x \preceq x'$,
+    则称 $x$ 是 $Y$ 的\red{最小上界/上确界}。
   \end{definition}
 
   \pause
@@ -206,36 +230,104 @@
   \begin{definition}[最大下界 (Greatest Lower Bound; GLB)]
     设 $(X, \preceq)$ 是\blue{偏序集}, $Y \subseteq X$ 是 $X$ 的子集,
     $x \in X$ 是 $Y$ 的\cyan{下界}。 \\[5pt]
-    如果对于 $Y$ 的所有\cyan{下界} $x'$, 均有 $x' \preceq x$,
-    则称 $x$ 是 $Y$ 的\red{最大下界}。
+    若对于 $Y$ 的所有\cyan{下界} $x'$, 均有 $x' \preceq x$,
+    则称 $x$ 是 $Y$ 的\red{最大下界/下确界}。
   \end{definition}
 \end{frame}
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
-  \begin{definition}[格 (Lattice)]
-    设 $(X, \preceq)$ 是\blue{偏序集}。\\[6pt]
-    如果任意两个元素都有最小上界与最大下界, 则称 $(X, \preceq)$ 为\red{格}。
-  \end{definition}
-
-  \begin{columns}
-    \column{0.50\textwidth}
-      \pause
-      \fig{width = 0.80\textwidth}{figs/Hasse-Powerset}
-    \column{0.50\textwidth}
-      \pause
-      \fig{width = 0.90\textwidth}{figs/60-poset}
-  \end{columns}
+  \begin{exampleblock}{}
+    \red{如下 $(A, \le)$ 有上确界吗?}
+    \[
+      A = \set{p \in \Q \mid p > 0 \land p^2 < 2}
+    \]
+  \end{exampleblock}
 
   \pause
-  \vspace{-0.60cm}
-  \fig{width = 0.25\textwidth}{figs/lattice-integer}
+  \vspace{1em}
+  \begin{center}
+    \blue{在 $(\R, \le)$ 中}, $A$ \blue{有}上确界: $\sup(A) = \sqrt{2}$
+
+    \pause
+    \vspace{1em}
+    \red{在 $(\Q, \le)$ 中}, $A$ \red{无}上确界
+  \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
-  \fig{width = 0.50\textwidth}{figs/stop-here}
+  \begin{theorem}
+    集合 $A$ 在 $(\Q, \le)$ 中无上确界。
+    \[
+      A = \set{p \in \Q \mid p > 0 \land p^2 < 2}
+    \]
+  \end{theorem}
+
+  \pause
+  \begin{proof}
+    \[
+      B = \set{p \in \Q \mid p > 0 \land p^2 > 2}
+    \]
+
+    \pause
+    \begin{center}
+      只需证明: $A$ 无最大元、$B$ 无最小元
+    \end{center}
+
+    \pause
+    \[
+      \forall p \in A\; \red{\exists q \in A}\; p < q
+      \qquad
+      \forall p \in B\; \red{\exists q \in B}\; p > q
+    \]
+
+    \pause
+    \[
+      q = p - \frac{p^2 - 2}{p + 2} = \frac{2p + 2}{p + 2}
+      \qquad
+      q^2 - 2 = \frac{2(p^2 -2)}{(p + 2)^2}
+    \]
+
+    \pause
+    \[
+      p \in A \implies q \in A \land p < q
+      \pause \qquad
+      p \in B \implies q \in B \land p > q
+    \]
+  \end{proof}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{definition}[实数 ($\R$)]
+    如果集合 $A \subseteq \Q$ 满足:
+    \begin{enumerate}[(1)]
+      \item $A \neq \emptyset$ 且 $A \neq \Q$;
+      \item $A$ 是向下封闭的:
+        \[
+          \forall p \in A, q \in \Q\; (q < p \to q \in A)
+        \]
+      \item $A$ 没有最大元:
+        \[
+          \forall p \in A\; \exists q \in A\; p < q
+        \]
+    \end{enumerate}
+    则称 $A$ 是\red{\bf 戴德金分割} (Dedekind cut),
+    $A$ 所对应的实数为 $\sup(A)$。
+  \end{definition}
+
+  \pause
+  \begin{definition}[$\le_{\R}$]
+    $x_{1} \le_{\R} x_{2} \iff x_{1} \subseteq x_{2}$
+  \end{definition}
+
+  \pause
+  \begin{definition}[$+_{\R}$]
+    $x +_{\R} y = \set{p +_{\Q} q \mid p \in x, q \in y}$
+  \end{definition}
 \end{frame}
 %%%%%%%%%%%%%%%

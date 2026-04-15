@@ -12,7 +12,7 @@
         \[
           \forall x \in X\; \lnot(x \prec x).
         \]
-      \item \alt<2->{\gray{$\prec$ 是\textcolor{blue!20!gray}{非对称 (asymmetric)}的。}}{$\prec$ 是\textcolor{blue!20!gray}{非对称 (asymmetric)}的。}
+      \item \alt<2->{\gray{$\prec$ 是\textcolor{blue!80!gray}{\bf 非对称 (asymmetric)}的。}}{$\prec$ 是\textcolor{blue!80!gray}{非对称 (asymmetric)}的。}
         \[
           \alt<2->{\gray{\forall x, y \in X\; x \prec y \to \lnot (y \prec x).}}{\forall x, y \in X\; x \prec y \to \lnot (y \prec x).}
         \]
@@ -28,48 +28,13 @@
   \]
 
   \pause
-  \onslide<3->{
-    \vspace{-0.30cm}
+  \only<3->{
+    \vspace{-0.55cm}
     \[
       (1) + (3) \implies (2)
+			\qquad \only<4->{\red{\text{反对称?}}}
     \]
   }
-\end{frame}
-%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%
-\begin{frame}{}
-  \begin{center}
-    \fig{width = 0.65\textwidth}{figs/chapter-dep}
-
-		\vspace{1em}
-    \blue{反自反 + 反对称 + 传递}
-  \end{center}
-\end{frame}
-%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%
-\begin{frame}{}
-  \begin{center}
-    \fig{width = 0.70\textwidth}{figs/ordering-relations}
-
-		\vspace{1em}
-    \blue{反自反 + 反对称 + 传递}
-  \end{center}
-\end{frame}
-%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%
-\input{parts/lamport}
-%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%
-\begin{frame}{}
-  \fig{width = 0.35\textwidth}{figs/dag}
-
-  \begin{center}
-    有向无环图 (DAG; Directed Acyclic Graph)
-  \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%
 
@@ -88,13 +53,48 @@
     \end{enumerate}
   \end{theorem}
 
-  \pause
   \begin{align*}
-    & x \preceq y \land y \preceq x \\[5pt]
-    \iff & (x \prec y \lor x = y) \land (y \prec x \lor x = y) \\[5pt]
-    \iff & x = y \lor (x \prec y \land y \prec x) \\[5pt]
-    \implies & x = y \lor \text{False} \\[5pt]
-    \implies & x = y
+    \uncover<2->{& x \preceq y \land y \preceq x \\[5pt]}
+    \uncover<3->{\iff & (x \prec y \lor x = y) \land (y \prec x \lor x = y) \\[5pt]}
+    \uncover<4->{\iff & x = y \lor (x \prec y \land y \prec x) \\[5pt]}
+    \uncover<5->{\implies & x = y \lor \text{False} \\[5pt]}
+    \uncover<6->{\implies & x = y}
   \end{align*}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{center}
+    \fig{width = 0.55\textwidth}{figs/chapter-dep}
+
+		\vspace{1em}
+    \blue{反自反 + 传递}
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{center}
+    \fig{width = 0.70\textwidth}{figs/ordering-relations}
+
+		\vspace{1em}
+    \blue{反自反 + 传递}
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\input{parts/lamport}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \fig{width = 0.35\textwidth}{figs/dag}
+
+  \begin{center}
+    有向无环图 (DAG; Directed Acyclic Graph)
+  \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%

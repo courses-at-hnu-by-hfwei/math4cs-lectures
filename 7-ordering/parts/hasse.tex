@@ -4,46 +4,31 @@
 \begin{frame}{}
   \begin{definition}
     设 $(X, \preceq)$ 是偏序集。
-    对任意 $a, b \in X$,
-
-    \begin{description}
-      \item[严格小于 (strictly less than):]
-        \[
-          a \prec b \triangleq a \preceq b \land a \neq b
-        \]
-      \item[$a$被$b$覆盖 (covered by):]
-        \[
-          a \prec b \land
-            (\forall c \in X.\; (c \neq a \land c \neq b) \to \lnot (a \preceq c \preceq b))
-        \]
-    \end{description}
+    对任意 $a, b \in X$, 如果
+    \[
+      a \prec b \land
+        (\forall c \in X\; (c \neq a \land c \neq b)
+          \to \lnot (a \preceq c \preceq b))
+    \]
+    则称 $a$ 被 $b$ 覆盖 (covered)。
   \end{definition}
 
-  \fig{width = 0.40\textwidth}{figs/Hasse-Powerset}
+  \begin{center}
+    \fig{width = 0.40\textwidth}{figs/Hasse-Powerset}
+    哈斯图 (Hasse diagram)
+  \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
-\end{frame}
-%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%
-\begin{frame}{}
-\end{frame}
-%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%
-\begin{frame}{}
-\end{frame}
-%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%
-\begin{frame}{}
-\end{frame}
-%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%
-\begin{frame}{}
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.60\textwidth}{figs/hasse-1}
+      \fig{width = 0.60\textwidth}{figs/hasse-2}
+    \column{0.50\textwidth}
+      \fig{width = 0.60\textwidth}{figs/hasse-3}
+      \fig{width = 0.55\textwidth}{figs/hasse-4}
+  \end{columns}
 \end{frame}
 %%%%%%%%%%%%%%%

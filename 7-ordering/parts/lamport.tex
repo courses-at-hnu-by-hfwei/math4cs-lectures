@@ -14,7 +14,7 @@
     如果它是满足以下条件的\red{最小}关系: \\[5pt]
     \begin{itemize}
       \setlength{\itemsep}{8pt}
-      \item 对任何事件 $a \in E$, $a \not\to a$;
+      \item 对任何事件 $a \in E$, $\lnot (a \to a)$;
       \item 如果 $a, b$ 事件属于同一个进程且 $a$ 在 $b$ 之前发生, 则 $a \to b$;
       \item 如果 $a, b$ 分别表示同一个消息的发送事件与接收事件, 则 $a \to b$;
       \item 如果 $a \to b$ 且 $b \to c$, 则 $a \to c$。
@@ -52,7 +52,7 @@
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
-  \fig{width = 0.75\textwidth}{figs/lamport-ordering}
+  \fig{width = 0.60\textwidth}{figs/lamport-ordering}
   \begin{center}
     \red{引用量 $> 14600$}
   \end{center}

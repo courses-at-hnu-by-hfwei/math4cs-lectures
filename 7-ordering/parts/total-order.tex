@@ -3,60 +3,63 @@
 %%%%%%%%%%%%%%%
 \begin{frame}{}
   \begin{definition}[全序关系 (Total Order)]
-    令 $\red{\preceq} \;\subseteq X \times X$ 是 $X$ 上的\blue{关系}。\\[3pt]
-    如果 $\preceq$ 满足以下性质, 则称 $\preceq$ 是 $X$ 上的\red{全序关系}: \\[6pt]
+    如果 $\preceq\; \subseteq X \times X$ 满足以下性质, 则称 $\preceq$ 是 $X$ 上的\red{全序关系}: \\[6pt]
     \begin{description}
-      \item[\gray{(1) 自反 (Reflexivity):}]
+      \item[{(1) 自反 (Reflexivity):}]
         \[
-          \gray{\forall x \in X.\; x \preceq x}
+          {\forall x \in X\; x \preceq x}
         \]
       \item[(2) 反对称性 (Antisymmetric):]
         \[
-          \forall x, y \in X.\; (x \preceq y \land y \preceq x) \to x = y
+          \forall x, y \in X\; (x \preceq y \land y \preceq x) \to x = y
         \]
       \item[(3) 传递性 (Transitive):]
         \[
-          \forall x, y, z \in X.\; x \preceq y \land y \preceq z \to x \preceq z
+          \forall x, y, z \in X\; x \preceq y \land y \preceq z \to x \preceq z
         \]
       \item[\red{(4) 连接性 (Connex; Totality):}]
         \[
-          \forall x, y \in X.\; x \preceq y \lor y \preceq x.
+          \forall x, y \in X\; x \preceq y \lor y \preceq x.
         \]
     \end{description}
   \end{definition}
-\end{frame}
-%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%
-\begin{frame}{}
-  \[
-    (\R, \le) \qquad (\R, \ge)
-  \]
-
-  \vspace{0.60cm}
+  \pause
   \begin{center}
     全序关系 = 偏序关系 + \red{连接性}
+    \pause \qquad \teal{$(4) \implies (1)$}
   \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
+  \begin{center}
+    全序关系 = 偏序关系 + \red{连接性}
+  \end{center}
+
+  \[
+    (\R, \le) \qquad (\R, \ge)
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
   \begin{definition}[严格全序关系 (Strict Total Order)]
-    令 $\red{\prec} \;\subseteq X \times X$ 是 $X$ 上的\blue{关系}。\\[3pt]
-    如果 $\prec$ 满足以下条件, 则称 $\prec$ 是 $X$ 上的\red{严格全序关系}: \\[6pt]
+    如果 $\prec\; \subseteq X \times X$ 满足以下条件, 则称 $\prec$ 是 $X$ 上的\red{严格全序关系}: \\[6pt]
     \begin{description}
       \item[(1) 反自反 (Irreflexivity):]
         \[
-          \gray{\forall x \in X.\; \lnot (x \prec x)}
+          {\forall x \in X\; \lnot (x \prec x)}
         \]
       \item[(2) 传递性 (Transitive):]
         \[
-          \forall x, y, z \in X.\; x \prec y \land y \prec z \to x \prec z
+          \forall x, y, z \in X\; x \prec y \land y \prec z \to x \prec z
         \]
       \item[\red{(3) 半连接性 (Semi-Connex):}]
         \[
-          \forall x, y \in X.\; \lnot (x = y) \to ((x \prec y) \lor (y \prec x))
+          \forall x, y \in X\; \lnot (x = y) \to ((x \prec y) \lor (y \prec x))
         \]
     \end{description}
   \end{definition}
@@ -80,18 +83,18 @@
 %     $\iff$ $R$ 是\blue{半连接}且\blue{自反}的。
 %   \end{theorem}
 %   \[
-%     \forall x, y \in X.\; x \preceq y \lor y \preceq x
+%     \forall x, y \in X\; x \preceq y \lor y \preceq x
 %   \]
 %   \[
-%     \forall x, y \in X.\; \lnot (x = y) \to ((x \prec y) \lor (y \prec x))
+%     \forall x, y \in X\; \lnot (x = y) \to ((x \prec y) \lor (y \prec x))
 %   \]
 %
 %   \pause
 %   \[
-%     \cyan{\forall x, y \in X.\; x R y \lor y R x}
+%     \cyan{\forall x, y \in X\; x R y \lor y R x}
 %   \]
 %   \[
-%     \cyan{\forall x, y \in X.\; \lnot (x = y) \to ((x R y) \lor (y R x))}
+%     \cyan{\forall x, y \in X\; \lnot (x = y) \to ((x R y) \lor (y R x))}
 %   \]
 % \end{frame}
 %%%%%%%%%%%%%%%
@@ -102,7 +105,7 @@
     设 $\prec\; \subseteq X \times X$ 是 $X$ 上的\red{严格全序关系}。\\[5pt]
     $\prec$ 满足\red{三歧性 (Trichotomous)}:
     \[
-      \forall x, y \in X.\;
+      \forall x, y \in X\;
         (\text{\red{exactly one of}}\; x \prec y, x = y, \;\text{or}\; y \prec x \text{ holds})
     \]
   \end{theorem}
