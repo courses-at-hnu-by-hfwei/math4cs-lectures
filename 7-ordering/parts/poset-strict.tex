@@ -12,9 +12,9 @@
         \[
           \forall x \in X\; \lnot(x \prec x).
         \]
-      \item \gray{$\prec$ 是\textcolor{blue!20!gray}{非对称 (asymmetric)}的。}
+      \item \alt<2->{\gray{$\prec$ 是\textcolor{blue!20!gray}{非对称 (asymmetric)}的。}}{$\prec$ 是\textcolor{blue!20!gray}{非对称 (asymmetric)}的。}
         \[
-          \gray{\forall x, y \in X\; x \prec y \to \lnot (y \prec x).}
+          \alt<2->{\gray{\forall x, y \in X\; x \prec y \to \lnot (y \prec x).}}{\forall x, y \in X\; x \prec y \to \lnot (y \prec x).}
         \]
       \item $\prec$ 是\blue{传递 (transitive)}的。
         \[
@@ -28,18 +28,21 @@
   \]
 
   \pause
-  \vspace{-0.30cm}
-  \[
-    (1) + (3) \implies (2)
-  \]
+  \onslide<3->{
+    \vspace{-0.30cm}
+    \[
+      (1) + (3) \implies (2)
+    \]
+  }
 \end{frame}
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
   \begin{center}
-    \fig{width = 0.50\textwidth}{figs/chapter-dep}
+    \fig{width = 0.65\textwidth}{figs/chapter-dep}
 
+		\vspace{1em}
     \blue{反自反 + 反对称 + 传递}
   \end{center}
 \end{frame}
@@ -48,11 +51,16 @@
 %%%%%%%%%%%%%%%
 \begin{frame}{}
   \begin{center}
-    \fig{width = 0.50\textwidth}{figs/ordering-relations}
+    \fig{width = 0.70\textwidth}{figs/ordering-relations}
 
+		\vspace{1em}
     \blue{反自反 + 反对称 + 传递}
   \end{center}
 \end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\input{parts/lamport}
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
@@ -63,10 +71,6 @@
     有向无环图 (DAG; Directed Acyclic Graph)
   \end{center}
 \end{frame}
-%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%
-\input{parts/lamport}
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
