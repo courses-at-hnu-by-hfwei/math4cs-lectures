@@ -1,0 +1,60 @@
+% dilworth.tex
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{definition}
+    设 $(X, \preceq)$ 是偏序集。
+    对 $a, b \in X$,
+
+    \begin{description}
+      \item[可比的 (Comparable):]
+        \[
+          a \preceq b \lor b \preceq a
+        \]
+      \item[不可比的 (Incomparable):]
+        \[
+          \lnot(a \preceq b \lor b \preceq a)
+        \]
+    \end{description}
+  \end{definition}
+
+  \fig{width = 0.50\textwidth}{figs/Hasse-Powerset}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{definition}[链与反链 (Chain; Antichain)]
+    设 $(X, \preceq)$ 是偏序集。
+
+    \begin{itemize}
+      \setlength{\itemsep}{6pt}
+      \item 设 $S \subseteq X$ 且 $S$ 中元素两两\blue{可比}, 则称 $S$ 是\red{链}。
+      \item 设 $S \subseteq X$ 且 $S$ 中元素两两\blue{不可比}, 则称 $S$ 是\red{反链}。
+    \end{itemize}
+  \end{definition}
+
+  \begin{center}
+    规定: 单元素集合既是链, 也是反链
+  \end{center}
+
+  \fig{width = 0.50\textwidth}{figs/Hasse-Powerset}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \[
+    \set{\blue{\set{\emptyset, \set{x}, \set{x, y}, \set{x, y, z}}},
+      \red{\set{\set{y}, \set{y, z}}}, \cyan{\set{\set{z}, \set{x, z}}}}
+  \]
+  \fig{width = 0.50\textwidth}{figs/Hasse-Powerset}
+  \[
+    \purple{\set{\set{x}, \set{y}, \set{z}}}
+  \]
+
+  \begin{theorem}[Dilworth's Theorem]
+    \red{最大}\blue{反链}的大小 = \red{最小}\blue{链分解}中链的条数
+  \end{theorem}
+\end{frame}
+%%%%%%%%%%%%%%%

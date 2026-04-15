@@ -1,0 +1,83 @@
+% poset.tex
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{definition}[偏序关系 (Partial Order; Poset)]
+    令 $\red{\preceq} \;\subseteq X \times X$ 是 $X$ 上的二元关系。\\[3pt]
+    如果 $\preceq$ 满足以下条件, 则称 $\preceq$ 是 $X$ 上的\red{偏序关系}, \\[3pt]
+    并称 $(X, \preceq)$ 为\red{偏序集 (poset; Partially Ordered Set)}: \\[6pt]
+    \begin{enumerate}[(1)]
+      \setlength{\itemsep}{6pt}
+      \item $\preceq$ 是\blue{自反 (reflexive)}的。
+        \[
+          \forall x \in X\; x \preceq x.
+        \]
+      \item $\preceq$ 是\blue{反对称 (antisymmetric)}的。
+        \[
+          \forall x, y \in X\; x \preceq y \land y \preceq x \to x = y.
+        \]
+      \item $\preceq$ 是\blue{传递 (transitive)}的。
+        \[
+          \forall x, y, z \in X\; x \preceq y \land y \preceq z \to x \preceq z.
+        \]
+    \end{enumerate}
+  \end{definition}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \[
+    X = \set{1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60}
+  \]
+  \[
+    X \text{ 上的\red{整除}关系}
+  \]
+
+  \fig{width = 0.70\textwidth}{figs/60-poset}
+
+  \begin{center}
+    \blue{自反 + 反对称 + 传递}
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \[
+    S = \set{x, y, z}
+  \]
+  \[
+    \ps{S} \text{ 上的\red{包含 $\subseteq$}关系}
+  \]
+
+  \fig{width = 0.50\textwidth}{figs/Hasse-Powerset}
+
+  \begin{center}
+    \blue{自反 + 反对称 + 传递}
+
+		\pause
+		\vspace{0.30cm}
+		$B_{n}$: Boolean algebra of degreen $n$
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+	\begin{center}
+		\href{https://en.wikipedia.org/wiki/Partition\_of\_a\_set}{Partitions of a Set; Ordered by \red{\bf Refinement (细化/精化)}}
+	\end{center}
+	\begin{columns}
+		\column{0.50\textwidth}
+			\fig{width = 0.50\textwidth}{figs/set-partition}
+		\column{0.50\textwidth}
+			\fig{width = 0.85\textwidth}{figs/set-partition-refinement}
+			\vspace{-0.30cm}
+			\[
+				\alpha \le \beta \iff
+					\forall A \in \alpha\; \exists B \in \beta\; A \subseteq B
+			\]
+	\end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%
