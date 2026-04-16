@@ -5,9 +5,9 @@
   \begin{definition}[Equivalence Relation]
     $R \subseteq X \times X$ is an \red{\it equivalence relation} on $X$ iff $R$ is
     \begin{itemize}
-      \item reflexive (自反): $\forall a \in X.\; a R a$
-      \item symmetric (对称): $\forall a, b \in X.\; (a R b \leftrightarrow b R a)$
-      \item transitive (传递): $\forall a, b, c \in X.\; (a R b \land b R c \to a R c)$
+      \item reflexive (自反): $\forall a \in X\; a R a$
+      \item symmetric (对称): $\forall a, b \in X\; (a R b \leftrightarrow b R a)$
+      \item transitive (传递): $\forall a, b, c \in X\; (a R b \land b R c \to a R c)$
     \end{itemize}
   \end{definition}
 
@@ -25,9 +25,9 @@
   \begin{definition}[Equivalence Relation]
     $R \subseteq X \times X$ is an {\it equivalence relation} on $X$ iff $R$ is
     \begin{itemize}
-      \item reflexive (自反): $\forall a \in X.\; a R a$
-      \item symmetric (对称): $\forall a, b \in X.\; (a R b \leftrightarrow b R a)$
-      \item transitive (传递): $\forall a, b, c \in X.\; (a R b \land b R c \to a R c)$
+      \item reflexive (自反): $\forall a \in X\; a R a$
+      \item symmetric (对称): $\forall a, b \in X\; (a R b \leftrightarrow b R a)$
+      \item transitive (传递): $\forall a, b, c \in X\; (a R b \land b R c \to a R c)$
     \end{itemize}
   \end{definition}
 
@@ -52,10 +52,17 @@
 		using \blue{binary relations}.
   \end{quote}
 
-	\begin{center}
-		\fig{width = 0.20\textwidth}{figs/ordering}
-	\end{center}
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.40\textwidth}{figs/ordering}
+    \column{0.50\textwidth}
+      \uncover<3->{
+        \fig{width = 0.80\textwidth}{figs/questions}
+      }
+  \end{columns}
 
+  \pause
+  \vspace{0.30cm}
   \begin{quote}
 		It provides a formal framework for describing statements
 		such as \teal{``this is less than that''}
@@ -64,5 +71,11 @@
     \vspace{1em}
 		\hfill --- \href{https://en.wikipedia.org/wiki/Order\_theory}{Order theory (Wikipedia)}
 	\end{quote}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \fig{width = 0.70\textwidth}{figs/ordering-relations}
 \end{frame}
 %%%%%%%%%%%%%%%
