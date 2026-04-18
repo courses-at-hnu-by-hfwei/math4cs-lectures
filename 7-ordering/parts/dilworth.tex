@@ -2,7 +2,19 @@
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
-  \begin{definition}
+  Dilworth
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  Equivalent theorems
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{definition}[可比与不可比 (Comparable/Incomparable)]
     设 $(X, \preceq)$ 是偏序集。
     对 $a, b \in X$,
 
@@ -35,7 +47,7 @@
   \end{definition}
 
   \begin{center}
-    规定: 单元素集合既是链, 也是反链
+    注意: 单元素集合既是链, 也是反链
   \end{center}
 
   \fig{width = 0.50\textwidth}{figs/Hasse-Powerset}
@@ -44,17 +56,182 @@
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
+  \begin{definition}[链分解 (Chain Decomposition)]
+    设 $(X, \preceq)$ 是偏序集。
+    对于 $C_{1}, C_{2}, \dots, C_{k} \subseteq X$, 如果
+    \begin{enumerate}
+      \setlength{\itemsep}{6pt}
+      \item 每个 $C_{i}$ 都是\red{\bf 链};
+      \item $C_{1}, C_{2}, \dots, C_{k}$ \red{\bf 互不相交};
+      \item $X = \bigcup_{i=1}^{k} C_{i}$,
+    \end{enumerate}
+    则称 $\set{C_{1}, C_{2}, \dots, C_{k}}$
+    是 $X$ 的\blue{\bf 链分解}。
+  \end{definition}
+
+  \fig{width = 0.40\textwidth}{figs/Hasse-Powerset}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
   \[
-    \set{\blue{\set{\emptyset, \set{x}, \set{x, y}, \set{x, y, z}}},
-      \red{\set{\set{y}, \set{y, z}}}, \cyan{\set{\set{z}, \set{x, z}}}}
+    \uncover<2->{\set{\blue{\set{x}}, \red{\set{y}}, \cyan{\set{z}}}}
+    \qquad
+    \uncover<3->{\set{\teal{\set{x, y}}, \brown{\set{y, z}}, \violet{\set{x, z}}}}
   \]
   \fig{width = 0.50\textwidth}{figs/Hasse-Powerset}
   \[
-    \purple{\set{\set{x}, \set{y}, \set{z}}}
+    \uncover<4->{\set{\blue{\set{\emptyset, \set{x}, \set{x, y}, \set{x, y, z}}},
+      \red{\set{\set{y}, \set{y, z}}}, \cyan{\set{\set{z}, \set{x, z}}}}}
   \]
+\end{frame}
+%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \fig{width = 0.50\textwidth}{figs/lattice-integer}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \fig{width = 0.70\textwidth}{figs/division-6}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \fig{width = 0.60\textwidth}{figs/powerset}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \fig{width = 0.70\textwidth}{figs/60-poset}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \fig{width = 0.60\textwidth}{figs/set-partition-refinement}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
   \begin{theorem}[Dilworth's Theorem]
     \red{最大}\blue{反链}的大小 = \red{最小}\blue{链分解}中链的条数
   \end{theorem}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  这将是迄今为止我们在本课程中证明的最难的定理。
+
+  \begin{columns}
+    \column{0.50\textwidth}
+    \column{0.50\textwidth}
+      精密仪器、环环相扣
+  \end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{theorem}[Dilworth's Theorem]
+    \red{最小}\blue{链分解}中链的条数 $=$ \red{最大}\blue{反链}的大小
+  \end{theorem}
+
+  \uncover<3->{
+    \fig{width = 0.30\textwidth}{figs/so-easy}
+  }
+
+  \pause
+  \begin{lemma}[$\le$: 链分解条数的\green{下界}]
+    \red{最小}\blue{链分解}中链的条数 $\ge$ \red{最大}\blue{反链}的大小
+  \end{lemma}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{lemma}[$\le$: 链分解条数的\green{上界}]
+    \red{最小}\blue{链分解}中链的条数 $\le$ \red{最大}\blue{反链}的大小
+  \end{lemma}
+
+  \pause
+  \begin{center}
+    ``这么多'' 就够了
+
+    \pause
+    假设 \red{最大}\blue{反链}的大小为 $k$
+
+    \pause
+    只需证明存在一个\red{链分解}包含 $k$ 条链
+
+    \pause
+    \blue{\large \bf 构造性证明:}
+    由给定的大小为 $k$ 的反链构造 $k$ 条链
+
+    \pause
+    每条链包含反链中的一个元素
+
+    \pause
+    链的拼接 + 图示
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{lemma}[$\le$: 链分解条数的\green{上界}]
+    \red{最小}\blue{链分解}中链的条数 $\le$ \red{最大}\blue{反链}的大小
+  \end{lemma}
+
+  \begin{proof}
+    \pause
+    \blue{\bf 数学归纳法: \pause 对偏序集的大小 $|X|$ 进行归纳}
+
+    \pause
+    \vspace{1em}
+    \begin{description}
+      \setlength{\itemsep}{8pt}
+      \item[基础情况:] $|X| = 1$, 定理显然成立
+      \pause
+      \item[归纳假设:] 假设对大小 $|X| < n$ 的偏序集, 定理均成立
+      \pause
+      \item[归纳步骤:] 考察大小 $|X| = n$ 的偏序集 $(X, \preceq)$
+        \vspace{0.20cm}
+        \begin{itemize}
+          \setlength{\itemsep}{6pt}
+          \pause
+          \item 设 $X$ 的\red{最大}\blue{反链}的大小为 $k$
+          \pause
+          \item 需要构造一个包含 $k$ 条链的\red{链分解}
+        \end{itemize}
+    \end{description}
+  \end{proof}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
 \end{frame}
 %%%%%%%%%%%%%%%

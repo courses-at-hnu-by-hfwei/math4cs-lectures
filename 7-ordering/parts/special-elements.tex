@@ -317,17 +317,27 @@
         \]
     \end{enumerate}
     则称 $A$ 是\red{\bf 戴德金分割} (Dedekind cut),
-    $A$ 所对应的实数为 $\sup(A)$。
+    $A$ 所对应的\blue{\bf 实数}为 $\sup(A)$。
   \end{definition}
 
-  \pause
-  \begin{definition}[$\le_{\R}$]
-    $x_{1} \le_{\R} x_{2} \iff x_{1} \subseteq x_{2}$
-  \end{definition}
+  \begin{columns}
+    \column{0.45\textwidth}
+      \pause
+      \begin{definition}[$\le_{\R}$]
+        $x_{1} \le_{\R} x_{2} \iff x_{1} \subseteq x_{2}$
+      \end{definition}
+    \column{0.45\textwidth}
+      \uncover<4->{
+        \begin{definition}[$+_{\R}$]
+          $x +_{\R} y = \set{p +_{\Q} q \mid p \in x, q \in y}$
+        \end{definition}
+      }
+  \end{columns}
 
   \pause
-  \begin{definition}[$+_{\R}$]
-    $x +_{\R} y = \set{p +_{\Q} q \mid p \in x, q \in y}$
-  \end{definition}
+  \begin{theorem}
+    $\R$ 具有``最小上界性质'':
+    $\R$ 的任意非空子集 $A$ 均有上确界。
+  \end{theorem}
 \end{frame}
 %%%%%%%%%%%%%%%
