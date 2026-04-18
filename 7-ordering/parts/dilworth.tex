@@ -56,6 +56,22 @@
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
+  \begin{definition}[宽度与高度 (Width; Height)]
+    设 $(X, \preceq)$ 是偏序集。
+
+    \begin{itemize}
+      \setlength{\itemsep}{6pt}
+      \item \red{宽度 (Width)}: $X$ 中最大反链的大小
+      \item \red{高度 (Height)}: $X$ 中最大链的大小
+    \end{itemize}
+  \end{definition}
+
+  \fig{width = 0.50\textwidth}{figs/Hasse-Powerset}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
   \begin{definition}[链分解 (Chain Decomposition)]
     设 $(X, \preceq)$ 是偏序集。
     对于 $C_{1}, C_{2}, \dots, C_{k} \subseteq X$, 如果
@@ -96,7 +112,7 @@
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
-  \fig{width = 0.70\textwidth}{figs/division-6}
+  \fig{width = 0.40\textwidth}{figs/division-6}
 \end{frame}
 %%%%%%%%%%%%%%%
 
@@ -121,8 +137,20 @@
 %%%%%%%%%%%%%%%
 \begin{frame}{}
   \begin{theorem}[Dilworth's Theorem]
-    \red{最大}\blue{反链}的大小 = \red{最小}\blue{链分解}中链的条数
+    Let $(X,\le)$ be a finite poset. Then
+    \[
+      \operatorname{width}(X) =
+      \min\{\text{number of chains in a chain decomposition of }X\}.
+    \]
   \end{theorem}
+    % \red{最大}\blue{反链}的大小 = \red{最小}\blue{链分解}中链的条数
+
+  \pause
+  \begin{center}
+    Antichains: concurrency or independence
+    \vspace{0.30cm}
+    Chain decompositions: serial pipelines
+  \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%
 
@@ -141,75 +169,124 @@
 %%%%%%%%%%%%%%%
 \begin{frame}{}
   \begin{theorem}[Dilworth's Theorem]
-    \red{最小}\blue{链分解}中链的条数 $=$ \red{最大}\blue{反链}的大小
+    Let $(X,\le)$ be a finite poset. Then
+    \[
+      \operatorname{width}(X) =
+      \min\{\text{number of chains in a chain decomposition of }X\}.
+    \]
   \end{theorem}
+    % \red{最小}\blue{链分解}中链的条数 $=$ \red{最大}\blue{反链}的大小
 
-  \uncover<3->{
-    \fig{width = 0.30\textwidth}{figs/so-easy}
-  }
+  \begin{columns}
+    \column{0.50\textwidth}
+      \uncover<6->{
+        \fig{width = 0.30\textwidth}{figs/Hasse-Powerset}
+      }
+    \column{0.50\textwidth}
+      \uncover<6->{
+        \fig{width = 0.30\textwidth}{figs/so-easy}
+      }
+  \end{columns}
 
   \pause
-  \begin{lemma}[$\le$: 链分解条数的\green{下界}]
-    \red{最小}\blue{链分解}中链的条数 $\ge$ \red{最大}\blue{反链}的大小
+  \begin{lemma}[$\le$: Lower Bound of Chain Decomposition Size]
+    \[
+      \text{minimum chain-decomposition size} \ge \operatorname{width}(P).
+    \]
   \end{lemma}
+    % \red{最小}\blue{链分解}中链的条数 $\ge$ \red{最大}\blue{反链}的大小
+
+  \pause
+  \begin{proof}
+    Suppose \(A\) is an antichain with \(k\) elements.
+
+    \pause
+    No chain can contain more than one element of \(A\).
+  \end{proof}
 \end{frame}
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
-  \begin{lemma}[$\le$: 链分解条数的\green{上界}]
-    \red{最小}\blue{链分解}中链的条数 $\le$ \red{最大}\blue{反链}的大小
+  \begin{lemma}[$\le$: Upper Bound of Chain Decomposition Size]
+    \[
+      \text{minimum chain-decomposition size} \le \operatorname{width}(X).
+    \]
   \end{lemma}
+
+  \fig{width = 0.30\textwidth}{figs/Hasse-Powerset}
 
   \pause
   \begin{center}
-    ``这么多'' 就够了
+    Suppose $\operatorname{width}(X) = k$.
 
     \pause
-    假设 \red{最大}\blue{反链}的大小为 $k$
+    \vspace{1em}
+    \blue{Suffices} to show that
+    there \red{\bf exists} a chain decomposition of $X$ with $k$ chains.
 
     \pause
-    只需证明存在一个\red{链分解}包含 $k$ 条链
+    \vspace{1em}
+    \blue{\large \bf Constructive Proof:}
+    Construct a chain decomposition of $X$ with $k$ chains,
+    \purple{based on the given maximum antichain of size $k$}.
 
     \pause
-    \blue{\large \bf 构造性证明:}
-    由给定的大小为 $k$ 的反链构造 $k$ 条链
-
-    \pause
-    每条链包含反链中的一个元素
-
-    \pause
-    链的拼接 + 图示
+    \vspace{1em}
+    Each chain contains \brown{\bf exactly one} element
+    of the maximum antichain.
   \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
-  \begin{lemma}[$\le$: 链分解条数的\green{上界}]
-    \red{最小}\blue{链分解}中链的条数 $\le$ \red{最大}\blue{反链}的大小
+  \begin{center}
+    Construct a chain decomposition of $X$ with $k$ chains,
+    \purple{based on the given maximum antichain of size $k$}.
+  \end{center}
+
+  two cases
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.30\textwidth}{figs/Hasse-Powerset}
+    \column{0.50\textwidth}
+      \fig{width = 0.30\textwidth}{figs/powerset}
+  \end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{lemma}[$\le$: Upper Bound of Chain Decomposition Size]
+    \[
+      \text{minimum chain-decomposition size} \le \operatorname{width}(X).
+    \]
   \end{lemma}
 
   \begin{proof}
     \pause
-    \blue{\bf 数学归纳法: \pause 对偏序集的大小 $|X|$ 进行归纳}
+    \blue{\bf By induction on \pause the size $|X|$ of the poset}
 
     \pause
     \vspace{1em}
-    \begin{description}
+    \begin{description}[Inductive Hypothesis:]
       \setlength{\itemsep}{8pt}
-      \item[基础情况:] $|X| = 1$, 定理显然成立
+      \item[Base Case:] $|X| = 1$; It holds obviously.
       \pause
-      \item[归纳假设:] 假设对大小 $|X| < n$ 的偏序集, 定理均成立
+      \item[Inductive Hypothesis:]
+        Suppose the theorem holds for all posets
+        of size $2 \le |X| < n$.
       \pause
-      \item[归纳步骤:] 考察大小 $|X| = n$ 的偏序集 $(X, \preceq)$
+      \item[Inductive Step:]
+        Consider a poset $X$ of size $|X| = n$.
         \vspace{0.20cm}
         \begin{itemize}
           \setlength{\itemsep}{6pt}
           \pause
-          \item 设 $X$ 的\red{最大}\blue{反链}的大小为 $k$
+          \item Suppose $A$ is a maximum antichain of $X$ with $k$ elements.
           \pause
-          \item 需要构造一个包含 $k$ 条链的\red{链分解}
+          \item We construct a chain decomposition of $X$ with $k$ chains.
         \end{itemize}
     \end{description}
   \end{proof}
@@ -218,16 +295,102 @@
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
+  \begin{lemma}[$\le$: Upper Bound of Chain Decomposition Size]
+    \[
+      \text{minimum chain-decomposition size} \le \operatorname{width}(X).
+    \]
+  \end{lemma}
+
+  \begin{proof}
+    \begin{description}
+      \setlength{\itemsep}{8pt}
+      \item[Case 1:]
+        Every largest antichain is
+        exactly the set of all minimal elements,
+        or exactly the set of all maximal elements.
+      \item[Case 2:]
+        There exists a largest antichain
+        that is neither the set of all minimal elements
+        nor the set of all maximal elements.
+    \end{description}
+  \end{proof}
 \end{frame}
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
+  \begin{lemma}[$\le$: Upper Bound of Chain Decomposition Size]
+    \[
+      \text{minimum chain-decomposition size} \le \operatorname{width}(X).
+    \]
+  \end{lemma}
+
+  \begin{proof}
+    \begin{center}
+      \fbox{
+        Case 1: Every largest antichain is
+        \blue{\bf exactly the set of all minimal elements},
+        or exactly the set of all maximal elements.
+      }
+
+      \pause
+      \vspace{0.30cm}
+      Let $M$ be the largest antichain of $X$,
+      consisting of exactly the set of all minimal elements of $X$.
+
+      \pause
+      \vspace{0.30cm}
+      Choose some minimal element $m \in M$.
+
+      \pause
+      \vspace{0.30cm}
+      Choose a maximal chain $C^{m}$ starting from $m$:
+      \[
+        C^{m}: m = x_{1} \prec x_{2} \prec \cdots \prec x_{t}
+      \]
+
+      \pause
+      \vspace{0.30cm}
+      $x_{t}$ is a maximal element of $X$
+
+      \pause
+      \vspace{0.30cm}
+      Remove $C^{m}$ from $X$ to get a smaller poset $X' = X \setminus C^{m}$.
+
+      \pause
+      \fbox{$\operatorname{Width}(X') \le n - 1$}
+
+      \pause
+      \vspace{0.30cm}
+      By the inductive hypothesis,
+      $X'$ can be decomposed into $\le (n - 1)$ chains.
+
+      \pause
+      \vspace{0.30cm}
+      Adding $C^{m}$ back gives a chain decomposition
+      of $X$ with $\le n$ chains.
+    \end{center}
+  \end{proof}
 \end{frame}
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
+  \begin{lemma}[$\le$: Upper Bound of Chain Decomposition Size]
+    \[
+      \text{minimum chain-decomposition size} \le \operatorname{width}(X).
+    \]
+  \end{lemma}
+
+  \begin{proof}
+    \begin{center}
+      \fbox{
+        Case 2: There exists a largest antichain
+        that is neither the set of all minimal elements
+        nor the set of all maximal elements.
+      }
+    \end{center}
+  \end{proof}
 \end{frame}
 %%%%%%%%%%%%%%%
 
