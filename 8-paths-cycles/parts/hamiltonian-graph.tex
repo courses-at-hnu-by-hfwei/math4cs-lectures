@@ -1,0 +1,135 @@
+% hamiltonian-graph.tex
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{center}
+    Dodecahedron: \blue{12 faces}, 20 vertices, and 30 edges
+
+    \fig{width = 0.40\textwidth}{figs/dodecahedron}
+
+    \pause
+    \red{Is there a \red{cycle} that visits each \red{vertex} exactly once?}
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \fig{width = 0.60\textwidth}{figs/Dodecahedron-Diagram}
+  \vspace{-0.50cm}
+  \begin{center}
+    \red{Is there a \red{cycle} that visits each \red{vertex} exactly once?}
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{definition}[Hamiltonian Path]
+    A \red{Hamiltonian path} is a \blue{path}
+    that visits each \blue{vertex} \purple{exactly once}.
+  \end{definition}
+
+  \fig{width = 0.50\textwidth}{figs/Hamiltonian-Path-Cycle}
+
+  \begin{definition}[Hamiltonian Cycle]
+    A \red{Hamiltonian cycle} is a \blue{Hamiltonian path} that is a \purple{cycle}.
+  \end{definition}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{definition}[Hamiltonian Graph]
+    A graph is a \red{Hamiltonian graph} if it has a \blue{Hamiltonian cycle}.
+  \end{definition}
+
+  \pause
+  \vspace{0.80cm}
+  \begin{definition}[Semi-Hamiltonian Graph]
+    A \blue{non-Hamiltonian} graph is \red{semi-Hamiltonian}
+    if it has a \blue{Hamiltonian path}.
+  \end{definition}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.70\textwidth}{figs/Hamilton}
+      \begin{center}
+        \teal{William Rowan Hamilton $(1805 \sim 1865)$}
+      \end{center}
+    \column{0.50\textwidth}
+      \fig{width = 0.80\textwidth}{figs/Quaternion-Bridge}
+      \begin{center}
+        \teal{(October 16, 1843)}
+      \end{center}
+      \[
+        i^2 = j^{2} = k^{2} = ijk = -1
+      \]
+  \end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.80\textwidth}{figs/Hamiltonian-path-solution}
+    \column{0.50\textwidth}
+      \pause
+      \fig{width = 0.80\textwidth}{figs/Hamiltonian-path-solution-3d}
+  \end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{center}
+    \red{What is ``THE'' theorem for finding a Hamiltonian path/cycle
+        \\ or determining its existence?}
+
+    \pause
+    \vspace{0.80cm}
+    I do not know.
+
+    \pause
+    \vspace{0.80cm}
+    Nobody knows.
+
+    \pause
+    \vspace{0.80cm}
+    We will probably never know it.
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \fig{width = 0.50\textwidth}{figs/millionaire}
+
+  \begin{theorem}
+    The Hamiltonian Path/Cycle problem is NP-complete.
+  \end{theorem}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{center}
+    Typical (Positive/Negative) Graph Examples
+
+    \vspace{1.00cm}
+    Sufficient Conditions
+
+    \vspace{1.00cm}
+    Necessary Conditions
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%
+\input{parts/hamiltonian-graph-examples}
+\input{parts/hamiltonian-graph-sufficient}
+\input{parts/hamiltonian-graph-necessary}
+%%%%%%%%%%%%%%%
