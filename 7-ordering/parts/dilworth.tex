@@ -25,12 +25,12 @@
   \end{center}
 
   \begin{columns}
+    \column{0.40\textwidth}
+      \pause
+      \fig{width = 0.90\textwidth}{figs/connection}
     \column{0.50\textwidth}
       \pause
-      \fig{width = 0.80\textwidth}{figs/connection}
-    \column{0.50\textwidth}
-      \pause
-      \fig{width = 0.80\textwidth}{figs/connection}
+      \fig{width = 0.90\textwidth}{figs/equivalent}
   \end{columns}
 \end{frame}
 %%%%%%%%%%%%%%%
@@ -157,7 +157,7 @@
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
-  \begin{theorem}[Dilworth's Theorem]
+  \begin{theorem}[Dilworth's Theorem (1950)]
     Let $(X,\le)$ be a finite poset. Then
     \[
       \operatorname{width}(X) =
@@ -530,5 +530,65 @@
       gives a chain decomposition of $X$ with \purple{\fbox{$= k$}} chains.}
     \end{center}
   \end{proof}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{theorem}[Erdős-Szekeres Theorem (1935)]
+    Any sequence of \blue{distinct} real numbers
+    with length $\ge (r - 1)(s - 1) + 1$ \\[3pt]
+    contains a \blue{monotonically} increasing subsequence of length $r$ \\[3pt]
+    \red{\it or} a \blue{monotonically} decreasing subsequence of length $s$.
+  \end{theorem}
+
+  \pause
+  \vspace{-0.20cm}
+  \[
+    r = 3 \qquad s = 2  \qquad (1\;2\;3 \quad 3\;2\;1 \quad 1\;3\;2)
+  \]
+  \pause
+  \vspace{-0.30cm}
+  \[
+    a_{1}, a_{2}, \cdots, a_{N} \qquad (N = (r - 1)(s - 1) + 1)
+  \]
+  \pause
+  \vspace{-0.30cm}
+  \[
+    \red{a_{i} \preceq a_{j}} \iff \blue{i < j} \land \teal{a_{i} \le a_{j}}
+  \]
+
+  \pause
+  \vspace{0.30cm}
+  \begin{center}
+    What are the \purple{chains} and \purple{antichains} in this poset?
+
+    \pause
+    \vspace{0.20cm}
+    If every antichain has size $\le s - 1$, then by Dilworth's theorem, \\[3pt]
+    the poset can be decomposed into $\le s - 1$ chains.
+  \end{center}
+
+  \pause
+  \vspace{-0.20cm}
+  \[
+    \lceil \frac{N}{s - 1} \rceil
+    = \lceil \frac{(r - 1)(s - 1) + 1}{s - 1} \rceil
+    = \lceil r - 1 + \frac{1}{s - 1} \rceil
+    = r
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{theorem}[Mirsky's Theorem (1971)]
+    For every finite poset,
+    the \red{\it height} equals the \blue{\it minimum number of antichains}
+    into which the set may be partitioned.
+  \end{theorem}
+
+  \vspace{1em}
+  \fig{width = 0.40\textwidth}{figs/Hasse-Powerset}
 \end{frame}
 %%%%%%%%%%%%%%%
