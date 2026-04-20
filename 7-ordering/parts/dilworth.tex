@@ -2,13 +2,36 @@
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
-  Dilworth
+  \begin{center}
+    \blue{\large A Decomposition Theorem for Partially Ordered Sets}
+  \end{center}
+
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.70\textwidth}{figs/Dilworth}
+      \begin{center}
+        {\small \teal{Robert Palmer Dilworth (1914 -- 1993)}}
+      \end{center}
+    \column{0.50\textwidth}
+      \fig{width = 0.95\textwidth}{figs/dilworth-theorem-paper}
+  \end{columns}
 \end{frame}
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
-  Equivalent theorems
+  \begin{center}
+    \purple{\Large ``Deep'' Theorems}
+  \end{center}
+
+  \begin{columns}
+    \column{0.50\textwidth}
+      \pause
+      \fig{width = 0.80\textwidth}{figs/connection}
+    \column{0.50\textwidth}
+      \pause
+      \fig{width = 0.80\textwidth}{figs/connection}
+  \end{columns}
 \end{frame}
 %%%%%%%%%%%%%%%
 
@@ -56,14 +79,12 @@
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
-  \begin{definition}[宽度与高度 (Width; Height)]
+  \begin{definition}[宽度 (Width)]
     设 $(X, \preceq)$ 是偏序集。
-
-    \begin{itemize}
-      \setlength{\itemsep}{6pt}
-      \item \red{宽度 (Width)}: $X$ 中最大反链的大小
-      \item \red{高度 (Height)}: $X$ 中最大链的大小
-    \end{itemize}
+    \[
+      \operatorname{Width}(X) =
+      \max\{|S|: S \subseteq X \text{ is an antichain}\}.
+    \]
   \end{definition}
 
   \fig{width = 0.50\textwidth}{figs/Hasse-Powerset}
@@ -112,7 +133,7 @@
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
-  \fig{width = 0.40\textwidth}{figs/division-6}
+  \fig{width = 0.30\textwidth}{figs/division-6}
 \end{frame}
 %%%%%%%%%%%%%%%
 
@@ -147,21 +168,31 @@
 
   \pause
   \begin{center}
-    Antichains: concurrency or independence
-    \vspace{0.30cm}
-    Chain decompositions: serial pipelines
+    \teal{\bf Antichains:} independence or concurrency
+    \fig{width = 0.30\textwidth}{figs/set-partition-refinement}
+    \vspace{-0.30cm}
+    \teal{\bf Chain decompositions:} serial pipelines
   \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
-  这将是迄今为止我们在本课程中证明的最难的定理。
+  \begin{center}
+    \red{\large ``本课程迄今最复杂的证明''}
+  \end{center}
 
   \begin{columns}
     \column{0.50\textwidth}
+      \fig{width = 0.80\textwidth}{figs/lost}
+      \begin{center}
+        迷失在证明的迷宫中
+      \end{center}
     \column{0.50\textwidth}
-      精密仪器、环环相扣
+      \fig{width = 0.80\textwidth}{figs/chilun}
+      \begin{center}
+        环环相扣, 步步为营
+      \end{center}
   \end{columns}
 \end{frame}
 %%%%%%%%%%%%%%%
@@ -175,66 +206,83 @@
       \min\{\text{number of chains in a chain decomposition of }X\}.
     \]
   \end{theorem}
-    % \red{最小}\blue{链分解}中链的条数 $=$ \red{最大}\blue{反链}的大小
+
+  \pause
+  \vspace{2em}
+  \begin{lemma}[$\ge$: \violet{Lower Bound} of Chain Decomposition Size]
+    \[
+      \text{minimum chain-decomposition size} \ge \operatorname{width}(X).
+    \]
+  \end{lemma}
+
+  \vspace{1em}
+  \begin{lemma}[$\le$: \violet{Upper Bound} of Chain Decomposition Size]
+    \[
+      \text{minimum chain-decomposition size} \le \operatorname{width}(X).
+    \]
+  \end{lemma}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{lemma}[$\ge$: \violet{Lower Bound} of Chain Decomposition Size]
+    \[
+      \text{minimum chain-decomposition size} \ge \operatorname{width}(X).
+    \]
+  \end{lemma}
 
   \begin{columns}
     \column{0.50\textwidth}
-      \uncover<6->{
-        \fig{width = 0.30\textwidth}{figs/Hasse-Powerset}
-      }
+      \fig{width = 0.80\textwidth}{figs/Hasse-Powerset}
     \column{0.50\textwidth}
-      \uncover<6->{
-        \fig{width = 0.30\textwidth}{figs/so-easy}
-      }
+      \fig{width = 0.60\textwidth}{figs/so-easy}
   \end{columns}
 
   \pause
-  \begin{lemma}[$\le$: Lower Bound of Chain Decomposition Size]
-    \[
-      \text{minimum chain-decomposition size} \ge \operatorname{width}(P).
-    \]
-  \end{lemma}
-    % \red{最小}\blue{链分解}中链的条数 $\ge$ \red{最大}\blue{反链}的大小
-
-  \pause
   \begin{proof}
-    Suppose \(A\) is an antichain with \(k\) elements.
+    \begin{center}
+      No chain can contain more than one element of an antichain.
 
-    \pause
-    No chain can contain more than one element of \(A\).
+      \pause
+      \vspace{0.30cm}
+      \red{By the Pigeonhole Principle.}
+    \end{center}
   \end{proof}
 \end{frame}
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
-  \begin{lemma}[$\le$: Upper Bound of Chain Decomposition Size]
+  \begin{lemma}[$\le$: \violet{Upper Bound} of Chain Decomposition Size]
     \[
       \text{minimum chain-decomposition size} \le \operatorname{width}(X).
     \]
   \end{lemma}
 
-  \fig{width = 0.30\textwidth}{figs/Hasse-Powerset}
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.80\textwidth}{figs/Hasse-Powerset}
+    \column{0.50\textwidth}
+      \[
+        \purple{\operatorname{width}(X) \triangleq k}
+      \]
+  \end{columns}
 
   \pause
   \begin{center}
-    Suppose $\operatorname{width}(X) = k$.
+    \brown{\it Suffices} to show:
+    there \red{\it exists} a chain decomposition with $\le k$ chains.
 
     \pause
     \vspace{1em}
-    \blue{Suffices} to show that
-    there \red{\bf exists} a chain decomposition of $X$ with $k$ chains.
+    To \blue{\it construct} a chain decomposition with $\le k$ chains, \\[3pt]
+    \purple{based on the given largest antichain of size $k$}.
 
-    \pause
-    \vspace{1em}
-    \blue{\large \bf Constructive Proof:}
-    Construct a chain decomposition of $X$ with $k$ chains,
-    \purple{based on the given maximum antichain of size $k$}.
-
-    \pause
-    \vspace{1em}
-    Each chain contains \brown{\bf exactly one} element
-    of the maximum antichain.
+    % \pause
+    % \vspace{1em}
+    % Each chain contains \blue{\it exactly one} element
+    % of the largest antichain.
   \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%
@@ -242,40 +290,48 @@
 %%%%%%%%%%%%%%%
 \begin{frame}{}
   \begin{center}
-    Construct a chain decomposition of $X$ with $k$ chains,
-    \purple{based on the given maximum antichain of size $k$}.
+    To \blue{\it construct} a chain decomposition with $k$ chains, \\[3pt]
+    \purple{based on the given largest antichain of size $k$}.
   \end{center}
 
-  two cases
   \begin{columns}
     \column{0.50\textwidth}
-      \fig{width = 0.30\textwidth}{figs/Hasse-Powerset}
+      \fig{width = 0.90\textwidth}{figs/Hasse-Powerset}
     \column{0.50\textwidth}
-      \fig{width = 0.30\textwidth}{figs/powerset}
+      \fig{width = 0.90\textwidth}{figs/powerset}
   \end{columns}
+
+  \pause
+  \begin{center}
+    \red{\it Every} largest antichain is exactly
+    the set of \blue{all minimal elements}, \\[3pt]
+    or exactly the set of \blue{all maximal elements}.
+  \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
-  \begin{lemma}[$\le$: Upper Bound of Chain Decomposition Size]
+  \begin{lemma}[$\le$: \violet{Upper Bound} of Chain Decomposition Size]
     \[
       \text{minimum chain-decomposition size} \le \operatorname{width}(X).
     \]
   \end{lemma}
 
+  \pause
+  {\small
   \begin{proof}
-    \pause
-    \blue{\bf By induction on \pause the size $|X|$ of the poset}
+    \begin{center}
+      \red{By induction on the size $|X|$ of the poset.}
+    \end{center}
 
     \pause
-    \vspace{1em}
     \begin{description}[Inductive Hypothesis:]
       \setlength{\itemsep}{8pt}
       \item[Base Case:] $|X| = 1$; It holds obviously.
       \pause
       \item[Inductive Hypothesis:]
-        Suppose the theorem holds for all posets
+        Suppose it holds for all posets
         of size $2 \le |X| < n$.
       \pause
       \item[Inductive Step:]
@@ -284,12 +340,12 @@
         \begin{itemize}
           \setlength{\itemsep}{6pt}
           \pause
-          \item Suppose $A$ is a maximum antichain of $X$ with $k$ elements.
+          \item Suppose $A$ is a largest antichain with $k$ elements.
           \pause
-          \item We construct a chain decomposition of $X$ with $k$ chains.
+          \item To construct a chain decomposition with $\le k$ chains.
         \end{itemize}
     \end{description}
-  \end{proof}
+  \end{proof}}
 \end{frame}
 %%%%%%%%%%%%%%%
 
@@ -303,15 +359,24 @@
 
   \begin{proof}
     \begin{description}
-      \setlength{\itemsep}{8pt}
       \item[Case 1:]
-        Every largest antichain is
-        exactly the set of all minimal elements,
-        or exactly the set of all maximal elements.
+        \red{\it Every} largest antichain is
+        exactly the set of \blue{all minimal elements},
+        or exactly the set of \blue{all maximal elements}.
+    \end{description}
+
+      \begin{columns}
+        \column{0.50\textwidth}
+          \fig{width = 0.75\textwidth}{figs/Hasse-Powerset}
+        \column{0.50\textwidth}
+          \fig{width = 0.90\textwidth}{figs/powerset}
+      \end{columns}
+
+    \begin{description}
       \item[Case 2:]
-        There exists a largest antichain
-        that is neither the set of all minimal elements
-        nor the set of all maximal elements.
+        There \red{\it exists} a largest antichain
+        that is \blue{\it neither} the set of all minimal elements
+        \blue{\it nor} the set of all maximal elements.
     \end{description}
   \end{proof}
 \end{frame}
@@ -319,56 +384,32 @@
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
-  \begin{lemma}[$\le$: Upper Bound of Chain Decomposition Size]
+  \begin{lemma}[$\le$: \violet{Upper Bound} of Chain Decomposition Size]
     \[
       \text{minimum chain-decomposition size} \le \operatorname{width}(X).
     \]
   \end{lemma}
 
   \begin{proof}
+    \begin{description}
+      \item[Case 1:]
+        \red{\it Every} largest antichain is
+        exactly the set of \blue{all minimal elements},
+        or exactly the set of \blue{all maximal elements}.
+    \end{description}
+    \fig{width = 0.40\textwidth}{figs/powerset}
+
+      \pause
     \begin{center}
-      \fbox{
-        Case 1: Every largest antichain is
-        \blue{\bf exactly the set of all minimal elements},
-        or exactly the set of all maximal elements.
-      }
+      Let \red{$M$} be a largest antichain of $X$,
+      the set of \blue{all minimal elements} of $X$.
 
       \pause
       \vspace{0.30cm}
-      Let $M$ be the largest antichain of $X$,
-      consisting of exactly the set of all minimal elements of $X$.
-
-      \pause
-      \vspace{0.30cm}
-      Choose some minimal element $m \in M$.
-
-      \pause
-      \vspace{0.30cm}
-      Choose a maximal chain $C^{m}$ starting from $m$:
+      Choose $m \in M$ and a \teal{\it maximal} chain $C^{m}$ starting from $m$.
       \[
         C^{m}: m = x_{1} \prec x_{2} \prec \cdots \prec x_{t}
       \]
-
-      \pause
-      \vspace{0.30cm}
-      $x_{t}$ is a maximal element of $X$
-
-      \pause
-      \vspace{0.30cm}
-      Remove $C^{m}$ from $X$ to get a smaller poset $X' = X \setminus C^{m}$.
-
-      \pause
-      \fbox{$\operatorname{Width}(X') \le n - 1$}
-
-      \pause
-      \vspace{0.30cm}
-      By the inductive hypothesis,
-      $X'$ can be decomposed into $\le (n - 1)$ chains.
-
-      \pause
-      \vspace{0.30cm}
-      Adding $C^{m}$ back gives a chain decomposition
-      of $X$ with $\le n$ chains.
     \end{center}
   \end{proof}
 \end{frame}
@@ -376,25 +417,118 @@
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
-  \begin{lemma}[$\le$: Upper Bound of Chain Decomposition Size]
+  \begin{proof}
+    \[
+      \fbox{$\red{C^{m}}: m = x_{1} \prec x_{2} \prec \cdots \prec x_{t}$}
+    \]
+    \fig{width = 0.40\textwidth}{figs/powerset}
+
+    \begin{center}
+      $x_{t}$ is a \teal{\it maximal} element of $X$
+
+      \pause
+      \vspace{0.30cm}
+      Remove \red{$C^{m}$} from $X$ to get a smaller poset $X' = X \setminus C^{m}$.
+
+      \pause
+      \vspace{1em}
+      \purple{\fbox{$\operatorname{Width}(X') \le k - 1$}}
+
+      \pause
+      \vspace{0.30cm}
+      {\small
+        By the \blue{inductive hypothesis},
+        $X'$ can be decomposed into \purple{\fbox{$\le (k - 1)$}} chains.}
+
+      \pause
+      \vspace{0.30cm}
+      {\small Adding \red{$C^{m}$} back gives a chain decomposition
+      of $X$ with \purple{\fbox{$\le k$}} chains.}
+    \end{center}
+  \end{proof}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{lemma}[$\le$: \violet{Upper Bound} of Chain Decomposition Size]
     \[
       \text{minimum chain-decomposition size} \le \operatorname{width}(X).
     \]
   \end{lemma}
 
   \begin{proof}
-    \begin{center}
-      \fbox{
-        Case 2: There exists a largest antichain
-        that is neither the set of all minimal elements
-        nor the set of all maximal elements.
-      }
-    \end{center}
+    \begin{description}
+      \item[Case 2:]
+        There \red{\it exists} a largest antichain
+        that is \blue{\it neither} the set of all minimal elements
+        \blue{\it nor} the set of all maximal elements.
+    \end{description}
+
+    \fig{width = 0.30\textwidth}{figs/Hasse-Powerset}
+    \pause
+    \vspace{-0.30cm}
+    \[
+      X^{+} = \set{x \in X: \exists a \in A\; x \ge a}
+      \qquad
+      X^{-} = \set{x \in X: \exists a \in A\; x \le a}
+    \]
+    \pause
+    \vspace{-0.30cm}
+    \[
+      X^{+} \subset X \quad X^{-} \subset X
+      \pause\qquad
+      X^{+} \cup X^{-} = X \pause \quad X^{+} \cap X^{-} = A
+    \]
+    \pause
+    \vspace{-0.30cm}
+    \[
+      \operatorname{Width}(X^{+}) = k
+      \qquad
+      \operatorname{Width}(X^{-}) = k
+    \]
   \end{proof}
 \end{frame}
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
+  \begin{proof}
+    \vspace{-0.50cm}
+    \[
+      X^{+} = \set{x \in X: \exists a \in A\; x \ge a}
+      \qquad
+      X^{-} = \set{x \in X: \exists a \in A\; x \le a}
+    \]
+    \vspace{-0.80cm}
+    \fig{width = 0.30\textwidth}{figs/Hasse-Powerset}
+    \vspace{-0.30cm}
+    {\small
+    \pause
+    \vspace{-0.30cm}
+    \[
+      \operatorname{Width}(X^{+}) = k
+      \qquad\qquad
+      \operatorname{Width}(X^{-}) = k
+    \]}
+    \pause
+    \vspace{-0.60cm}
+    \begin{center}
+      {\small
+      By the \blue{inductive hypothesis},
+      $X^{+}$ ($X^{-}$) can be decomposed into \purple{\fbox{$\le k$}} chains.}
+
+      \pause
+      \vspace{0.50cm}
+      {\small
+      Actually, $X^{+}$ ($X^{-}$) can be decomposed into \purple{\fbox{$= k$}} chains, \\[3pt]
+      each of which contains exactly one element of $A$.}
+
+      \pause
+      \vspace{0.50cm}
+      {\small Concatenating the chain decompositions of $X^{+}$ and $X^{-}$ \\[3pt]
+      gives a chain decomposition of $X$ with \purple{\fbox{$= k$}} chains.}
+    \end{center}
+  \end{proof}
 \end{frame}
 %%%%%%%%%%%%%%%
