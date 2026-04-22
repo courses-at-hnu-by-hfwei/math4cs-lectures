@@ -2,6 +2,9 @@
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
+  \begin{center}
+    Seven Bridges of K\"onigsberg (柯尼斯堡七桥问题)
+  \end{center}
   \fig{width = 0.70\textwidth}{figs/Konigsberg}
 
   \pause
@@ -208,7 +211,7 @@
 %%%%%%%%%%%%%%%
 \begin{frame}{}
   \begin{theorem}[Euler's Theorem]
-    A graph has \red{Eulerian trails} iff
+    A \blue{connected} graph has \red{Eulerian trails} iff
     it contains \blue{zero or two} vertices that have an \blue{odd} degree.
   \end{theorem}
 
@@ -232,7 +235,7 @@
 %%%%%%%%%%%%%%%
 \begin{frame}{}
   \begin{theorem}[Euler's Theorem (Carl Hierholzer)]
-    A \purple{connected} graph has \red{Eulerian cycles/circuits} iff
+    A \purple{connected} graph has \red{Eulerian circuits/tours} iff
     \blue{every vertex} has \blue{even} degree.
     \begin{center}
       \teal{(Such graphs are called Eulerian graphs.)}
@@ -243,19 +246,19 @@
   \vspace{0.30cm}
   \fig{width = 0.50\textwidth}{figs/Hierholzer}
   \begin{center}
-    cycle + cycle + cycle + $\dots$
+    \blue{cycle} + \red{cycle} + \cyan{cycle}
   \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%
-\begin{frame}{}
-  \fig{width = 0.50\textwidth}{figs/blank}
-  \begin{center}
-    Can you repeat the Carl Hierholzer's algorithm?
-  \end{center}
-\end{frame}
-%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%%
+% \begin{frame}{}
+%   \fig{width = 0.50\textwidth}{figs/blank}
+%   \begin{center}
+%     Can you repeat the Carl Hierholzer's algorithm?
+%   \end{center}
+% \end{frame}
+% %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
@@ -285,7 +288,7 @@
 %%%%%%%%%%%%%%%
 \begin{frame}{}
   \begin{theorem}[Euler's Theorem (Carl Hierholzer)]
-    A \purple{connected} graph has \red{Eulerian cycles/circuits} iff
+    A \purple{connected} graph has \red{Eulerian circuits/tours} iff
     \blue{every vertex} has \blue{even} degree.
   \end{theorem}
 
@@ -310,6 +313,7 @@
     Every Eulerian graph decomposes into cycles.
   \end{theorem}
 
+  \vspace{1em}
   \begin{columns}
     \column{0.50\textwidth}
       \fig{width = 0.80\textwidth}{figs/euler-proof}
@@ -320,7 +324,18 @@
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
-% \begin{frame}{}
-%   directed graphs
-% \end{frame}
+\begin{frame}{}
+  \begin{theorem}[Euler's Theorem (Carl Hierholzer)]
+    A \purple{connected} graph has \red{Eulerian circuits/tours} iff
+    \blue{every vertex} has \blue{even} degree.
+  \end{theorem}
+
+  \vspace{2em}
+  \begin{center}
+    \blue{\bf \Large TONCAS}
+
+    \vspace{1em}
+    ``The Obvious Necessary Conditions are Also Sufficient''
+  \end{center}
+\end{frame}
 %%%%%%%%%%%%%%%
