@@ -15,7 +15,7 @@
   \begin{theorem}[Ore's Theorem, 1960]
     Let $G$ be a \blue{simple} graph with \blue{$n \ge 3$} vertices. If
     \[
-      \degree(u) + \degree(v) \ge n
+      \deg(u) + \deg(v) \ge n
     \]
     for \cyan{each pair} of \purple{non-adjacent} vertices $u$ and $v$,
     then $G$ is \red{Hamiltonian}.
@@ -33,18 +33,21 @@
 
     \pause
     \vspace{0.30cm}
-    Let $G$ be a \cyan{\it non-Hamiltonian} (simple) graph with $n \ge 3$ vertices.
+    Suppose that $G$ meets the \blue{Ore's Condition},
+    but $G$ is not \red{Hamiltonian}.
 
     \pause
     \vspace{0.30cm}
-    Suppose that $G$ meets the \blue{Ore's Condition}. \\[3pt]
     We need to derive a contradiction.
 
     \pause
     \vspace{0.80cm}
-    \red{\it By Extremality.} \\[3pt] \pause
-    Adding edges cannot violate the \blue{Ore's Condition}. \\[3pt] \pause
-    Thus we may consider only \red{\it maximal} non-Hamiltonian graphs: \\[3pt]
+    Adding edges cannot violate the \blue{Ore's Condition}.
+
+    \pause
+    \vspace{0.80cm}
+    \red{\it By Extremality.} \\[5pt] \pause
+    We can obtain \red{\it maximal} non-Hamiltonian graphs: \\[3pt] \pause
     \cyan{adding any edge gives a Hamiltonian graph}.
   \end{center}
 \end{frame}
@@ -68,7 +71,7 @@
     \pause
     \vspace{-0.60cm}
     \[
-      \degree(v_{1}) + \degree(v_{2}) \ge n
+      \deg(v_{1}) + \deg(v_{2}) \ge n
     \]
 
     \pause
@@ -126,5 +129,10 @@
     $K_{\lfloor (n + 1)/ 2 \rfloor}$ and $K_{\lceil (n+1)/2 \rceil}$
     sharing a vertex
   \end{center}
+
+  \pause
+  \[
+    n = 6
+  \]
 \end{frame}
 %%%%%%%%%%%%%%%
