@@ -13,25 +13,17 @@ Lectures on [Mathematics for Computer Science@Hunan University](https://github.c
 
 ## 周历
 
-| 周次 | 日期 (周四) | 主题 | 阅读材料 |
+| 周次 | 日期 | 课件 | 课堂录屏 |
 | :---: | :---: | :---: | :---: |
-| 1 | 2026-03-03 | [0-overview](/0-overview) | |
-| 1 | 2021-03-05 | [1-prop-logic](/1-prop-logic) | |
-<!-- | 3 | 2021-03-18 | [2-predicate-logic](2-predicate-logic) | |
-| 4 | 2021-03-25 | [3-mathematical-induction](/3-mathematical-induction) | |
-| 5 | 2021-04-01 | [4-set](/4-set) | |
-| 6 | 2021-04-08 | [5-relation](/5-relation) | |
-| 7 | 2021-04-15 | [6-function](/6-function) | |
-| 8 | 2021-04-22 | [7-ordering](/7-ordering) | |
-| 9 | 2021-04-29 | [8-infinity](/8-infinity) | |
-| 10 | 2021-05-06 | [9-paths-cycles](/9-paths-cycles) | |
-| 11 | 2021-05-13 | [10-trees](/10-trees) | |
-| 12 | 2021-05-20 | [11-planarity-coloring](/11-planarity-coloring) | |
-| 13 | 2021-05-27 | [12-matching-flow](/12-matching-flow) | |
-| 14 | 2021-05-29 | [13-group](/13-group) | |
-| 15 | 2021-06-03 | [14-subgroup](/14-subgroup) | |
-| 16 | 2021-06-10 | [15-review](/15-review) | | -->
-
+| 1 | 2026-03-03 | [0-overview](/0-overview/0-overview.pdf); [0-overview-handout](/0-overview/0-overview-handout.pdf) | [0-overview-(1)](https://www.bilibili.com/video/BV1kTAozRE8c/); [0-overview-(2)](https://www.bilibili.com/video/BV1CKAozxEVA/) |
+| 1 | 2026-03-05 | [1-prop-logic](/1-prop-logic/1-prop-logic.pdf); [1-prop-logic-handout](/1-prop-logic/1-prop-logic-handout.pdf) | [1-prop-logic-(1)](https://www.bilibili.com/video/BV1XDPrzPEB2/); [1-prop-logic-(2)](https://www.bilibili.com/video/BV1YUPrzvERK/); [1-prop-logic-(3)](https://www.bilibili.com/video/BV1JmPfzFEjS/); [1-prop-logic-(4)](https://www.bilibili.com/video/BV1sBc6zkEt1/) |
+| 2 | 2026-03-10 | [2-predicate-logic](/2-predicate-logic/2-predicate-logic.pdf); [2-predicate-logic-handout](/2-predicate-logic/2-predicate-logic-handout.pdf) | [2-predicate-logic-(1)](https://www.bilibili.com/video/BV1xqc6zVEVk/); [2-predicate-logic-(2)](https://www.bilibili.com/video/BV17cwQzhErK/); [2-predicate-logic-(3)](https://www.bilibili.com/video/BV1qUwyzLER2/); [2-predicate-logic-(4)](https://www.bilibili.com/video/BV1ZUwyzLEDb/); [2-predicate-logic-(5)](https://www.bilibili.com/video/BV1VvX6BKELN/) |
+| 2 | 2026-03-13 | [3-set](/3-set/3-set.pdf); [3-set-handout](/3-set/3-set-handout.pdf) | [3-set-(1)](https://www.bilibili.com/video/BV1VvX6BKEuL/); [3-set-(2)](https://www.bilibili.com/video/BV1KUX6B4Enp/) |
+| 3 | 2026-03-17 | [4-relation](/4-relation/4-relation.pdf); [4-relation-handout](/4-relation/4-relation-handout.pdf) | [4-relation-(1)](https://www.bilibili.com/video/BV142X6BZEZL/); [4-relation-(2)](https://www.bilibili.com/video/BV1T2X6BZEPg/); [4-relation-(3)](https://www.bilibili.com/video/BV1hzX6BYEC4/); [4-relation-(4)](https://www.bilibili.com/video/BV1k89uBwEVz/); [4-relation-(5)](https://www.bilibili.com/video/BV1w89uBAE29/) |
+| 3 | 2026-03-20 | [5-function](/5-function/5-function.pdf); [5-function-handout](/5-function/5-function-handout.pdf) | [5-function-(1)](https://www.bilibili.com/video/BV1fTDhB1EYf/); [5-function-(2)](https://www.bilibili.com/video/BV1y4DsBBEwU/); [5-function-(3)](https://www.bilibili.com/video/BV1N4DsBzEHN/); [5-function-(4)](https://www.bilibili.com/video/BV16qQYBoEqy/) |
+| 4 | 2026-03-24 | [6-infinity](/6-infinity/6-infinity.pdf); [6-infinity-handout](/6-infinity/6-infinity-handout.pdf) | [6-infinity-(1)](https://www.bilibili.com/video/BV1rqQYBoEx5/); [6-infinity-(2)](https://www.bilibili.com/video/BV1rqQYBoE3X/) |
+| 4 | 2026-03-27 | [7-ordering](/7-ordering/7-ordering.pdf); [7-ordering-handout](/7-ordering/7-ordering-handout.pdf) | [7-ordering-(1)](https://www.bilibili.com/video/BV1acdbB6EMs/); [7-ordering-(2)](https://www.bilibili.com/video/BV1QcdbB6ENE/); [7-ordering-(3)](https://www.bilibili.com/video/BV1ta9BBWENy/); [7-ordering-(4)](https://www.bilibili.com/video/BV14a9BBWEX5/) |
+| 5 | 2026-03-31 | [8-paths-cycles](/8-paths-cycles/8-paths-cycles.pdf); [8-paths-cycles-handout](/8-paths-cycles/8-paths-cycles-handout.pdf) | [8-paths-cycles-(1)](https://www.bilibili.com/video/BV14i96BbEra/); [8-paths-cycles-(2)](https://www.bilibili.com/video/BV1Ki96BbEpd/) |
 
 ## 后续课程建设计划
 - Coq
