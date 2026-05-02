@@ -1,50 +1,52 @@
 {
+  "_comment": "date: actual class date extracted from video title (YYYYMMDD prefix in title), NOT upload date.",
+  "_week_start": "2026-03-02",
   "0-overview": [
-    "BV1kTAozRE8c",
-    "BV1CKAozxEVA"
+    {"bvid": "BV1kTAozRE8c", "date": "2026-03-03"},
+    {"bvid": "BV1CKAozxEVA", "date": "2026-03-03"}
   ],
   "1-prop-logic": [
-    "BV1XDPrzPEB2",
-    "BV1YUPrzvERK",
-    "BV1JmPfzFEjS",
-    "BV1sBc6zkEt1"
+    {"bvid": "BV1XDPrzPEB2", "date": "2026-03-05"},
+    {"bvid": "BV1YUPrzvERK", "date": "2026-03-05"},
+    {"bvid": "BV1JmPfzFEjS", "date": "2026-03-10"},
+    {"bvid": "BV1sBc6zkEt1", "date": "2026-03-12"}
   ],
   "2-predicate-logic": [
-    "BV1xqc6zVEVk",
-    "BV17cwQzhErK",
-    "BV1qUwyzLER2",
-    "BV1ZUwyzLEDb",
-    "BV1VvX6BKELN"
+    {"bvid": "BV1xqc6zVEVk", "date": "2026-03-12"},
+    {"bvid": "BV17cwQzhErK", "date": "2026-03-17"},
+    {"bvid": "BV1qUwyzLER2", "date": "2026-03-19"},
+    {"bvid": "BV1ZUwyzLEDb", "date": "2026-03-19"},
+    {"bvid": "BV1VvX6BKELN", "date": "2026-03-24"}
   ],
   "3-set": [
-    "BV1VvX6BKEuL",
-    "BV1KUX6B4Enp"
+    {"bvid": "BV1VvX6BKEuL", "date": "2026-03-24"},
+    {"bvid": "BV1KUX6B4Enp", "date": "2026-03-26"}
   ],
   "4-relation": [
-    "BV142X6BZEZL",
-    "BV1T2X6BZEPg",
-    "BV1hzX6BYEC4",
-    "BV1k89uBwEVz",
-    "BV1w89uBAE29"
+    {"bvid": "BV142X6BZEZL", "date": "2026-03-26"},
+    {"bvid": "BV1T2X6BZEPg", "date": "2026-03-31"},
+    {"bvid": "BV1hzX6BYEC4", "date": "2026-03-31"},
+    {"bvid": "BV1k89uBwEVz", "date": "2026-04-02"},
+    {"bvid": "BV1w89uBAE29", "date": "2026-04-02"}
   ],
   "5-function": [
-    "BV1fTDhB1EYf",
-    "BV1y4DsBBEwU",
-    "BV1N4DsBzEHN",
-    "BV16qQYBoEqy"
+    {"bvid": "BV1fTDhB1EYf", "date": "2026-04-07"},
+    {"bvid": "BV1y4DsBBEwU", "date": "2026-04-09"},
+    {"bvid": "BV1N4DsBzEHN", "date": "2026-04-09"},
+    {"bvid": "BV16qQYBoEqy", "date": "2026-04-14"}
   ],
   "6-infinity": [
-    "BV1rqQYBoEx5",
-    "BV1rqQYBoE3X"
+    {"bvid": "BV1rqQYBoEx5", "date": "2026-04-14"},
+    {"bvid": "BV1rqQYBoE3X", "date": "2026-04-14"}
   ],
   "7-ordering": [
-    "BV1acdbB6EMs",
-    "BV1QcdbB6ENE",
-    "BV1ta9BBWENy",
-    "BV14a9BBWEX5"
+    {"bvid": "BV1acdbB6EMs", "date": "2026-04-16"},
+    {"bvid": "BV1QcdbB6ENE", "date": "2026-04-16"},
+    {"bvid": "BV1ta9BBWENy", "date": "2026-04-21"},
+    {"bvid": "BV14a9BBWEX5", "date": "2026-04-21"}
   ],
   "8-paths-cycles": [
-    "BV14i96BbEra",
-    "BV1Ki96BbEpd"
+    {"bvid": "BV14i96BbEra", "date": "2026-04-23"},
+    {"bvid": "BV1Ki96BbEpd", "date": "2026-04-23"}
   ]
 }

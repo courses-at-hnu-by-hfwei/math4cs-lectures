@@ -1,11 +1,17 @@
 #!/usr/bin/env python3
-"""Generate and incrementally update the weekly schedule table in README.md.
+"""Generate and update the weekly schedule table in README.md.
 
-Rules:
-- Discover lecture folders like "0-overview", "1-prop-logic", ...
-- Require both "<name>.pdf" and "<name>-handout.pdf"
-- Preserve existing row fields (week/date/recording) for already listed lectures
-- Auto-fill missing lecture rows with computed week/date and a default recording link
+Table structure: one row per actual class-session date.
+Data source: ai/weekly/recordings_by_lecture.json
+  {lecture: [{bvid, date}, ...], ...}
+  where "date" is the actual class date extracted from the video title
+  (format YYYYMMDD prefix in title), NOT the upload/publish date.
+
+Week numbering: starts from the Monday specified by --week-start
+(default 2026-03-02), so that date's week == 1.
+
+Incremental update: add new recordings to recordings_by_lecture.json;
+re-run the script to regenerate the table.
 """
 
 from __future__ import annotations
@@ -14,11 +20,11 @@ import argparse
 import datetime as dt
 import json
 import re
+from collections import defaultdict
 from pathlib import Path
 
 
-DEFAULT_RECORDING_URL = ""
-DEFAULT_START_DATE = "2026-03-03"
+DEFAULT_WEEK1_MONDAY = "2026-03-02"
 
 
 def parse_args() -> argparse.Namespace:
@@ -36,20 +42,15 @@ def parse_args() -> argparse.Namespace:
 		help="Path to README.md (default: <repo-root>/README.md)",
 	)
 	parser.add_argument(
-		"--recording-url",
-		default=DEFAULT_RECORDING_URL,
-		help="Fallback recording URL for newly added rows when no single-episode map is available",
-	)
-	parser.add_argument(
 		"--recordings-map",
 		type=Path,
 		default=None,
-		help="Path to JSON file mapping lecture -> list of BV IDs (default: ai/weekly/recordings_by_lecture.json)",
+		help="Path to JSON file (default: ai/weekly/recordings_by_lecture.json)",
 	)
 	parser.add_argument(
-		"--start-date",
-		default=DEFAULT_START_DATE,
-		help="Start date for the first session in YYYY-MM-DD",
+		"--week-start",
+		default=DEFAULT_WEEK1_MONDAY,
+		help="Monday of week 1 in YYYY-MM-DD (default: 2026-03-02)",
 	)
 	parser.add_argument(
 		"--dry-run",
@@ -59,106 +60,99 @@ def parse_args() -> argparse.Namespace:
 	return parser.parse_args()
 
 
-def discover_lectures(repo_root: Path) -> list[str]:
-	lectures: list[tuple[int, str]] = []
-	pattern = re.compile(r"^(\d+)-")
+def discover_lectures_with_pdf(repo_root: Path) -> set[str]:
+	"""Return set of lecture folder names that have both pdf and handout."""
+	result: set[str] = set()
+	pattern = re.compile(r"^\d+-")
 	for child in repo_root.iterdir():
-		if not child.is_dir():
+		if not child.is_dir() or not pattern.match(child.name):
 			continue
-		m = pattern.match(child.name)
-		if not m:
-			continue
-
 		base = child.name
-		pdf = child / f"{base}.pdf"
-		handout = child / f"{base}-handout.pdf"
-		if pdf.exists() and handout.exists():
-			lectures.append((int(m.group(1)), base))
-
-	lectures.sort(key=lambda x: x[0])
-	return [name for _, name in lectures]
-
-
-def compute_dates(start_date: dt.date, count: int) -> list[dt.date]:
-	# Two sessions per week: Tue (+3 days) then Fri (+4 days) repeating.
-	increments = [3, 4]
-	dates = [start_date]
-	for i in range(1, count):
-		dates.append(dates[-1] + dt.timedelta(days=increments[(i - 1) % 2]))
-	return dates
-
-
-def parse_existing_rows(readme_text: str) -> dict[str, dict[str, str]]:
-	"""Return mapping: lecture name -> {week, date, recording} from current table."""
-	existing: dict[str, dict[str, str]] = {}
-	row_re = re.compile(
-		r"^\|\s*(?P<week>[^|]+?)\s*\|\s*(?P<date>[^|]+?)\s*\|\s*(?P<slides>[^|]+?)\s*\|\s*(?P<recording>[^|]*?)\s*\|\s*$"
-	)
-	lecture_re = re.compile(r"\[([^\]]+)\]\(/\1/\1\.pdf\)")
-
-	for line in readme_text.splitlines():
-		m = row_re.match(line)
-		if not m:
-			continue
-		slides = m.group("slides")
-		lm = lecture_re.search(slides)
-		if not lm:
-			continue
-		lecture = lm.group(1)
-		existing[lecture] = {
-			"week": m.group("week").strip(),
-			"date": m.group("date").strip(),
-			"recording": m.group("recording").strip(),
-		}
-	return existing
-
-
-def load_recordings_map(recordings_map_path: Path) -> dict[str, list[str]]:
-	if not recordings_map_path.exists():
-		return {}
-	data = json.loads(recordings_map_path.read_text(encoding="utf-8"))
-	result: dict[str, list[str]] = {}
-	for k, v in data.items():
-		if isinstance(v, list):
-			result[k] = [str(x).strip() for x in v if str(x).strip()]
+		if (child / f"{base}.pdf").exists() and (child / f"{base}-handout.pdf").exists():
+			result.add(base)
 	return result
 
 
-def format_recording_links(lecture: str, bvids: list[str]) -> str:
-	links = []
-	for i, bvid in enumerate(bvids, start=1):
-		links.append(f"[{lecture}-({i})](https://www.bilibili.com/video/{bvid}/)")
-	return "; ".join(links)
+def load_recordings_map(path: Path) -> dict[str, list[dict]]:
+	"""Load recordings_by_lecture.json.
+
+	Supports both legacy format (list of BV strings) and new format
+	(list of {bvid, date} objects).  Entries without a date are skipped
+	in the date-based table but preserved in the file unchanged.
+	"""
+	if not path.exists():
+		return {}
+	raw = json.loads(path.read_text(encoding="utf-8"))
+	result: dict[str, list[dict]] = {}
+	for lecture, entries in raw.items():
+		if lecture.startswith("_"):   # skip comment keys
+			continue
+		if not isinstance(entries, list):
+			continue
+		normalised = []
+		for e in entries:
+			if isinstance(e, str):
+				normalised.append({"bvid": e.strip(), "date": None})
+			elif isinstance(e, dict):
+				normalised.append({"bvid": str(e.get("bvid", "")).strip(),
+									"date": e.get("date")})
+		result[lecture] = normalised
+	return result
+
+
+def week_number(date: dt.date, week1_monday: dt.date) -> int:
+	return (date - week1_monday).days // 7 + 1
 
 
 def build_table(
-	lectures: list[str],
-	existing: dict[str, dict[str, str]],
-	start_date: dt.date,
-	recording_url: str,
-	recordings_map: dict[str, list[str]],
+	recordings_map: dict[str, list[dict]],
+	lectures_with_pdf: set[str],
+	week1_monday: dt.date,
 ) -> str:
-	dates = compute_dates(start_date, len(lectures))
+	# Build per-date list of (lecture, bvid, per-lecture-index)
+	# per-lecture-index: sequential index within that lecture's recording list
+	date_rows: dict[str, list[tuple[str, str, int]]] = defaultdict(list)
+	for lecture, recs in recordings_map.items():
+		for idx, rec in enumerate(recs, start=1):
+			bvid = rec.get("bvid", "")
+			date_str = rec.get("date")
+			if bvid and date_str:
+				date_rows[date_str].append((lecture, bvid, idx))
+
 	lines = [
 		"| 周次 | 日期 | 课件 | 课堂录屏 |",
 		"| :---: | :---: | :---: | :---: |",
 	]
 
-	default_recording = f"[课堂录屏合集]({recording_url})" if recording_url else ""
+	for date_str in sorted(date_rows):
+		date = dt.date.fromisoformat(date_str)
+		week = week_number(date, week1_monday)
+		entries = date_rows[date_str]
 
-	for i, lec in enumerate(lectures):
-		week = str((i // 2) + 1)
-		date = dates[i].isoformat()
-		slides = f"[{lec}](/{lec}/{lec}.pdf); [{lec}-handout](/{lec}/{lec}-handout.pdf)"
-		recording = format_recording_links(lec, recordings_map.get(lec, [])) or default_recording
+		# Unique lectures on this date, in appearance order
+		seen: list[str] = []
+		for lecture, _, _ in entries:
+			if lecture not in seen:
+				seen.append(lecture)
 
-		if lec in existing:
-			week = existing[lec]["week"] or week
-			date = existing[lec]["date"] or date
-			if existing[lec]["recording"]:
-				recording = existing[lec]["recording"]
+		# Slides cell: pdf + handout for each lecture with files present
+		slides_parts = []
+		for lecture in seen:
+			if lecture in lectures_with_pdf:
+				slides_parts.append(
+					f"[{lecture}](/{lecture}/{lecture}.pdf); "
+					f"[{lecture}-handout](/{lecture}/{lecture}-handout.pdf)"
+				)
+		slides = "; ".join(slides_parts) if slides_parts else ""
 
-		lines.append(f"| {week} | {date} | {slides} | {recording} |")
+		# Recordings cell
+		rec_parts = [
+			f"[{lecture}-({idx})](https://www.bilibili.com/video/{bvid}/)"
+			for lecture, bvid, idx in entries
+		]
+		recordings = "; ".join(rec_parts)
+
+		lines.append(f"| {week} | {date_str} | {slides} | {recordings} |")
 
 	return "\n".join(lines)
 
@@ -190,10 +184,7 @@ def main() -> None:
 	if not readme.exists():
 		raise FileNotFoundError(f"README.md not found: {readme}")
 
-	start_date = dt.date.fromisoformat(args.start_date)
-	lectures = discover_lectures(repo_root)
-	if not lectures:
-		raise RuntimeError("No lecture folders with both pdf/handout found")
+	week1_monday = dt.date.fromisoformat(args.week_start)
 
 	recordings_map_path = (
 		args.recordings_map.resolve()
@@ -201,16 +192,16 @@ def main() -> None:
 		else repo_root / "ai" / "weekly" / "recordings_by_lecture.json"
 	)
 	recordings_map = load_recordings_map(recordings_map_path)
+	lectures_with_pdf = discover_lectures_with_pdf(repo_root)
 
-	readme_text = readme.read_text(encoding="utf-8")
-	existing = parse_existing_rows(readme_text)
-	table_text = build_table(lectures, existing, start_date, args.recording_url, recordings_map)
-	new_text = replace_weekly_section(readme_text, table_text)
+	table_text = build_table(recordings_map, lectures_with_pdf, week1_monday)
 
 	if args.dry_run:
 		print(table_text)
 		return
 
+	readme_text = readme.read_text(encoding="utf-8")
+	new_text = replace_weekly_section(readme_text, table_text)
 	readme.write_text(new_text, encoding="utf-8", newline="\n")
 	print(f"Updated weekly schedule in {readme}")
 
