@@ -60,19 +60,6 @@ def parse_args() -> argparse.Namespace:
 	return parser.parse_args()
 
 
-def discover_lectures_with_pdf(repo_root: Path) -> set[str]:
-	"""Return set of lecture folder names that have both pdf and handout."""
-	result: set[str] = set()
-	pattern = re.compile(r"^\d+-")
-	for child in repo_root.iterdir():
-		if not child.is_dir() or not pattern.match(child.name):
-			continue
-		base = child.name
-		if (child / f"{base}.pdf").exists() and (child / f"{base}-handout.pdf").exists():
-			result.add(base)
-	return result
-
-
 def load_recordings_map(path: Path) -> dict[str, list[dict]]:
 	"""Load recordings_by_lecture.json.
 
@@ -106,7 +93,6 @@ def week_number(date: dt.date, week1_monday: dt.date) -> int:
 
 def build_table(
 	recordings_map: dict[str, list[dict]],
-	lectures_with_pdf: set[str],
 	week1_monday: dt.date,
 ) -> str:
 	# Build per-date list of (lecture, bvid, per-lecture-index)
@@ -120,30 +106,14 @@ def build_table(
 				date_rows[date_str].append((lecture, bvid, idx))
 
 	lines = [
-		"| 周次 | 日期 | 课件 | 课堂录屏 |",
-		"| :---: | :---: | :---: | :---: |",
+		"| 周次 | 日期 | 课堂录屏 |",
+		"| :---: | :---: | :---: |",
 	]
 
 	for date_str in sorted(date_rows):
 		date = dt.date.fromisoformat(date_str)
 		week = week_number(date, week1_monday)
 		entries = date_rows[date_str]
-
-		# Unique lectures on this date, in appearance order
-		seen: list[str] = []
-		for lecture, _, _ in entries:
-			if lecture not in seen:
-				seen.append(lecture)
-
-		# Slides cell: pdf + handout for each lecture with files present
-		slides_parts = []
-		for lecture in seen:
-			if lecture in lectures_with_pdf:
-				slides_parts.append(
-					f"[{lecture}](/{lecture}/{lecture}.pdf); "
-					f"[{lecture}-handout](/{lecture}/{lecture}-handout.pdf)"
-				)
-		slides = "; ".join(slides_parts) if slides_parts else ""
 
 		# Recordings cell
 		rec_parts = [
@@ -152,7 +122,7 @@ def build_table(
 		]
 		recordings = "; ".join(rec_parts)
 
-		lines.append(f"| {week} | {date_str} | {slides} | {recordings} |")
+		lines.append(f"| {week} | {date_str} | {recordings} |")
 
 	return "\n".join(lines)
 
@@ -164,8 +134,7 @@ def replace_weekly_section(readme_text: str, table_text: str) -> str:
 		raise ValueError("README.md does not contain '## 周历' section")
 
 	after = readme_text[idx:]
-	next_header = re.search(r"\n##\s+", after[1:])
-	if next_header:
+	if next_header := re.search(r"\n##\s+", after[1:]):
 		section_end = idx + 1 + next_header.start()
 		suffix = readme_text[section_end:]
 	else:
@@ -192,9 +161,8 @@ def main() -> None:
 		else repo_root / "ai" / "weekly" / "recordings_by_lecture.json"
 	)
 	recordings_map = load_recordings_map(recordings_map_path)
-	lectures_with_pdf = discover_lectures_with_pdf(repo_root)
 
-	table_text = build_table(recordings_map, lectures_with_pdf, week1_monday)
+	table_text = build_table(recordings_map, week1_monday)
 
 	if args.dry_run:
 		print(table_text)
