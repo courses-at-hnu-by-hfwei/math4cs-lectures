@@ -1,0 +1,127 @@
+% bridg-it.tex
+
+%%%%%%%%%%%%
+\begin{frame}{}
+	\begin{theorem}
+		If $T$, $T'$ are spanning trees of a connected graph $G$
+		and \blue{$e \in E(T) \setminus E(T')$},
+		then there is an edge \teal{$e' \in E(T') \setminus E(T)$}
+		such that \purple{$T - e + e'$} is a spanning tree of $G$.
+	\end{theorem}
+
+	\pause
+	\vspace{0.30cm}
+	\fig{width = 0.50\textwidth}{figs/two-st}
+	\begin{center}
+		{\small ($T$ is bold, $T'$ is solid; they share two edges.)}
+	\end{center}
+
+	\pause
+	\vspace{0.30cm}
+	\begin{center}
+		$T - e$: two components $U$ and $U'$ \\[8pt]
+		\pause
+		$e'$: an edge across $(U, U')$ in $T'$ \\[8pt]
+		\pause
+		\purple{$T - e + e'$}: a spanning tree of $G$
+	\end{center}
+\end{frame}
+%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \begin{exampleblock}{Bridg-It Game (David Gale, 1958) \qquad
+    \href{https://mglaezer.github.io/bridgit/}{\cyan{\bf \large Play with it here!}}}
+    \begin{columns}
+      \column{0.50\textwidth}
+        \fig{width = 0.80\textwidth}{figs/bridg-it}
+      \column{0.50\textwidth}
+        \uncover<2->{
+          \fig{width = 0.90\textwidth}{figs/red-win}
+        }
+    \end{columns}
+
+    \[
+      \red{5 \times 6} \;\text{\it vs.}\; \blue{6 \times 5}
+    \]
+  \end{exampleblock}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \fig{width = 0.80\textwidth}{figs/ask-right-questions}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \begin{center}
+    Will Bridg-It \red{\bf end in a tie}?
+
+    \pause
+    \vspace{0.80cm}
+    No Way!
+
+		\vspace{0.30cm}
+		Every path from left to right \blue{crosses}
+		every path from top to bottom.
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{center}
+    Does \red{\bf Player 2} have a \red{\bf winning strategy}?
+
+    \pause
+    \vspace{0.80cm}
+    No! By the \blue{\bf strategy stealing argument}.
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{center}
+    Does \red{\bf Player 1} have a \red{\bf winning strategy}? \\[8pt]
+
+    \pause
+    \vspace{0.80cm}
+    Yes!
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{center}
+    What are \red{\bf Player 1}'s \red{\bf winning strategies}? \\[8pt]
+
+    \pause
+    \vspace{0.80cm}
+    Uses \blue{\bf edge-disjoint spanning trees}.
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+	\begin{center}
+    \blue{\small \bf Two edge-disjoint spanning trees
+		  to connect all the dots for Player 1}
+
+		\fig{width = 0.60\textwidth}{figs/bridg-it-two-st}
+
+		\pause
+		The ``0-th'' turn of Player 2: take away the imaginary (red) edge.
+
+		\fig{width = 0.70\textwidth}{figs/cut-reconnect}
+
+		\pause
+		Until \purple{Player 1 has won} or
+		when \brown{no single edges remain to be cut}.
+	\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%

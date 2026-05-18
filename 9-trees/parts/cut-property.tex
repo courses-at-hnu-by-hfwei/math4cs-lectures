@@ -2,11 +2,58 @@
 
 %%%%%%%%%%%%%
 \begin{frame}{}
+  \begin{center}
+    Kruskal's and Prim's algorithms are essentially \red{\bf THE SAME}!
+  \end{center}
+
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.80\textwidth}{figs/kruskal-demo}
+    \column{0.50\textwidth}
+      \fig{width = 0.80\textwidth}{figs/prim-demo}
+  \end{columns}
+
+  \pause
+  \vspace{0.30cm}
+  \begin{center}
+    \blue{Iteratively} and \cyan{greedily}
+    adding \purple{\bf ``safe''} edges \\[5pt]
+    until \green{$n - 1$ edges} are added.
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{center}
+    \purple{\bf ``Safe'':}
+    If \blue{$X$} is a part of \cyan{some MST $T$}, \\[5pt]
+    then \blue{$X \cup \set{e}$} is also a part of \cyan{some MST $T'$}.
+  \end{center}
+
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.80\textwidth}{figs/kruskal-demo}
+    \column{0.50\textwidth}
+      \fig{width = 0.80\textwidth}{figs/prim-demo}
+  \end{columns}
+
+  \pause
+  \vspace{0.30cm}
+  \begin{center}
+    \purple{\bf ``Safe'':}
+    the \blue{next lightest edge} that \blue{does not lead to a cycle}.
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%
+\begin{frame}{}
   \begin{theorem}[Cut Property]
     \begin{description}
       \item[$X:$] A part of some MST $T$ of $G$
       \item[$(S, V \setminus S):$] A \purple{\it cut} such that $X$ does \purple{\it not} cross $(S, V \setminus S)$
-    ­  \item[$e:$] \red{A} lightest edge across $(S, V \setminus S)$
+      \item[$e:$] \red{A} lightest edge across $(S, V \setminus S)$
     \end{description}
 
     \begin{center}
