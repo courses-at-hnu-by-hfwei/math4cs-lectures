@@ -47,25 +47,36 @@ Lectures on [Mathematics for Computer Science@Hunan University](https://github.c
 | 8 | 2026-04-23 | [8-paths-cycles-(1)](https://www.bilibili.com/video/BV14i96BbEra/); [8-paths-cycles-(2)](https://www.bilibili.com/video/BV1Ki96BbEpd/) |
 
 ## 后续课程建设计划
+- Official math4cs website
 - Coq
 - SAT
 - SageMath
 - Mathematica
 - 1B3B
+- math4cs AI Tutor
 
 ## TODO
 - OCW
   - Logic
+    - SAT Theory
   - Proof
     - Lossless Compression (Pigeonhole Principle)
     - Increasing/Decreasing Subsequences (Paul Erdos)
     - [Art gallery problem](https://en.wikipedia.org/wiki/Art\_gallery\_problem)
+    - Coq
   - Set Theory
-    - Cantor-Schröder–Bernstein
+    - [ ] Cantor-Schröder–Bernstein
+    - [ ] Closure
+    - [ ] SQL algebra
+    - [ ] (VIS, AR)
+    - TLA+
   - Group Theory
     - 15-Puzzle
     - Burnside Lemma (in Group Theory)
+    - CRDT (semi-group)
+    - SageMath
+    - Mathematica
   - Graph Theory
-    - 5-Color Theorem
-    - Cayley's Formula (Counting Trees)
+    - [x] 5-Color Theorem
+    - [x] Cayley's Formula (Counting Trees)
     - Network flow, Hall theorem, Maximum-matching theorem, Dilworth theorem

@@ -1,0 +1,187 @@
+% variants.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{theorem}
+    对于任何自然数 $n$, $13^{n}$ 都可以写成两个自然数的平方之和。
+  \end{theorem}
+
+  \pause
+  \begin{eqnarray*}
+    13^{n+1} &=& 13 \cdot \red{13^n} \\
+    &=& (2^2+3^2)(\red{a^2 + b^2}) \\
+    &=& \blue{(\underbrace{2a+3b}_x)^2 + (\underbrace{3a-2b}_y)^2} \\
+    &=& x^2+y^2
+  \end{eqnarray*}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{theorem}
+    对于任何自然数 $n$, $13^{n}$ 都可以写成两个自然数的平方之和。
+  \end{theorem}
+
+  \pause
+  \[
+    13^0 = 1^2 + 0^2
+  \]
+  \pause
+  \[
+    13^1 = 2^2 + 3^2
+  \]
+  \pause
+  \begin{eqnarray*}
+    13^{n+2} &=& 13^2\cdot \red{13^n} \\
+    &=& 13^2(\red{a^2 + b^2}) \\
+    &=& (\underbrace{13a}_x)^2 + (\underbrace{13b}_y)^2 \\
+    &=& x^2+y^2
+  \end{eqnarray*}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{}
+%   \begin{exampleblock}{}
+%     \begin{align*}
+%       f(1, 1) &= 2 \\
+%       f(m+1, n) &= f(m,n) + 2(m+n) \\
+%       f(m, n+1) &= f(m,n) + 2(m+n-1)
+%     \end{align*}
+%     请证明,
+%     \[
+%       \forall m, n \in \N^{+}.\; f(m,n) = (m+n)^{2} - (m+n) - 2n + 2
+%     \]
+%   \end{exampleblock}
+%
+%   \pause
+%   \begin{center}
+%     \red{Double Induction (Induciton Twice)}
+%
+%     \pause
+%     \[
+%       f(1, 1)
+%     \]
+%     \pause
+%     \[
+%       f(k, 1) \to f(k+1, 1)
+%     \]
+%     \pause
+%     \[
+%       f(\red{h}, k) \to f(\red{h}, k+1) \text{ for any } h
+%     \]
+%   \end{center}
+% \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{}
+%   \begin{exampleblock}{}
+%     \begin{align*}
+%       f(1, 1) &= 2 \\
+%       f(m+1, n) &= f(m,n) + 2(m+n) \\
+%       f(m, n+1) &= f(m,n) + 2(m+n-1)
+%     \end{align*}
+%     请证明,
+%     \[
+%       \forall m, n \in \N^{+}.\; f(m,n) = (m+n)^{2} - (m+n) - 2n + 2
+%     \]
+%   \end{exampleblock}
+%
+%   \pause
+%   \begin{center}
+%     \red{对 $m + n$ 作归纳}
+%   \end{center}
+% \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{}
+%   \begin{exampleblock}{Josephus Problem}
+%     \fig{width = 0.50\textwidth}{figs/Josephus}
+%
+%     \[
+%       J(12) = 9
+%     \]
+%   \end{exampleblock}
+% \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{}
+%   \begin{columns}
+%     \column{0.50\textwidth}
+%       \begin{center}
+%         $2n$ 个人
+%       \end{center}
+%       \fig{width = 0.80\textwidth}{figs/2n-people}
+%
+%       \pause
+%       \[
+%         J(2n) = 2J(n) - 1, n \ge 1
+%       \]
+%     \column{0.50\textwidth}
+%       \pause
+%       \begin{center}
+%         $2n + 1$ 个人
+%       \end{center}
+%       \fig{width = 0.80\textwidth}{figs/2n+1-people}
+%
+%       \pause
+%       \[
+%         J(2n + 1) = 2J(n) + 1, n \ge 1
+%       \]
+%   \end{columns}
+% \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}{}
+%   \begin{align*}
+%     J(1) &= 1 \\[8pt]
+%     J(2n) &= 2J(n) - 1, n \ge 1 \\[8pt]
+%     J(2n + 1) &= 2J(n) + 1, n \ge 1
+%   \end{align*}
+%
+%   \pause
+%   \begin{columns}
+%     \column{0.50\textwidth}
+%       \fig{width = 0.55\textwidth}{figs/concrete-mathematics-book}
+%     \column{0.50\textwidth}
+%       \fig{width = 0.70\textwidth}{figs/knuth}
+%   \end{columns}
+% \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \[
+    m \in \N \qquad n \in \N
+  \]
+  \[
+    a(m, n) = \begin{cases}
+      0, & m = n = 0 \\[5pt]
+      a(m-1, n) + 1, & n = 0 \land m > 0 \\[5pt]
+      a(m, n-1) + n. & n > 0
+    \end{cases}
+  \]
+
+  \[
+    a(m, n) = m + n (n + 1)/2
+  \]
+
+  \pause
+  \quad \red{对 $n$ 作归纳。}
+  \pause
+  \begin{description}
+    \setlength{\itemsep}{6pt}
+    \item[基础步骤:] \uncover<4->{$n = 0$。要证 $\forall m.\; a(m, 0) = m$。} \\[6pt]
+      \uncover<5->{\blue{对 $m$ 作归纳。} (\purple{\bf Double Induction})}
+    \item[归纳假设:] \uncover<6->{
+      假设 $n = k$ 时, $\forall m.\; a(m, k) = m + k(k+1)/2$。}
+    \item[归纳步骤:] \uncover<7->{
+      考虑 $n = k + 1$。\\[6pt]
+      要证 $\forall m.\; a(m, k + 1) = m + (k+1)(k+2)/2$。}
+  \end{description}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

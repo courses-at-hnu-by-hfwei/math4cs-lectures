@@ -1,0 +1,121 @@
+% strong-mip.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{exampleblock}{算术基本定理 (The Fundamental Theorem of Arithmetic)}
+    任何一个$\ge 2$的自然数都可以\blue{(唯一)}写为若干素数的乘积。
+  \end{exampleblock}
+
+  \pause
+  \vspace{0.30cm}
+  \begin{center}
+    \red{对自然数 $n$ 作强数学归纳}
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{exampleblock}{}
+    \begin{center}
+      设 $\ast$ 是一个满足结合律的二元运算符, 即
+      \[
+        (a \ast b) \ast c = a \ast (b \ast c).
+      \]
+      请证明, $a_{1} \ast a_{2} \ast \dots \ast a_{n}\; (n \ge 3)$
+      的值与括号的使用方式无关。
+    \end{center}
+  \end{exampleblock}
+
+  \pause
+  \vspace{0.30cm}
+  \begin{center}
+    \red{对 $n$ 作强数学归纳}
+  \end{center}
+
+  \pause
+  \[
+    (\dots) \;\red{\ast}\; (\dots)
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{exampleblock}{}
+    \begin{align*}
+      F_{0} &= 0, \qquad F_{1} = 1, \\[6pt]
+      F_{n} &= F(n-1) + F(n-2) \quad (n \ge 2)
+    \end{align*}
+    \[
+      \text{请证明:}\; F(n) \;\text{是偶数当且仅当}\; F(n+3) \;\text{是偶数。}
+    \]
+  \end{exampleblock}
+
+  \pause
+  \begin{center}
+    \red{对 $n$ 作归纳}
+
+    \pause
+    \vspace{0.30cm}
+    \blue{基础步骤:} 命题对 $n = 0, 1$ 成立
+
+    \pause
+    \vspace{0.30cm}
+    \blue{归纳假设:} 对任意 $n \le k$, $F(n)$是偶数当且仅当$F(n+3)$是偶数
+
+    \pause
+    \begin{align*}
+      F(k+1) &= \cyan{F(k)} + \teal{F(k-1)} \\[6pt]
+      F(k+4) &= \cyan{F(k+3)} + \teal{F(k+2)}
+    \end{align*}
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{exampleblock}{Tiling Puzzle}
+    只用$1 \times 1$ 与 $1 \times 2$两种矩形,
+    拼出 $1 \times n$ 的形状, 有几种不同的拼法?
+    \fig{width = 0.50\textwidth}{figs/1xn}
+  \end{exampleblock}
+
+  \pause
+  \vspace{0.30cm}
+  \fig{width = 0.40\textwidth}{figs/1x1-tiling}
+
+  \pause
+  \fig{width = 0.40\textwidth}{figs/1x2-tiling}
+
+  \pause
+  \vspace{-0.30cm}
+  \begin{align*}
+    T_{0} &= 1, \qquad T_{1} = 1, \\[6pt]
+    T_{n} &= \blue{T(n-1)} + \red{T(n-2)} \quad (n \ge 2)
+  \end{align*}
+
+  \pause
+  \[
+    \cyan{\boxed{F_{n} = T_{n}}}
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \[
+    \cyan{\boxed{F_{n} = T_{n}}}
+  \]
+
+  \pause
+  \vspace{0.50cm}
+  \[
+    F_{2n} = \teal{(F_{n})^{2}} + \violet{(F_{n-1})^{2}}
+  \]
+
+  \pause
+  \vspace{0.50cm}
+  \fig{width = 0.70\textwidth}{figs/f2n-proof}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

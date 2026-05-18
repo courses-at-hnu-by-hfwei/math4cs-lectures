@@ -1,0 +1,475 @@
+% network-flow.tex
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \begin{definition}[Network (网络)]
+    A \red{network} is a \purple{digraph} with
+    \begin{itemize}
+      \setlength{\itemsep}{5pt}
+      \item a distinguished \blue{source vertex} $s$,
+      \item a distinguished \blue{sink vertex} $t$,
+      \item a \blue{capacity} $c(e) \ge 0$ on each edge $e$
+    \end{itemize}
+  \end{definition}
+
+  \vspace{0.30cm}
+  \fig{width = 0.60\textwidth}{figs/West-network-example}
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \begin{definition}[Flow (流)]
+    A \red{flow} $f$ is a \cyan{function} that assigns a value $f(e)$ to each edge $e$.
+  \end{definition}
+
+  \vspace{0.30cm}
+  \fig{width = 0.60\textwidth}{figs/flow-value-1}
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \begin{definition}[Feasible Flow (可行流)]
+    A \blue{flow} $f$ is \red{feasible} if it satisfies
+    \begin{description}[Capacity Constraints:]
+      \item[Capacity Constraints:]
+        \[
+          \forall e \in E.\; 0 \le f(e) \le c(e)
+        \]
+      \item[Flow Conservation:]
+        \[
+          \forall v \in V.\; f^{+}(v) = f^{-}(v)
+        \]
+    \end{description}
+  \end{definition}
+
+  \fig{width = 0.60\textwidth}{figs/flow-value-1}
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \[
+    f^{+}(v) = \sum_{(v, w) \;\in\; E} f(v, w) \qquad
+    f^{-}(v) = \sum_{(u, v) \;\in\; E} f(u, v)
+  \]
+
+  \fig{width = 0.60\textwidth}{figs/flow-value-1}
+
+  \pause
+  \[
+    f^{+}(U) = \sum_{u \in U, v \in \overline{U}, (u, v) \in E} f(u, v) \pause\qquad
+    f^{-}(U) = \sum_{v \in \overline{U}, u \in U, (v, u) \in E} f(v, u)
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \fig{width = 0.60\textwidth}{figs/flow-value-1}
+
+  \pause
+  \[
+    \forall U \subseteq (V - \set{s, t}).\; f^{+}(U) = f^{-}(U)
+  \]
+
+  \pause
+  \[
+    s \in U \land t \notin U \implies f^{+}(U) - f^{-}(U) = \pause f^{+}(s)
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \begin{definition}[Value (值)]
+    The \red{value} $\val(f)$ of a \blue{flow} $f$ is
+    \[
+      \val(f) = f^{-}(t) = f^{+}(s).
+    \]
+  \end{definition}
+
+  \vspace{0.30cm}
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.90\textwidth}{figs/flow-value-1}
+    \column{0.50\textwidth}
+      \pause
+      \fig{width = 0.90\textwidth}{figs/flow-value-2}
+  \end{columns}
+
+  \pause
+  \vspace{0.50cm}
+  \begin{definition}[Maximum Flow (最大流)]
+    A \red{maximum flow} is a \blue{feasible flow} of maximum \blue{value}.
+  \end{definition}
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \[
+    s - x \;\red{-}\; v - t
+  \]
+  \vspace{-0.30cm}
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.90\textwidth}{figs/flow-value-1}
+    \column{0.50\textwidth}
+      \fig{width = 0.90\textwidth}{figs/flow-value-2}
+  \end{columns}
+
+  \pause
+  \vspace{0.30cm}
+  \begin{definition}[$f$-augmenting Paths (增广路径)]
+    When $f$ is a feasible flow, an \red{$f$-augmenting path} is a $s \sim t$ path $P$ \\
+    \blue{in the underlying graph} such that for each edge $e \in E(P)$,
+    \begin{enumerate}[(a)]
+      \item if $P$ follows $e$ in the forward direction, then $f(e) < c(e)$;
+      \item if $P$ follows $e$ in the backward direction, then $f(e) > 0$.
+    \end{enumerate}
+  \end{definition}
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \begin{definition}[$f$-augmenting Paths]
+    Let $P$ be an $f$-augmenting path.
+
+    \[
+      \epsilon(e) = \begin{cases}
+        c(e) - f(e) & \text{ if } e \text{ is forward on } P \\
+        f(e)        & \text{ if } e \text{ is backward on } P
+      \end{cases}
+    \]
+  \end{definition}
+
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.90\textwidth}{figs/flow-value-1}
+    \column{0.50\textwidth}
+      \fig{width = 0.90\textwidth}{figs/flow-value-2}
+  \end{columns}
+
+  \pause
+  \vspace{0.30cm}
+  \begin{center}
+    An $f$-augmenting path leads to a flow with \red{larger} value.
+    \[
+      \min_{e \;\in\; E(P)} \epsilon(e)
+    \]
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \fig{width = 0.60\textwidth}{figs/CLRS-flow-19}
+
+  \pause
+  \vspace{0.30cm}
+  \fig{width = 0.60\textwidth}{figs/CLRS-flow-19}
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \begin{definition}[Source/Sink Cut (割)]
+    In a network, a \red{source/sink cut} $[S, T]$
+    consists of the edges \blue{from} a \cyan{source set} $S$
+    \blue{to} a \cyan{sink set} $T$, where
+    \[
+      (T = V - S) \land (s \in S) \land (t \in T)
+    \]
+  \end{definition}
+
+  \vspace{0.50cm}
+  \fig{width = 0.50\textwidth}{figs/ST-cut}
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \fig{width = 0.50\textwidth}{figs/ST-cut}
+
+  \begin{definition}[Capacity of Cut (割的容量)]
+    \[
+      \capacity(S, T) = \sum_{u \in S, v \in T, uv \in E} c(u, v)
+    \]
+  \end{definition}
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \fig{width = 0.50\textwidth}{figs/West-network-example}
+
+  \pause
+  \begin{definition}[Minimum Cut (最小割)]
+    A \red{minimum cut} is a \blue{cut} of minimum value.
+  \end{definition}
+
+  \pause
+  \vspace{0.50cm}
+  \fig{width = 0.50\textwidth}{figs/CLRS-network-example}
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \begin{theorem}[Weak Duality (弱对偶定理)]
+    Let $f$ be any feasible \red{flow} and $[S, T]$ be any source/sink \red{cut}.
+    \[
+      \val(f) \le \capacity(S, T).
+    \]
+  \end{theorem}
+
+  \fig{width = 0.50\textwidth}{figs/ST-cut}
+
+  \pause
+  \[
+    \val(f) = f^{+}(S) - f^{-}(S) \pause \le f^{+}(S) \pause \le \capacity(S, T)
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \begin{lemma}
+    \[
+      \max_{f} \val(f) \le \min_{[S, T]} \capacity(S, T)
+    \]
+  \end{lemma}
+
+  \pause
+  \vspace{0.60cm}
+  \begin{center}
+    \red{What if $\val(f) = \capacity(S, T)$ for some flow $f$ and some cut $[S, T]$?}
+
+    \pause
+    \vspace{0.50cm}
+    \blue{$f$ is maximum and $[S, T]$ is minimum}
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \[
+    \val(f) = f^{+}(S) - f^{-}(S) \;\red{=}\; f^{+}(S) \;\red{=}\; \capacity(S, T)
+  \]
+
+  \pause
+  \[
+    \blue{\boxed{f^{-1}(S) = 0 \land f^{+}(S) = \capacity(S, T)}}
+  \]
+
+  \only<3>{\fig{width = 0.60\textwidth}{figs/flow-value-2}}
+  \only<4->{\fig{width = 0.60\textwidth}{figs/ClRS-flow-23}}
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \begin{theorem}[Max-flow Min-cut Theorem (Ford and Fulkerson; 1956)]
+    \[
+      \max_{f} \val(f) = \min_{[S, T]} \capacity(S, T)
+    \]
+    \begin{center}
+      \red{(Strong Duality)}
+    \end{center}
+  \end{theorem}
+
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.50\textwidth}{figs/Ford}
+      \begin{center}
+        \teal{L. R. Ford Jr. ($1927 \sim 2017$)}
+      \end{center}
+    \column{0.50\textwidth}
+      \fig{width = 0.50\textwidth}{figs/Fulkerson}
+      \begin{center}
+        \teal{D. R. Fulkerson ($1924 \sim 1976$)}
+      \end{center}
+  \end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \fig{width = 0.60\textwidth}{figs/CLRS-flow-23}
+
+  \pause
+  \vspace{0.30cm}
+  \fig{width = 0.60\textwidth}{figs/maxflow-mincut}
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \begin{theorem}
+    A feasible flow $f$ is maximum iff there are no $f$-augmenting paths.
+  \end{theorem}
+
+  \pause
+  \vspace{0.30cm}
+  \begin{center}
+    \red{We construct a cut $[S, T]$ with $\val(f) = \capacity(S, T)$.}
+
+    \pause
+    \fig{width = 0.60\textwidth}{figs/maxflow-mincut}
+    \[
+      S \triangleq \set{\text{the vertices reachable from $s$
+      along \red{partial} $f$-augmenting paths}}
+    \]
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \begin{center}
+    \[
+      S \triangleq \set{\text{the vertices reachable from $s$
+      along \red{partial} $f$-augmenting paths}}
+    \]
+    \[
+      T \triangleq V - S
+    \]
+    \fig{width = 0.60\textwidth}{figs/maxflow-mincut}
+    \pause
+    \[
+      f^{-1}(S) = 0 \land f^{+}(S) = \capacity(S, T)
+    \]
+    \pause
+    \[
+      \val(f) = f^{+}(S) - f^{-}(S) \;\red{=}\; f^{+}(S) \;\red{=}\; \capacity(S, T)
+    \]
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \begin{exampleblock}{The Ford-Fulkerson Method}
+    Repeatedly \red{finding} \blue{$f$}-augmenting paths
+    until \cyan{no more ones exist}.
+  \end{exampleblock}
+
+  \vspace{0.50cm}
+  \only<2>{\fig{width = 0.70\textwidth}{figs/West-network-example}}
+  \only<3>{\fig{width = 0.75\textwidth}{figs/CLRS-network-example}}
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \begin{exampleblock}{The Edmonds-Karp Algorithm}
+    Using \red{BFS} (Breadth-first Search) to find $f$-augmenting paths.
+  \end{exampleblock}
+
+  \vspace{0.50cm}
+  \only<2>{\fig{width = 0.70\textwidth}{figs/West-network-example}}
+  \only<3>{\fig{width = 0.75\textwidth}{figs/CLRS-network-example}}
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \begin{theorem}[Hall Theorem; 1935]
+    There is an \red{$X$-perfect matching} of $G$ \purple{iff}
+    \[
+      \forall W \subseteq X.\; \card{W} \le \card{N_{G}(W)}
+    \]
+  \end{theorem}
+
+  \pause
+  \fig{width = 0.50\textwidth}{figs/Flow-Hall}
+  \[
+    \forall x \in X.\; c(s, x) = 1 \quad \forall y \in Y.\; c(y, t) = 1
+    \quad \forall x \in X, y \in Y.\; c(x, y) = \infty
+  \]
+
+  \pause
+  \begin{center}
+    \blue{We need to show that $\max\limits_{f} \val(f) = \card{X}$.}
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \begin{center}
+    We need to show that
+    $\min\limits_{[S, \overline{S}]} \capacity(S, \overline{S}) = \card{X}.$
+  \end{center}
+  \fig{width = 0.50\textwidth}{figs/Flow-Hall}
+
+  \pause
+  \[
+    \min\limits_{[S, \overline{S}]} \capacity(S, \overline{S}) \le \card{X}
+  \]
+
+  \pause
+  \begin{center}
+    \blue{Therefore, we need to show that
+      $\min\limits_{[S, \overline{S}]} \capacity(S, \overline{S}) \ge \card{X}.$
+    }
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \begin{center}
+    Let $[S, \overline{S}]$ be a cut.
+    We need to show that $\capacity(S, \overline{S}) \ge \card{X}$.
+
+    \vspace{0.30cm}
+    \fig{width = 0.50\textwidth}{figs/Flow-Hall}
+    \[
+      \red{\boxed{N(S \cap X) \not\subseteq (S \cap Y)}}
+    \]
+    \pause
+    \[
+      \capacity(S, \overline{S}) = \infty \ge \card{X}
+    \]
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \[
+    \red{\boxed{N(S \cap X) \subseteq (S \cap Y)}}
+  \]
+  \fig{width = 0.50\textwidth}{figs/Flow-Hall-Cut}
+
+  \pause
+  \vspace{-0.60cm}
+  \begin{align*}
+    \capacity(S, \overline{S}) &= \sum_{u \in S, v \in \overline{S}} c(x, y) \\
+      \uncover<3->{&= \sum_{v \in \overline{S} \cap X} c(\red{s}, v) +
+         \sum_{u \in S \cap Y} c(u, \red{t}) \\}
+      \uncover<4->{&= \card{X} - \card{S \cap X} + \card{S \cap Y}} \\
+      \uncover<5->{&\;\red{\ge}\; \card{X} - \card{S \cap X} + \;\red{\card{N(S \cap X)}}}
+      \uncover<6->{\;\blue{\ge}\; \card{X}}
+  \end{align*}
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \begin{theorem}[K\"{o}nig (1931), Egerv\'{a}ry (1931)]
+    If $G$ is a bipartite graph, then
+    the maximum size of a mathching in $G$ equals
+    the minimum size of a vertex cover of $G$
+  \end{theorem}
+
+  \pause
+  \vspace{0.50cm}
+  \fig{width = 0.35\textwidth}{figs/keep-calm-and-try-yourself}
+\end{frame}
+%%%%%%%%%%%%%%%g
