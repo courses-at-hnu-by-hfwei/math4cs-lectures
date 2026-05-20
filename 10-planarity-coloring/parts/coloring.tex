@@ -81,50 +81,75 @@
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
-% \begin{frame}{}
-%   \begin{theorem}[Characterization of Bipartite Graphs]
-%     A graph is 2-colorable iff it is \red{bipartite}.
-%
-%     \pause
-%     \vspace{0.30cm}
-%     A graph is \red{bipartite} iff it does not contain any \purple{odd} cycles.
-%   \end{theorem}
-%
-%   \begin{columns}
-%     \column{0.50\textwidth}
-%       \pause
-%       \fig{width = 0.80\textwidth}{figs/K-5-3}
-%       \[
-%         K_{5, 3}
-%       \]
-%     \column{0.50\textwidth}
-%       \pause
-%       \fig{width = 0.70\textwidth}{figs/bipartite-graph-no-cycles}
-%   \end{columns}
-%
-%   \pause
-%   \begin{lemma}
-%     Every tree is bipartite and is thus $2$-colorable.
-%   \end{lemma}
-% \end{frame}
+\begin{frame}{}
+  \begin{theorem}[Characterization of Bipartite Graphs]
+    A graph is 2-colorable iff it is \red{bipartite}.
+
+    \pause
+    \vspace{0.30cm}
+    A graph is \red{bipartite} iff it does not contain any \purple{odd} cycles.
+  \end{theorem}
+
+  \begin{columns}
+    \column{0.50\textwidth}
+      \pause
+      \fig{width = 0.80\textwidth}{figs/K-5-3}
+      \[
+        K_{5, 3}
+      \]
+    \column{0.50\textwidth}
+      \pause
+      \fig{width = 0.60\textwidth}{figs/bipartite-graph-no-cycles}
+  \end{columns}
+
+  \pause
+  \begin{lemma}
+    Every tree is bipartite and is thus $2$-colorable.
+  \end{lemma}
+\end{frame}
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
-% \begin{frame}{}
-%   \begin{Lemma}[Characterization of Bipartite Graphs (\!$\implies$\!)]
-%     If a graph is \red{bipartite},
-%     then it does not contain any \purple{odd} cycles.
-%   \end{Lemma}
-% \end{frame}
+\begin{frame}{}
+  \begin{Lemma}[Characterization of Bipartite Graphs (\!$\implies$\!)]
+    If a graph is \red{bipartite},
+    then it does not contain any \purple{odd} cycles.
+  \end{Lemma}
+
+  \vspace{0.80cm}
+  \fig{width = 0.60\textwidth}{figs/odd-cycles}
+\end{frame}
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
-% \begin{frame}{}
-%   \begin{Lemma}[Characterization of Bipartite Graphs ($\Longleftarrow$)]
-%     If a graph does not contain any \purple{odd} cycles,
-%     then it is \red{bipartite}.
-%   \end{Lemma}
-% \end{frame}
+\begin{frame}{}
+  \begin{Lemma}[Characterization of Bipartite Graphs ($\Longleftarrow$)]
+    If a graph $G$ does not contain any \purple{odd} cycles,
+    then it is \red{bipartite}.
+  \end{Lemma}
+
+  \pause
+  \vspace{0.30cm}
+  \begin{center}
+    Choose any vertex $u \in V(G)$.
+    \pause
+    \[
+      X = \{x \in V(G) : \text{the \blue{distance} from $u$ to $x$ is even}\}
+    \]
+    \[
+      Y = \{y \in V(G) : \text{the \blue{distance} from $u$ to $y$ is odd}\}
+    \]
+
+    \pause
+    \vspace{-0.30cm}
+    \fig{width = 0.40\textwidth}{figs/no-odd-cycle-bipartite}
+    \pause
+    \vspace{-0.50cm}
+    \[
+      \purple{u \leadsto v \to v' \leadsto u} \text{ is an \purple{odd} cycle.}
+    \]
+  \end{center}
+\end{frame}
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
@@ -150,8 +175,12 @@
     The $4$-coloring problem is \textsf{NP-complete} \red{(HARD!)}.
   \end{theorem}
 
+  \vspace{0.50cm}
+  \uncover<3->{
+    \fig{width = 0.40\textwidth}{figs/planar}
+  }
+
   \pause
-  \vspace{1.20cm}
   \begin{theorem}[Four Color Theorem \teal{\small (Kenneth Appel, Wolfgang Haken; 1976)}]
     Every \cyan{simple} \red{planar} graph is \blue{4-colorable}.
   \end{theorem}

@@ -18,6 +18,30 @@
 \end{frame}
 %%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{theorem}[Four Color (Map) Theorem \teal{(informal)}]
+    Every \red{map} can be colored with only \blue{four} colors such that \\
+    no two \purple{adjacent} \cyan{regions} share the same color.
+  \end{theorem}
+
+  \begin{columns}
+    \column{0.50\textwidth}
+      \pause
+      \fig{width = 0.80\textwidth}{figs/non-contiguous-region}
+        \begin{center}
+          {Regions should be \teal{contiguous}.}
+        \end{center}
+    \column{0.50\textwidth}
+      \pause
+      \fig{width = 1.00\textwidth}{figs/triangulation}
+      \begin{center}
+        \purple{Adjacent} regions share a segment.
+      \end{center}
+  \end{columns}
+\end{frame}
+%%%%%%%%%%%%%%
+
 %%%%%%%%%%%%%%%
 \begin{frame}{}
   \fig{width = 0.50\textwidth}{figs/4-color-example}
@@ -26,37 +50,15 @@
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
-  \fig{width = 0.50\textwidth}{figs/must-4-color}
-
-  \pause
   \begin{center}
+    \blue{4} colors are \red{necessary}
+
+    \pause
+    \fig{width = 0.50\textwidth}{figs/must-4-color}
+
     Every region is adjacent to the other $3$ regions.
   \end{center}
 \end{frame}
-%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%
-% \begin{frame}{}
-%   \begin{theorem}[Four Color (Map) Theorem \teal{(informal)}]
-%     Every \red{map} can be colored with only \blue{four} colors such that \\
-%     no two \purple{adjacent} \cyan{regions} share the same color.
-%   \end{theorem}
-%
-%   \begin{columns}
-%     \column{0.50\textwidth}
-%       \pause
-%       \fig{width = 0.80\textwidth}{figs/non-contiguous-region}
-%         \begin{center}
-%           {Regions should be \teal{contiguous}.}
-%         \end{center}
-%     \column{0.50\textwidth}
-%       \pause
-%       \fig{width = 1.00\textwidth}{figs/triangulation}
-%       \begin{center}
-%         \purple{Adjacent} regions share a segment.
-%       \end{center}
-%   \end{columns}
-% \end{frame}
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
@@ -105,6 +107,35 @@
   \begin{center}
     I will \red{\it not} show its proof (which I don't understand either)!
   \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{theorem}[Four Color Theorem \teal{\small (Kenneth Appel, Wolfgang Haken; 1976)}]
+    Every \cyan{simple} \red{planar} graph is \blue{4-colorable}.
+  \end{theorem}
+
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.40\textwidth}{figs/impossible}
+    \column{0.50\textwidth}
+      \uncover<2->{
+        \fig{width = 0.40\textwidth}{figs/K5}
+      }
+  \end{columns}
+
+  \begin{center}
+    What if we have a map which contains \blue{$5$} regions so that \\[5pt]
+    every region is adjacent to the other \red{$4$} regions?
+  \end{center}
+
+  \vspace{0.30cm}
+  \uncover<3->{
+    \begin{theorem}
+      $K_5$ is not \red{planar}.
+    \end{theorem}
+  }
 \end{frame}
 %%%%%%%%%%%%%%%
 
