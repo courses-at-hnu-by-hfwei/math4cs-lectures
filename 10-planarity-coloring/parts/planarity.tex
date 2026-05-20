@@ -119,6 +119,25 @@
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
+  \begin{definition}[Homeomorphic]
+    Two graphs are \red{homeomorphic} if
+    one can be obtained from another by \blue{inserting or contracting}
+    vertices of \cyan{degree 2}.
+  \end{definition}
+
+  \begin{columns}
+    \column{0.50\textwidth}
+      \pause
+      \fig{width = 0.60\textwidth}{figs/hypercube-nonplanar}
+    \column{0.50\textwidth}
+      \pause
+      \fig{width = 0.60\textwidth}{figs/subdivision-k33}
+  \end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
   \begin{theorem}
     The Petersen graph is non-planar.
   \end{theorem}
@@ -127,7 +146,7 @@
 
   \vspace{-0.60cm}
   \begin{center}
-    \teal{\url{https://github.com/courses-at-nju-by-hfwei/discrete-math-lectures/blob/main/11-planarity-coloring/figs/Kuratowski-Petersen.gif}}
+    \teal{\url{https://github.com/courses-at-hnu-by-hfwei/math4cs-lectures/blob/main/10-planarity-coloring/figs/Kuratowski-Petersen.gif}}
   \end{center}
   % \begin{center}
   %   \transduration<0-83>{0}
@@ -150,6 +169,18 @@
   \[
     \red{\text{cr}}(\text{Petersen Graph}) = 2
   \]
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \fig{width = 0.80\textwidth}{figs/planarity-testing-paper}
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.35\textwidth}{figs/tarjan}
+    \column{0.50\textwidth}
+      \fig{width = 0.40\textwidth}{figs/hopcroft}
+  \end{columns}
 \end{frame}
 %%%%%%%%%%%%%%%
 
@@ -251,13 +282,13 @@
   \]
   \pause
   \[
-    \blue{3f \le 2m}
+    \blue{2m = \Sigma_{i} f_{i} \ge 3f}
   \]
   \pause
   \begin{center}
-    \red{Double Counting:} \\[3pt]
-    each face is bounded by $\ge 3$ edges; \\
-    each edge bounds $2$ faces
+    \red{Double Counting the Edges around Faces:} \\[3pt]
+    each edge bounds $2$ faces; \\
+    each face is bounded by $\ge 3$ edges
   \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%
@@ -322,7 +353,7 @@
 
   \pause
   \[
-    \blue{4f \le 2m}
+    \blue{2m = \Sigma_{i} f_{i} \ge 4f}
   \]
 \end{frame}
 %%%%%%%%%%%%%%%
