@@ -268,8 +268,8 @@
 %%%%%%%%%%%%%%%
 \begin{frame}{}
   \begin{theorem}
-    Let $G$ be a simple connected planar graph with $n \ge 3$ vertices
-    and $m$ edges. Then
+    Let $G$ be a simple connected planar graph with
+    \red{$n \ge 3$} vertices and $m$ edges. Then
     \[
       m \le 3n -6.
     \]
@@ -281,7 +281,7 @@
   \]
   \pause
   \[
-    \blue{2m = \Sigma_{i} f_{i} \ge 3f}
+    \blue{2m = \Sigma_{f} \deg(f) \ge 3f}
   \]
   \pause
   \begin{center}
@@ -309,6 +309,40 @@
   \[
     10 \le 3 \times 5 - 6
   \]
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{theorem}
+    $K_{5}$ is non-planar.
+  \end{theorem}
+
+  \begin{columns}
+    \column{0.40\textwidth}
+      \pause
+      \fig{width = 0.50\textwidth}{figs/K5}
+      \[
+        m \le 3n -6
+      \]
+
+      \[
+        10 \le 3 \times 5 - 6
+      \]
+    \column{0.60\textwidth}
+      \pause
+      \fig{width = 0.80\textwidth}{figs/K5-Nonplanar-Proof}
+
+      \pause
+      \begin{theorem}[Jordan Curve Theorem (1887)]
+        \fig{width = 0.40\textwidth}{figs/jordan-curve-theorem}
+      \end{theorem}
+  \end{columns}
+
+  \pause
+  \begin{center}
+    \href{https://en.wikipedia.org/wiki/Algebraic\_topology}{Algebraic Topology}
+  \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%
 
@@ -352,7 +386,7 @@
 
   \pause
   \[
-    \blue{2m = \Sigma_{i} f_{i} \ge 4f}
+    \blue{2m = \Sigma_{f} \deg(f) \ge 4f}
   \]
 \end{frame}
 %%%%%%%%%%%%%%%
@@ -362,6 +396,8 @@
   \begin{theorem}
     $K_{3, 3}$ is non-planar.
   \end{theorem}
+
+  \fig{width = 0.20\textwidth}{figs/K-3-3-Bipartite}
 
   \pause
   \[
@@ -382,18 +418,18 @@
   \end{theorem}
 
   \pause
-  \[
-    m \le 3n - 6
-  \]
-
-  \pause
   \begin{center}
     Suppose that, \red{by contradiction}, $\delta(G) \ge 6$.
   \end{center}
 
   \pause
   \[
-    6n \le 2m
+    2m = \Sigma_{v} \deg(v) \ge 6n
+  \]
+
+  \pause
+  \[
+    m \le 3n - 6
   \]
 
   \pause

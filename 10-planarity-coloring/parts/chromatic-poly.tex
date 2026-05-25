@@ -1,0 +1,96 @@
+% chromatic-poly.tex
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+	\begin{center}
+		\red{$P(G, k)$: How many ways to color the vertices of $G$ with $k$ colors?}
+
+	  % \fig{width = 0.70\textwidth}{figs/3-vertex-coloring}
+
+		\pause
+		\[
+			P(P_{4}, k) = \pause k(k-1)^3
+		\]
+		\pause
+		\[
+			P(C_4, k) = \pause k(k-1)^2(k-2)
+		\]
+		\pause
+		\[
+			P(K_4, k) = \pause k(k-1)(k-2)(k-3)
+		\]
+	\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+	\begin{theorem}[Deletion-Contraction Recurrence]
+		Let $G$ be a simple graph and $e$ be an edge of $G$. Then
+		\[
+			P(G, k) = \purple{P(G - e, k)} - \violet{P(G / e, k)},
+		\]
+		where \purple{$G - e$} is the graph obtained from $G$ by \purple{deleting} $e$, \\
+		and \violet{$G / e$} is the graph obtained from $G$ by \violet{contracting} $e$.
+	\end{theorem}
+
+	\pause
+	\fig{width = 0.70\textwidth}{figs/chromatic-poly-example}
+	\pause
+	\[
+		k(k-1)(k-2)(k-3) = k(k-1)(k-2)^{2} - k(k-1)(k-2)
+	\]
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+	\begin{theorem}[Deletion-Contraction Recurrence]
+		\[
+			P(G, k) = \purple{P(G - e, k)} - \violet{P(G / e, k)}
+		\]
+	\end{theorem}
+
+	\fig{width = 0.70\textwidth}{figs/chromatic-poly-example}
+
+	\pause
+	\[
+		P(G - e, k) =  P(G, k) + P(G / e, k)
+	\]
+	\pause
+	\vspace{-0.30cm}
+	\begin{align*}
+		\purple{P(G - e, k)} =\; &P(G - e, k) \text{ with $v$ and $w$ having \red{\it different} colors} \\
+		  +\; &P(G - e, k) \text{ with $v$ and $w$ having the \red{\it same} color}
+	\end{align*}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+	\[
+		P(G, k) = \purple{P(G - e, k)} - \violet{P(G / e, k)}
+	\]
+
+	\fig{width = 0.65\textwidth}{figs/chromatic-poly-example-2}
+
+	\pause
+	\vspace{-0.30cm}
+	\begin{align*}
+		P(G, k) &= k(k-1)^4 - 3k(k-1)^3 + 2k(k-1)^2 + k(k-1)(k-2) \\
+		        &= k^5 - 7k^4 + 18k^3 - 20k^2 + 8k
+	\end{align*}
+
+	\pause
+	\begin{theorem}[Chromatic Polynomial]
+		$P(G, k)$ is a polynomial in $k$.
+	\end{theorem}
+
+	\pause
+	\vspace{-0.30cm}
+	\[
+		\red{k^n} \blue{-} \brown{m} k^{n - 1} \blue{+}
+		  \cdots \blue{-} \cdots + ak + \cyan{0}
+	\]
+\end{frame}
+%%%%%%%%%%%%%%%
