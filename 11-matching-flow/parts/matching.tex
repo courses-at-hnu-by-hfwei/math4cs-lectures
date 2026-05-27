@@ -12,7 +12,7 @@
     If there is a finite set of \red{girls},
     each of whom knows several \blue{boys}, \\[3pt]
     \purple{under what conditions} can all the girls marry boys in such a way that \\[3pt]
-    \red{each girl} marries \cyan{a boy} that she knows?
+    \red{each girl} marries \cyan{a distinct boy} that she knows?
   \end{exampleblock}
 
   \pause
@@ -25,7 +25,23 @@
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
-  \fig{width = 0.40\textwidth}{figs/Hall-X-Y}
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.80\textwidth}{figs/Hall-X-Y}
+    \column{0.50\textwidth}
+      \uncover<3->{
+        \fig{width = 1.00\textwidth}{figs/maximal-matching}
+        \begin{center}
+          Maximal Matching
+        \end{center}
+      }
+      \uncover<4->{
+        \fig{width = 0.80\textwidth}{figs/maximum-matching}
+        \begin{center}
+          Maximum Matching
+        \end{center}
+      }
+  \end{columns}
 
   \pause
   \vspace{0.30cm}
@@ -37,7 +53,19 @@
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
-  \fig{width = 0.40\textwidth}{figs/Hall-X-Y}
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.70\textwidth}{figs/bipartite-perfect-matching}
+      \begin{center}
+        Perfect Matching
+      \end{center}
+    \column{0.50\textwidth}
+      \pause
+      \fig{width = 0.70\textwidth}{figs/Hall-X-Y}
+      \begin{center}
+        $X$-Perfect Matching
+      \end{center}
+  \end{columns}
 
   \vspace{0.30cm}
   \begin{definition}[$X$-Perfect Matching ($X$-Saturating Matching)]
@@ -50,25 +78,41 @@
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
-  \[
-    \card{X} \le \card{Y}
-  \]
+  \begin{exampleblock}{The Marriage Problem (Philip Hall, 1935)}
+    Let $G = (X, Y, E)$ be a bipartite graph.
+
+    Is there an \red{$X$-perfect matching} of $G$?
+  \end{exampleblock}
+
+  \fig{width = 0.40\textwidth}{figs/Hall-X-Y}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \uncover<2->{
+    \[
+      \card{X} \le \card{Y}
+    \]
+  }
   \fig{width = 0.40\textwidth}{figs/Hall-X-Y}
 
-  \pause
-  \[
-    \forall W \subseteq X.\; \card{W} \le \card{N(W)}
-  \]
+  \uncover<3->{
+    \[
+      \forall W \subseteq X.\; \card{W} \le \card{N(W)}
+    \]
+  }
 \end{frame}
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
   \begin{theorem}[Hall Theorem; 1935]
-    Let $G = (X, Y, E)$ be a bipartite graph.
-    There is an \red{$X$-perfect matching} of $G$ \purple{iff}
+    Let $G = (X, Y, E)$ be a bipartite graph. \\[6pt]
+
+    There is an \red{$X$-perfect matching} of $G$ \purple{if and only if}
     \[
-      \forall W \subseteq X.\; \card{W} \le \card{N_{G}(W)}
+      \forall W \subseteq X\; \card{W} \le \card{N_{G}(W)}.
     \]
   \end{theorem}
 \end{frame}
@@ -84,12 +128,16 @@
     \begin{description}[<+->][Induction Hypothesis:]
       \setlength{\itemsep}{8pt}
       \item[Basis Step:] $\card{X} = 1$. $\card{X} \le \card{N_{G}(X)}$.
-        \uncover<3->{I am married!}
+        I am married!
       \item[Induction Hypothesis:]
         Suppose that it holds if $\card{X} \;\red{<}\; m$.
       \item[Induction Step:]
         Consider the case $\card{X} = m$.
     \end{description}
+
+    \pause
+    \vspace{0.50cm}
+    \red{How to reduce the case $\card{X} = m$ to a case $\card{X'} < m$?}
   \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%
@@ -102,30 +150,31 @@
     \pause
     \vspace{0.50cm}
     \begin{itemize}
-      \item \textsc{Case I:} Every $k < m$ girls in $X$ know
-        $\ge k + 1$ boys in $Y$.
+      \item \textsc{Case I:}
+        \purple{Every $k < m$ girls in $X$ know $\ge k + 1$ boys in $Y$.}
 
         \pause
         \vspace{0.20cm}
         \begin{center}
           \blue{Take any girl $x$ and marry her to any boy $y$ she knows.}
+
           \pause
           \[
             G' = G - \set{x, y}
           \]
           \pause
-          \red{The Hall's Condition still holds for $G'$.}
+          \red{Hall's Condition still holds for $G'$.}
           \pause
           \[
             \forall W \subseteq X - \set{x}.\; \card{W} \le \card{N_{G'}(W)}
           \]
 
           \pause
-          There is a $(X - \set{x})$-perfer matching in $G'$.
+          There is an $(X - \set{x})$-perfect matching in $G'$.
 
           \pause
-          \vspace{0.30cm}
-          Therefore, there is a $(X - \set{x})$-perfer matching in $G$.
+          \vspace{0.60cm}
+          Therefore, there is an $X$-perfect matching in $G$.
         \end{center}
     \end{itemize}
   \end{center}
@@ -135,8 +184,8 @@
 %%%%%%%%%%%%%%%
 \begin{frame}{}
   \begin{itemize}
-    \item \textsc{Case II:} There is a set of $k < m$ girls in $X$
-      who know $k$ boys in $Y$.
+    \item \textsc{Case II:} \purple{There is a set of $k < m$ girls in $X$
+      who know exactly $k$ boys in $Y$.}
 
       \begin{center}
         \pause
@@ -144,12 +193,16 @@
         There $k$ girls can be married \red{by induction} to the $k$ boys.
 
         \pause
+        \vspace{0.20cm}
+        \blue{Hall's Condition holds for these $k$ girls and the $k$ boys.}
+
+        \pause
         \[
           G' = G - \set{\text{these $k$ girls}} - \set{\text{these $k$ boys}}
         \]
 
         \pause
-        $G'$ satisfies the Hall's Condition.
+        \blue{Hall's Condition still holds for $G'$.}
 
         \pause
         \vspace{0.30cm}
@@ -162,11 +215,11 @@
 
         \pause
         \vspace{0.50cm}
-        There is a $(X - \set{\text{these $k$ girls}})$-perfer matching in $G'$.
+        There is an $(X - \set{\text{these $k$ girls}})$-perfect matching in $G'$.
 
         \pause
         \vspace{0.30cm}
-        Therefore, there is a $(X - \set{x})$-perfer matching in $G$.
+        Therefore, there is an $X$-perfect matching in $G$.
       \end{center}
   \end{itemize}
 \end{frame}
@@ -175,10 +228,10 @@
 %%%%%%%%%%%%%%%
 \begin{frame}{}
   \begin{theorem}[Hall Theorem; 1935]
-    Let $G = (X, Y, E)$ be a bipartite graph.
-    There is a \red{$X$}-perfect matching of $G$ \purple{iff}
+    Let $G = (X, Y, E)$ be a bipartite graph. \\[6pt]
+
     \[
-      \forall W \subseteq X.\; \card{W} \le \card{N_{G}(W)}
+      \forall W \subseteq X\; \card{W} \le \card{N_{G}(W)}.
     \]
   \end{theorem}
 \end{frame}
@@ -206,30 +259,40 @@
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
+  \begin{theorem}[Hall Theorem; 1935]
+    Let $G = (X, Y, E)$ be a bipartite graph. \\[6pt]
+
+    There is a \red{$X$}-perfect matching of $G$ \purple{if and only if}
+    \[
+      \forall W \subseteq X\; \card{W} \le \card{N_{G}(W)}.
+    \]
+  \end{theorem}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
   \begin{center}
     \red{By contradiction.}
 
     \pause
     \vspace{0.30cm}
-    Suppose that there is \red{\it no} $X$-perfect matching.
+    Suppose that there is \red{\it no} $X$-perfect matching in $G$.
+
+    \pause
+    \vspace{0.30cm}
+    Let $M$ be a \purple{\it maximum} matching in $G$.
+
+    \pause
+    \fig{width = 0.70\textwidth}{figs/Hall-Proof}
 
     \pause
     \vspace{0.20cm}
     We show that Hall's Condition is violated for \blue{some} $S \subseteq X$.
 
     \pause
-    \fig{width = 0.70\textwidth}{figs/Hall-Proof}
-
-    \pause
-    Let $M$ be a \purple{\it maximum} matching.
-
-    \pause
-    \vspace{0.20cm}
-    Let $u \in X$ be a vertex of $X$ not saturated by $M$.
-
-    \pause
-    \vspace{0.20cm}
-    Consider all \violet{\it $M$-alternating paths} starting from $u$.
+    \vspace{0.50cm}
+    We will construct $S \subseteq X$ based on $M$.
   \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%
@@ -237,22 +300,30 @@
 %%%%%%%%%%%%%%%
 \begin{frame}{}
   \begin{center}
-    \fig{width = 0.70\textwidth}{figs/Hall-Proof}
+    Let $u \in X$ be a vertex of $X$ \red{\it not} saturated by $M$.
 
-    \vspace{0.50cm}
-    $T \triangleq$ the set of vertices in $Y$ reachable from $u$ by $M$-alternating paths.
+    \fig{width = 0.70\textwidth}{figs/Hall-Proof}
 
     \pause
     \vspace{0.20cm}
-    $S \triangleq$ the set of vertices in $X$ reachable from $u$ by $M$-alternating paths.
+    Consider all \violet{\it $M$-alternating paths} starting from $u$.
 
     \pause
-    \vspace{0.60cm}
+    \vspace{0.30cm}
+    $T \triangleq$ the set of vertices in \cyan{$Y$} reachable from $u$ by $M$-alternating paths.
+
+    \pause
+    \vspace{0.20cm}
+    $S \triangleq$ the set of vertices in \cyan{$X$} reachable from $u$ by $M$-alternating paths.
+
+    \pause
+    \vspace{0.20cm}
     We will show that
     \[
       \blue{T = N(S) \land \card{T} = \card{S - \set{u}}}
     \]
     \pause
+    \vspace{-0.30cm}
     \[
       \red{\card{N(S)} = \card{T} = \card{S} - 1 < \card{S}}
     \]
@@ -270,36 +341,55 @@
 
     \pause
     \vspace{0.30cm}
-    We show that there is a bijection from $T$ to $S - \set{u}$.
+    We show that there is a \red{bijection} from $T$ to $S - \set{u}$.
 
     \pause
     \vspace{0.30cm}
-    $M$ matches $T$ with $S - \set{u}$.
+    \purple{$M$} matches $T$ with $S - \set{u}$.
+
+    \pause
+    \vspace{0.50cm}
+    Every vertex in $T$ goes via an edge in \purple{$M$} to a vertex in $S - \set{u}$.
+
+    \pause
+    \vspace{0.30cm}
+    Every vertex in $S - \set{u}$ is reached by an edge in \purple{$M$} from a vertex in $T$.
   \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
 \begin{frame}{}
+  \vspace{-0.50cm}
   \begin{center}
     \[
       \blue{T = N(S)}
     \]
+    \vspace{-0.80cm}
     \fig{width = 0.70\textwidth}{figs/Hall-Proof}
     \pause
     \[
-      \card{T} = \card{S - \set{u}} \implies T \subseteq N(S)
+      \text{\purple{$M$} matches $T$ with $S - \set{u}$} \implies T \subseteq N(S)
     \]
-
     \pause
+    \vspace{-0.30cm}
     \[
       \blue{\text{We need to show that } N(S) \subseteq T}
     \]
 
     \pause
     \begin{center}
-      Consider the neighbors of $x \in S$: \pause
-      $x = u, \pause\quad x \in S - \set{u}$
+      Suppose \red{by contradiction} that $v \in S$ has a neighbor $y \in Y - T$.
+
+      \pause
+      \vspace{0.20cm}
+      It must be $vy \notin \purple{M}$.
+
+      \pause
+      \vspace{0.20cm}
+      There exists an \purple{$M$}-alternating path to $y$ from $u$.
+      \pause
+      $\implies y \in T$.
     \end{center}
   \end{center}
 \end{frame}
@@ -340,7 +430,7 @@
   \begin{theorem}[K\"{o}nig (1931), Egerv\'{a}ry (1931)]
     Let $G$ be a \red{bipartite} graph.
     The maximum size of a mathching in $G$ \\
-    \red{equals} the minimum size of a vertex cover of $G$
+    \red{=} the minimum size of a vertex cover of $G$
   \end{theorem}
 \end{frame}
 %%%%%%%%%%%%%%%
@@ -348,7 +438,7 @@
 %%%%%%%%%%%%%%%
 \begin{frame}{}
   \begin{center}
-    \red{Given a vertex cover $Q$, we construct a matching $M$ of the same size.}
+    \red{Given a minimum vertex cover $Q$, \\we construct a matching $M$ of the same size.}
   \end{center}
 
   \pause
@@ -369,10 +459,6 @@
 
   \pause
   \begin{center}
-    $G$ has no edges from $X - R$ to $Y - T$.
-
-    \pause
-    \vspace{0.30cm}
     \blue{\fbox{$H$ has a $R$-perfect matching and $H'$ has a $T$-perfect matching.}}
   \end{center}
 \end{frame}
@@ -385,16 +471,78 @@
     \fig{width = 0.80\textwidth}{figs/Konig-theorem-West}
 
     \pause
-    \red{By contradition.}
+    To show that Hall's Condition holds for $H$ (and $R$).
+
+    \pause
+    \vspace{0.60cm}
+    \red{By contradiction.}
 
     \pause
     \vspace{0.30cm}
-    $\exists S \subseteq R.\; \card{N_{H}(S)} < \card{S}$
+    $\exists S \subseteq R.\; \card{\cyan{N_{H}(S)}} < \card{\teal{S}}$
 
     \pause
+    \vspace{-0.30cm}
     \[
-      T \cup (R \;\red{-\; S + N_{H}(S)}) \text{ is a smaller vertex cover than } Q
+      T \cup (R \;\red{-\; \teal{S} + \cyan{N_{H}(S)}}) \text{ is a smaller vertex cover than } Q.
     \]
   \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \begin{exampleblock}{Augmenting Path Algorithm for Maximum Bipartite Matching}
+    \begin{itemize}
+      \setlength{\itemsep}{8pt}
+      \pause
+      \item $M = \emptyset$
+      \pause
+      \item {\bf While} there \red{is} an $M$-augmenting path $P$:
+        \begin{itemize}
+          \item Enlarge $M$ by $P$: \blue{$M \gets M \oplus P$}
+        \end{itemize}
+      \pause
+      \item {\bf Return} \purple{$M$}
+    \end{itemize}
+  \end{exampleblock}
+
+  \pause
+  \vspace{0.60cm}
+  \begin{center}
+    How to \red{find $M$-augmenting paths} \gray{efficiently}?
+
+    \pause
+    \vspace{0.30cm}
+    How to prove that \purple{the $M$ returned} is a \purple{maximum} matching?
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \begin{exampleblock}{Augmenting Path Algorithm for Maximum Bipartite Matching}
+    \begin{itemize}
+      \setlength{\itemsep}{8pt}
+      \item $M = \emptyset$
+      \item {\bf While} there \red{is} an $M$-augmenting path $P$:
+        \begin{itemize}
+          \item Enlarge $M$ by $P$: \blue{$M \gets M \oplus P$}
+        \end{itemize}
+      \item {\bf Return} \purple{$M$}
+    \end{itemize}
+  \end{exampleblock}
+
+  \pause
+  \vspace{0.20cm}
+  \begin{center}
+    \fig{width = 0.70\textwidth}{figs/Hall-Proof}
+
+    \pause
+    \vspace{0.30cm}
+    When the algorithm terminates, \\[6pt]
+    it actually finds a \purple{vertex cover $T \cup (X - S)$ of size $M$}.
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%g
+    % \fig{width = 0.70\textwidth}{figs/bipartite-matching}
