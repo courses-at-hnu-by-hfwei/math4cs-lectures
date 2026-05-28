@@ -58,7 +58,7 @@ Lectures on [Mathematics for Computer Science@Hunan University](https://github.c
 ## TODO
 - OCW
   - Logic
-    - SAT Theory
+    - SAT/SMT Theory
   - Proof
     - Lossless Compression (Pigeonhole Principle)
     - Increasing/Decreasing Subsequences (Paul Erdos)
@@ -69,14 +69,17 @@ Lectures on [Mathematics for Computer Science@Hunan University](https://github.c
     - [ ] Closure
     - [ ] SQL algebra
     - [ ] (VIS, AR)
-    - TLA+
-  - Group Theory
-    - 15-Puzzle
-    - Burnside Lemma (in Group Theory)
-    - CRDT (semi-group)
-    - SageMath
-    - Mathematica
+    - [ ] TLA+
   - Graph Theory
+    - [ ] Bridg-It Animation: Winning strategy (https://github.com/mglaezer/bridgit)
     - [x] 5-Color Theorem
     - [x] Cayley's Formula (Counting Trees)
     - Network flow, Hall theorem, Maximum-matching theorem, Dilworth theorem
+  - Group Theory
+    - [ ] 15-Puzzle
+    - [ ] Rubic
+    - [ ] Burnside Lemma (in Group Theory)
+    - [ ] CRDT (semi-group)
+    - [ ] SageMath
+    - [ ] Mathematica
+    - [ ] Visual Group Theory
