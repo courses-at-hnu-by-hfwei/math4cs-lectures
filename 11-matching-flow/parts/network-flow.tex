@@ -13,7 +13,12 @@
   \end{definition}
 
   \vspace{0.30cm}
-  \fig{width = 0.60\textwidth}{figs/West-network-example}
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.85\textwidth}{figs/West-network-example}
+    \column{0.50\textwidth}
+      \fig{width = 0.90\textwidth}{figs/CLRS-network-example}
+  \end{columns}
 \end{frame}
 %%%%%%%%%%%%%%%g
 
@@ -24,7 +29,12 @@
   \end{definition}
 
   \vspace{0.30cm}
-  \fig{width = 0.60\textwidth}{figs/flow-value-1}
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.85\textwidth}{figs/flow-value-1}
+    \column{0.50\textwidth}
+      \fig{width = 0.90\textwidth}{figs/CLRS-flow-19}
+  \end{columns}
 \end{frame}
 %%%%%%%%%%%%%%%g
 
@@ -35,48 +45,26 @@
     \begin{description}[Capacity Constraints:]
       \item[Capacity Constraints:]
         \[
-          \forall e \in E.\; 0 \le f(e) \le c(e)
+          \forall e \in E\; 0 \le f(e) \le c(e)
         \]
       \item[Flow Conservation:]
         \[
-          \forall v \in V.\; f^{+}(v) = f^{-}(v)
+          \forall v \in V \setminus \set{s, t}\; f^{+}(v) = f^{-}(v)
         \]
     \end{description}
   \end{definition}
 
-  \fig{width = 0.60\textwidth}{figs/flow-value-1}
-\end{frame}
-%%%%%%%%%%%%%%%g
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.85\textwidth}{figs/flow-value-1}
+    \column{0.50\textwidth}
+      \fig{width = 0.90\textwidth}{figs/CLRS-flow-19}
+  \end{columns}
 
-%%%%%%%%%%%%%%%g
-\begin{frame}{}
+  \vspace{0.50cm}
   \[
     f^{+}(v) = \sum_{(v, w) \;\in\; E} f(v, w) \qquad
     f^{-}(v) = \sum_{(u, v) \;\in\; E} f(u, v)
-  \]
-
-  \fig{width = 0.60\textwidth}{figs/flow-value-1}
-
-  \pause
-  \[
-    f^{+}(U) = \sum_{u \in U, v \in \overline{U}, (u, v) \in E} f(u, v) \pause\qquad
-    f^{-}(U) = \sum_{v \in \overline{U}, u \in U, (v, u) \in E} f(v, u)
-  \]
-\end{frame}
-%%%%%%%%%%%%%%%g
-
-%%%%%%%%%%%%%%%g
-\begin{frame}{}
-  \fig{width = 0.60\textwidth}{figs/flow-value-1}
-
-  \pause
-  \[
-    \forall U \subseteq (V - \set{s, t}).\; f^{+}(U) = f^{-}(U)
-  \]
-
-  \pause
-  \[
-    s \in U \land t \notin U \implies f^{+}(U) - f^{-}(U) = \pause f^{+}(s)
   \]
 \end{frame}
 %%%%%%%%%%%%%%%g
@@ -105,12 +93,64 @@
     A \red{maximum flow} is a \blue{feasible flow} of maximum \blue{value}.
   \end{definition}
 \end{frame}
-%%%%%%%%%%%%%%%g
+%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%g
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.90\textwidth}{figs/CLRS-flow-19}
+    \column{0.50\textwidth}
+      \pause
+      \fig{width = 0.90\textwidth}{figs/CLRS-flow-23}
+  \end{columns}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.90\textwidth}{figs/flow-value-1}
+    \column{0.50\textwidth}
+      \fig{width = 0.90\textwidth}{figs/flow-value-2}
+  \end{columns}
+
+  \pause
+  \vspace{0.80cm}
+  \[
+    s \sim t \text{ path}: s - x \;\red{-}\; v - t
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.90\textwidth}{figs/CLRS-flow-19}
+    \column{0.50\textwidth}
+      \pause
+      \fig{width = 0.90\textwidth}{figs/CLRS-flow-23}
+  \end{columns}
+
+  \pause
+  \vspace{0.80cm}
+  \[
+    s \sim t \text{ path}: s - v_{1} \;\red{-}\;
+      v_{2}\;\red{-}\; v_{3} - t
+  \]
+  \pause
+  \[
+    s \sim t \text{ path}: s - v_{2} \;\red{-}\; v_{3} - t
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
 \begin{frame}{}
   \[
-    s - x \;\red{-}\; v - t
+    s \sim t \text{ path}: s - x \;\red{-}\; v - t
   \]
   \vspace{-0.30cm}
   \begin{columns}
@@ -158,7 +198,7 @@
   \begin{center}
     An $f$-augmenting path leads to a flow with \red{larger} value.
     \[
-      \min_{e \;\in\; E(P)} \epsilon(e)
+      \text{\blue{tolerance} of } P: \min_{e \;\in\; E(P)} \epsilon(e)
     \]
   \end{center}
 \end{frame}
@@ -166,11 +206,22 @@
 
 %%%%%%%%%%%%%%%g
 \begin{frame}{}
-  \fig{width = 0.60\textwidth}{figs/CLRS-flow-19}
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.90\textwidth}{figs/flow-value-1}
+    \column{0.50\textwidth}
+      \fig{width = 0.90\textwidth}{figs/flow-value-2}
+  \end{columns}
 
   \pause
-  \vspace{0.30cm}
-  \fig{width = 0.60\textwidth}{figs/CLRS-flow-19}
+  \vspace{0.80cm}
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.95\textwidth}{figs/CLRS-flow-19}
+    \column{0.50\textwidth}
+      \pause
+      \fig{width = 0.95\textwidth}{figs/CLRS-flow-23}
+  \end{columns}
 \end{frame}
 %%%%%%%%%%%%%%%g
 
@@ -178,10 +229,10 @@
 \begin{frame}{}
   \begin{definition}[Source/Sink Cut (割)]
     In a network, a \red{source/sink cut} $[S, T]$
-    consists of the edges \blue{from} a \cyan{source set} $S$
-    \blue{to} a \cyan{sink set} $T$, where
+    consists of the edges \\
+    \blue{from} a \cyan{source set} $S$ \blue{to} a \cyan{sink set} $T$, where
     \[
-      (T = V - S) \land (s \in S) \land (t \in T)
+      (T = V \setminus S) \land (s \in S) \land (t \in T)
     \]
   \end{definition}
 
@@ -196,7 +247,7 @@
 
   \begin{definition}[Capacity of Cut (割的容量)]
     \[
-      \capacity(S, T) = \sum_{u \in S, v \in T, uv \in E} c(u, v)
+      \capacity(S, T) = \sum_{u \in S, v \in T, \red{uv \in E}} c(u, v)
     \]
   \end{definition}
 \end{frame}
@@ -214,6 +265,63 @@
   \pause
   \vspace{0.50cm}
   \fig{width = 0.50\textwidth}{figs/CLRS-network-example}
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \begin{theorem}[Weak Duality (弱对偶定理)]
+    Let $f$ be any feasible \red{flow} and $[S, T]$ be any source/sink \red{cut}.
+    \[
+      \val(f) \le \capacity(S, T).
+    \]
+  \end{theorem}
+
+  \fig{width = 0.50\textwidth}{figs/ST-cut}
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.85\textwidth}{figs/flow-value-1}
+    \column{0.50\textwidth}
+      \fig{width = 0.90\textwidth}{figs/CLRS-flow-19}
+  \end{columns}
+
+  \vspace{0.50cm}
+  \[
+    f^{+}(U) = \sum_{u \in U, v \in \overline{U}, (u, v) \in E} f(u, v) \pause\qquad
+    f^{-}(U) = \sum_{v \in \overline{U}, u \in U, (v, u) \in E} f(v, u)
+  \]
+
+  \pause
+  \vspace{0.50cm}
+  \begin{center}
+    net flow out of $U$: $f^{+}(U) - f^{-}(U) = \pause
+      \sum_{u \in U} (f^{+}(u) - f^{-}(u))$
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \fig{width = 0.60\textwidth}{figs/flow-value-1}
+
+  \pause
+  \[
+    \forall U \subseteq (V - \set{s, t})\; f^{+}(U) = f^{-}(U)
+  \]
+
+  \pause
+  \[
+    s \in U \land t \notin U \implies f^{+}(U) - f^{-}(U) = \pause f^{+}(s) = \pause \val(f)
+  \]
+  \pause
+  \[
+    s \notin U \land t \in U \implies f^{+}(U) - f^{-}(U) = \pause f^{-}(t) = \pause \val(f)
+  \]
 \end{frame}
 %%%%%%%%%%%%%%%g
 
