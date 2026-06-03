@@ -374,6 +374,11 @@
     \blue{\boxed{f^{-1}(S) = 0 \land f^{+}(S) = \capacity(S, T)}}
   \]
 
+  \pause
+  \[
+    \purple{\boxed{\forall e \in [T, S]\; f(e) = 0 \land \forall e \in [S, T]\; f(e) = \capacity(e)}}
+  \]
+
   \only<3>{\fig{width = 0.60\textwidth}{figs/flow-value-2}}
   \only<4->{\fig{width = 0.60\textwidth}{figs/ClRS-flow-23}}
 \end{frame}
@@ -407,11 +412,44 @@
 
 %%%%%%%%%%%%%%%g
 \begin{frame}{}
-  \fig{width = 0.60\textwidth}{figs/CLRS-flow-23}
+  \begin{exampleblock}{The Ford-Fulkerson Method}
+    Repeatedly \red{finding} \blue{$f$}-augmenting paths
+    until \cyan{no more ones exist}.
+  \end{exampleblock}
+
+  \vspace{0.50cm}
+  \only<2>{\fig{width = 0.70\textwidth}{figs/West-network-example}}
+  \only<3>{\fig{width = 0.75\textwidth}{figs/CLRS-network-example}}
+\end{frame}
+%%%%%%%%%%%%%%%g
+
+% %%%%%%%%%%%%%%%g
+% \begin{frame}{}
+%   \fig{width = 0.60\textwidth}{figs/CLRS-flow-23}
+
+%   \pause
+%   \vspace{0.30cm}
+%   \fig{width = 0.60\textwidth}{figs/maxflow-mincut}
+% \end{frame}
+% %%%%%%%%%%%%%%%g
+
+%%%%%%%%%%%%%%%g
+\begin{frame}{}
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.90\textwidth}{figs/flow-value-1}
+    \column{0.50\textwidth}
+      \fig{width = 0.90\textwidth}{figs/flow-value-2}
+  \end{columns}
 
   \pause
-  \vspace{0.30cm}
-  \fig{width = 0.60\textwidth}{figs/maxflow-mincut}
+  \vspace{0.80cm}
+  \begin{columns}
+    \column{0.50\textwidth}
+      \fig{width = 0.95\textwidth}{figs/CLRS-flow-19}
+    \column{0.50\textwidth}
+      \fig{width = 0.95\textwidth}{figs/CLRS-flow-23}
+  \end{columns}
 \end{frame}
 %%%%%%%%%%%%%%%g
 
@@ -446,7 +484,8 @@
     \[
       T \triangleq V - S
     \]
-    \fig{width = 0.60\textwidth}{figs/maxflow-mincut}
+    % \fig{width = 0.60\textwidth}{figs/maxflow-mincut}
+    \fig{width = 0.60\textwidth}{figs/CLRS-flow-23}
     \pause
     \[
       f^{-1}(S) = 0 \land f^{+}(S) = \capacity(S, T)
@@ -456,19 +495,6 @@
       \val(f) = f^{+}(S) - f^{-}(S) \;\red{=}\; f^{+}(S) \;\red{=}\; \capacity(S, T)
     \]
   \end{center}
-\end{frame}
-%%%%%%%%%%%%%%%g
-
-%%%%%%%%%%%%%%%g
-\begin{frame}{}
-  \begin{exampleblock}{The Ford-Fulkerson Method}
-    Repeatedly \red{finding} \blue{$f$}-augmenting paths
-    until \cyan{no more ones exist}.
-  \end{exampleblock}
-
-  \vspace{0.50cm}
-  \only<2>{\fig{width = 0.70\textwidth}{figs/West-network-example}}
-  \only<3>{\fig{width = 0.75\textwidth}{figs/CLRS-network-example}}
 \end{frame}
 %%%%%%%%%%%%%%%g
 
@@ -487,17 +513,19 @@
 %%%%%%%%%%%%%%%g
 \begin{frame}{}
   \begin{theorem}[Hall Theorem; 1935]
+    Let $G = (X, Y, E)$ be a bipartite graph. \\[6pt]
+
     There is an \red{$X$-perfect matching} of $G$ \purple{iff}
     \[
-      \forall W \subseteq X.\; \card{W} \le \card{N_{G}(W)}
+      \forall W \subseteq X\; \card{W} \le \card{N_{G}(W)}
     \]
   \end{theorem}
 
   \pause
   \fig{width = 0.50\textwidth}{figs/Flow-Hall}
   \[
-    \forall x \in X.\; c(s, x) = 1 \quad \forall y \in Y.\; c(y, t) = 1
-    \quad \forall x \in X, y \in Y.\; c(x, y) = \infty
+    \forall x \in X\; c(s, x) = 1 \quad \forall y \in Y\; c(y, t) = 1
+    \quad \forall x \in X, y \in Y\; c(x, y) = \infty
   \]
 
   \pause
