@@ -74,7 +74,7 @@ Lectures on [Mathematics for Computer Science@Hunan University](https://github.c
     - [ ] Bridg-It Animation: Winning strategy (https://github.com/mglaezer/bridgit)
     - [x] 5-Color Theorem
     - [x] Cayley's Formula (Counting Trees)
-    - Network flow, Hall theorem, Maximum-matching theorem, Dilworth theorem
+    - Network flow, Hall theorem, Maximum-matching theorem, Dilworth theorem, Menger Theorem
   - Group Theory
     - [ ] 15-Puzzle
     - [ ] Rubic
