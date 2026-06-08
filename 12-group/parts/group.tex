@@ -12,19 +12,19 @@
     \begin{description}[<+->][Associativity:]
       \item[Closure (封闭):]
         \[
-          \forall a, b \in G.\; a \ast b \in G
+          \forall a, b \in G\; a \ast b \in G
         \]
       \item[Associativity (结合律):]
         \[
-          \forall a, b, c \in G.\; (a \ast b) \ast c = a \ast (b \ast c)
+          \forall a, b, c \in G\; (a \ast b) \ast c = a \ast (b \ast c)
         \]
       \item[Identity (单位元):]
         \[
-          \exists e \in G.\; \forall a \in G.\; e \ast a = a \ast e = a
+          \exists e \in G\; \forall a \in G\; e \ast a = a \land a \ast e = a
         \]
       \item[Inverse (逆元):] Let $e$ be \red{the} identity of $G$.
         \[
-          \forall a \in G.\; \exists b \in G.\; a \ast b = b \ast a = e
+          \forall a \in G\; \exists b \in G\; a \ast b = e \land b \ast a = e
         \]
         \red{The} inverse of $a$ is denoted $a^{-1}$.
     \end{description}
@@ -73,7 +73,7 @@
 
     \pause
     \[
-      (1, -1, \text{\bf i}, -\text{\bf i})
+      (\set{1, -1, \text{\bf i}, -\text{\bf i}}, \times)
     \]
 \end{frame}
 %%%%%%%%%%%%%%%
@@ -173,7 +173,7 @@
   \]
   \pause
   \[
-    \blue{(u, m) = 1 \pause\qquad ua = au = au + mv = 1\mod{m}}
+    \blue{(u, m) = 1 \pause\qquad ua = au = au + mv = 1 (\mod{m})}
   \]
 \end{frame}
 %%%%%%%%%%%%%%%
@@ -206,7 +206,7 @@
   \vspace{0.50cm}
   \begin{definition}[Euler's Totient Function (1763)]
     \[
-      \varphi(m) = n \prod_{p \mid n \;\land\; p \text{ is a prime}}
+      \varphi(m) = n \prod_{p \mid n \;\land\; p\; \text{ is a prime}}
         \left(1 - \frac{1}{p} \right)
     \]
   \end{definition}
@@ -244,7 +244,7 @@
 
   \pause
   \[
-    \prod_{i=1}^{n} (a a_i) = a_{1} \dots a_{n}
+    \prod_{i=1}^{n} (a a_i) = \prod_{i=1}^{n} a_i
   \]
 
   \pause
@@ -266,6 +266,11 @@
 
   \pause
   \[
+    7^{222} \text{ 的最后一位数字?}
+  \]
+
+  \pause
+  \[
     7^{222} \mod{10}
   \]
 
@@ -276,7 +281,7 @@
 
   \pause
   \[
-    7^{4} \equiv 1 \mod{10}
+    7^{\varphi(10)} = 7^{4} \equiv 1 \mod{10}
   \]
 
   \pause
@@ -288,7 +293,7 @@
 
 %%%%%%%%%%%%%%%
 \begin{frame}
-  \begin{theorem}[Euler Theorem]
+  \begin{theorem}[Euler Theorem (1736)]
     Let $m \in \Z^{+}$ and $a \in \Z$.
     If $(a, m) = 1$, then
     \[
