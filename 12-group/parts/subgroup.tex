@@ -45,7 +45,7 @@
         \]
       \item The inversion of $a$ in $H$ is the same with that in $G$.
         \[
-          \forall a \in H.\; a^{-1}_{H} = a^{-1}_{G}
+          \forall a \in H\; a^{-1}_{H} = a^{-1}_{G}
         \]
     \end{enumerate}
   \end{theorem}
@@ -56,7 +56,7 @@
   \]
   \pause
   \[
-    a a^{-1}_{H} = e_{H} = e_{G} = a a^{-1}_{G} \implies a^{-1}_{H} = a^{-1}(G)
+    a a^{-1}_{H} = e_{H} = e_{G} = a a^{-1}_{G} \implies a^{-1}_{H} = a^{-1}_{G}
   \]
 \end{frame}
 %%%%%%%%%%%%%%%
@@ -67,7 +67,7 @@
     Let $G$ be a group and $\blue{\emptyset} \neq H \subseteq G$.
     $H \le G$ iff
     \[
-      \forall a, b \in H.\; \red{a b^{-1}} \in H.
+      \forall a, b \in H\; \red{a b^{-1}} \in H.
     \]
   \end{theorem}
 
@@ -116,6 +116,36 @@
 
 %%%%%%%%%%%%%%%
 \begin{frame}
+  \begin{theorem}
+    Suppose that $H_{1} \le G, H_{2} \le G$.
+    \[
+      H_{1} \cap H_{2} \le G.
+    \]
+  \end{theorem}
+
+  \pause
+  \[
+    e \in H_{1} \cap H_{2} \implies H_{1} \cap H_{2} \neq \emptyset
+  \]
+
+  \pause
+  \[
+    \purple{\boxed{\forall a, b \in H_{1} \cap H_{2}\; a b^{-1} \in H_{1} \cap H_{2}}}
+  \]
+
+  \pause
+  \[
+    a, b \in H_{1} \cap H_{2} \implies a, b \in H_{1} \land a, b \in H_{2}
+  \]
+  \pause
+  \[
+    a b^{-1} \in H_{1} \land a b^{-1} \in H_{2}
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}
   \begin{exampleblock}{Center (中心)}
     Let $G$ be a group. Let
     \[
@@ -123,5 +153,29 @@
     \]
     Then \teal{$C(G) \le G$}.
   \end{exampleblock}
+
+  \pause
+  \[
+    \forall x \in G\; e x = x e \implies e \in C(G) \implies C(G) \neq \emptyset
+  \]
+
+  \pause
+  \[
+    \purple{\boxed{\forall a, b \in C(G)\; a b^{-1} \in C(G)}}
+  \]
+
+  \pause
+  \begin{align*}
+    \forall x \in G\; (a b^{-1}) x
+      &= a (\red{b^{-1} x}) = a (\red{x b^{-1}}) \\
+      &= (a x) b^{-1} = (x a) b^{-1} \\
+      &= x (a b^{-1})
+  \end{align*}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}
+  \fig{width = 0.70\textwidth}{figs/cyclic-group}
 \end{frame}
 %%%%%%%%%%%%%%%

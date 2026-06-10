@@ -73,18 +73,38 @@
     Let $G$ be a group and $e$ be its identity.
     \[
       \text{ord}\; a = n
-        \implies \forall m \in \Z.\; \text{ord}\; a^{m} = \frac{n}{(n, m)}
+        \implies \forall m \in \Z\; \text{ord}\; a^{m} = \frac{n}{(n, m)}
     \]
   \end{theorem}
 
   \pause
-  \begin{align*}
-    &(a^m)^d = e \\[5pt]
-    \uncover<3->{\iff & a^{md} = e \\[5pt]}
-    \uncover<4->{\iff & \red{n \mid md} \\[5pt]}
-    \uncover<5->{\iff & \frac{n}{(m, n)} \mid \frac{m}{(m, n)}d \\[5pt]}
-    \uncover<6->{\iff & \frac{n}{(m, n)} \mid d}
-  \end{align*}
+  \[
+    \purple{\boxed{\text{ord}\; a^{m} = d}}
+  \]
+
+  \pause
+  \begin{columns}
+    \column{0.50\textwidth}
+      \begin{align*}
+        &(a^m)^d = e \\[5pt]
+        \uncover<4->{\implies & a^{md} = e \\[5pt]}
+        \uncover<5->{\implies & \red{n \mid md} \\[5pt]}
+        \uncover<6->{\implies & \frac{n}{(m, n)} \mid \frac{m}{(m, n)}d \\[5pt]}
+        \uncover<7->{\implies & \frac{n}{(m, n)} \mid d}
+      \end{align*}
+    \column{0.50\textwidth}
+      \uncover<8->{
+        \[
+          (a^{m})^{\frac{n}{(m, n)}} = a^{\frac{mn}{(m, n)}} = (a^n)^{\frac{m}{(m, n)}} = e
+        \]
+      }
+
+      \uncover<9->{
+        \[
+          d \mid \frac{n}{(m, n)}
+        \]
+      }
+  \end{columns}
 \end{frame}
 %%%%%%%%%%%%%%%
 
@@ -93,7 +113,7 @@
   \begin{definition}[Cyclic Group (循环群)]
     Let $G$ be a group. If
     \[
-      \exists a \in G.\; G = \red{\langle a \rangle}
+      \exists a \in G\; G = \red{\langle a \rangle}
         \triangleq \set{a^{0} = e, a, a^{2}, a^{3}, \dots},
     \]
     then $G$ is a \red{cyclic group}.
@@ -150,14 +170,14 @@
     \begin{enumerate}[<+->][(1)]
       \setlength{\itemsep}{6pt}
       \item Let $G = \set{e, a, a^{-1}, a^2, a^{-2}, \dots}$
-        be an infinite cyclic group.
+        be an \red{infinite} cyclic group.
         \[
-          \forall k, l \in \Z.\; (a^k = a^l \to k = l).
+          \forall k, l \in \Z\; (a^k = a^l \to k = l).
         \]
       \item Let $G = \set{e, a, a^2, \dots, a^{n-1}}$
-        be a finite cyclic group of order $n$.
+        be a \red{finite} cyclic group of order $n$.
         \[
-          \forall k, l \in \Z.\; (a^{k} = a^{l} \leftrightarrow n \mid (k-l)).
+          \forall k, l \in \Z\; (a^{k} = a^{l} \leftrightarrow n \mid (k-l)).
         \]
     \end{enumerate}
   \end{theorem}
@@ -201,9 +221,32 @@
   \end{theorem}
 
   \pause
-  \[
-    \text{ord}\; a^{r} = \frac{n}{(n, r)}
-  \]
+  \begin{columns}
+    \column{0.50\textwidth}
+      \begin{center}
+        \purple{\boxed{\text{Suppose that $G = \langle a^{k} \rangle$.}}}
+
+        \pause
+        \[
+          \exists n \in \Z\; (a^{k})^{n} = a^{kn} = a
+        \]
+        \pause
+        \[
+          kn = 1 \implies k = \pm 1
+        \]
+      \end{center}
+    \column{0.50\textwidth}
+      \pause
+      \[
+        \purple{\boxed{\text{ord}\; a^{r} = \frac{n}{(n, r)}}}
+      \]
+      \pause
+      \begin{align*}
+        G = \langle a^{r} \rangle &\iff \text{ord}\; a^{r} = n \\
+        &\iff \frac{n}{(n, r)} = n \\
+        &\iff (n, r) = 1
+      \end{align*}
+  \end{columns}
 \end{frame}
 %%%%%%%%%%%%%%%
 
@@ -224,5 +267,30 @@
   \begin{theorem}[Subgroups of Cyclic Groups]
     Every subgroup of a cyclic group is cyclic.
   \end{theorem}
+
+  \pause
+  \vspace{2em}
+  \begin{theorem}[Subgroups of Cyclic Groups]
+    Suppose that $G = \langle a \rangle$ is a cyclic group.
+    
+    \begin{enumerate}[(1)]
+      \setlength{\itemsep}{6pt}
+      \pause
+      \item If $|G| = \infty$, the set of subgroups of $G$ is:
+        \[
+          \set{\langle a^{d} \rangle \mid d = 0, 1, 2, \cdots}
+        \]
+      \pause
+      \item If $|G| = n$, the set of subgroups of $G$ is:
+        \[
+          \set{\langle a^{d} \rangle \mid d \text{ is a positive divisor of } n}
+        \]
+    \end{enumerate}
+  \end{theorem}
+
+  \pause
+  \[
+    (\Z_{12}, +) \text{ has 6 subgroups}
+  \]
 \end{frame}
 %%%%%%%%%%%%%%%
