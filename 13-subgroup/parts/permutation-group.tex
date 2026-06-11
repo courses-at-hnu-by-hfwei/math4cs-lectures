@@ -120,6 +120,7 @@
   \]
 
   \pause
+  \vspace{-0.50cm}
   \begin{align*}
     \sigma &= (1\; 4) (2\; 3\; 6) (5) \\[6pt]
       \uncover<3->{&= \red{(1\; 4) (2\; 3\; 6)} \\[6pt]}
@@ -128,6 +129,16 @@
       \uncover<6->{&= (3\; 6\; 2) (4\; 1) \\[6pt]}
       \uncover<7->{&= \blue{(3\; 6) (6\; 2) (4\; 1)}}
   \end{align*}
+
+  \pause
+  \vspace{-0.50cm}
+  \[
+    (i_{1}\; i_{2}\; \dots\; i_{r}) =
+      (i_{1}\; i_{2})(i_{2}\; i_{3}) \dots (i_{r-2}\; i_{r-1}) (i_{r-1}\; i_{r})
+  \]
+  \begin{center}
+    \violet{By induction on the length $r$.}
+  \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%
 
@@ -190,6 +201,81 @@
   \pause
   \[
     H = \set{(1), (1\; 2\; 3), (1\; 3\; 2)} \le S_{3}
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{align*}
+    \sigma = \begin{pmatrix}
+      1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+      7 & 3 & 6 & 2 & 5 & 4 & 1
+    \end{pmatrix} &=
+    (1\;7) (2\;3) (3\;6) (6\;4) \\
+    &= (1\;7) (3\;6) (2\;5) (6\;4) (4\;5) (2\;5)
+  \end{align*}
+
+  \pause
+  \vspace{0.30cm}
+  \begin{theorem}[Parity (奇偶性) of Permutations]
+    将一个置换表示成若干对换的乘积, 所用对换个数的奇偶性是唯一的。
+  \end{theorem}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{definition}[Even/Odd Permutations (偶置换/奇置换)]
+    可表示为偶数个对换的乘积的置换称为偶置换; 否则, 称为奇置换。
+  \end{definition}
+
+  \pause
+  \vspace{0.80cm}
+  \begin{definition}[Alternating Group (交错群; $A_{n}$)]
+    由 $S_{n}$ 的\blue{全体偶置换}构成的\cyan{子群}称为 $n$ 次\red{交错群}。
+  \end{definition}
+
+  \pause
+  \[
+    A_{3} = \set{(1), (1\;2\;3), (1\;3\;2)}
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \[
+    \text{sgn}: S_{n} \to \set{1, -1}
+  \]
+  \[
+    \text{sgn}(\sigma) = \begin{cases}
+      1 & \sigma \in A_{n}, \\
+      -1 & \sigma \notin A_{n}
+    \end{cases}
+  \]
+
+  \pause
+  \[
+    \text{sgn}(\sigma_{1}\sigma_{2}) = \text{sgn}(\sigma_{1})\text{sgn}(\sigma_{2})
+  \]
+
+  \pause
+  \[
+    S_{n}/A_{n} \cong \set{1, -1}
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \fig{width = 0.50\textwidth}{figs/triangle-symmetry}
+
+  \[
+    A_{3} = \set{(1), (1\;2\;3), (1\;3\;2)}
+  \]
+  \[
+    (1\;2) A_{3} = \set{(1\;2), (2\;3), (1\;3)}
   \]
 \end{frame}
 %%%%%%%%%%%%%%%
