@@ -1,0 +1,225 @@
+% permutation-group.tex
+
+%%%%%%%%%%%%%%%
+\begin{frame}
+  \[
+    M = \set{1, 2, \dots, n} \qquad
+    S_{n} \triangleq \text{Sym}(M)
+  \]
+  \begin{definition}[Symmetric Group (对称群; $\text{Sym}(M)$)]
+    Let $M \neq \emptyset$ be a set. \\[3pt]
+    All the \blue{permutations (排列; 置换)/bijections (双射)} of $M$, \\[3pt]
+    together with the \purple{composition} operation,
+    is a \green{group}, \\[3pt]
+    called the \red{symmetric group} of $M$.
+  \end{definition}
+
+  \pause
+  \[
+    S_{3}
+  \]
+  \input{eq/s3}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \[
+    \sigma = \begin{pmatrix}
+      1 & 2 & 3 \\
+      3 & 1 & 2
+    \end{pmatrix} \qquad
+    \tau = \begin{pmatrix}
+      1 & 2 & 3 \\
+      3 & 2 & 1
+    \end{pmatrix}
+  \]
+
+  \pause
+  \vspace{0.30cm}
+  \[
+    \sigma \tau = \begin{pmatrix}
+      1 & 2 & 3 \\
+      3 & 1 & 2
+    \end{pmatrix}
+    \begin{pmatrix}
+      1 & 2 & 3 \\
+      3 & 2 & 1
+    \end{pmatrix} = \pause
+    \begin{pmatrix}
+      1 & 2 & 3 \\
+      2 & 1 & 3
+    \end{pmatrix}
+  \]
+
+  \pause
+  \vspace{0.30cm}
+  \[
+    \tau \sigma = \begin{pmatrix}
+      1 & 2 & 3 \\
+      3 & 2 & 1
+    \end{pmatrix}
+    \begin{pmatrix}
+      1 & 2 & 3 \\
+      3 & 1 & 2
+    \end{pmatrix} = \pause
+    \begin{pmatrix}
+      1 & 2 & 3 \\
+      1 & 3 & 2
+    \end{pmatrix}
+  \]
+
+  \pause
+  \[
+    \red{\sigma \tau \neq \tau \sigma}
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}
+  \begin{center}
+    \red{Cyclic Notation} (轮换表示法) \& \blue{Transposition} (对换)
+  \end{center}
+  \[
+    \sigma = \begin{pmatrix}
+      1 & 2 & 3 & 4 & 5 & 6 \\
+      4 & 3 & 6 & 1 & 5 & 2
+    \end{pmatrix}
+  \]
+
+  \pause
+  \vspace{-0.50cm}
+  \begin{align*}
+    \sigma &= (1\; 4) (2\; 3\; 6) (5) \\[6pt]
+      \uncover<3->{&= \red{(1\; 4) (2\; 3\; 6)} \\[6pt]}
+      \uncover<4->{&= (2\; 3\; 6) (1\; 4) \\[6pt]}
+      \uncover<5->{&= (2\; 3\; 6) (4\; 1) \\[6pt]}
+      \uncover<6->{&= (3\; 6\; 2) (4\; 1) \\[6pt]}
+      \uncover<7->{&= \blue{(3\; 6) (6\; 2) (4\; 1)}}
+  \end{align*}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{theorem}
+    Every permutation can be expressed as
+    a product of \blue{disjoint cycles}.
+  \end{theorem}
+
+  \pause
+  \vspace{2em}
+  \begin{theorem}
+    Disjoint cycles commute with each other.
+  \end{theorem}
+
+  \pause
+  \vspace{2em}
+  \begin{theorem}
+    Every permutation can be expressed
+    as a product of \purple{transpositions}.
+  \end{theorem}
+
+  \pause
+  \[
+    (i_{1}\; i_{2}\; \dots\; i_{r}) =
+      (i_{1}\; i_{2})(i_{2}\; i_{3}) \dots (i_{r-2}\; i_{r-1}) (i_{r-1}\; i_{r})
+  \]
+  \pause
+  \vspace{-1em}
+  \begin{center}
+    \violet{By induction on the length $r$.}
+  \end{center}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \[
+    S_{3}
+  \]
+  \input{eq/s3}
+
+  \pause
+  \[
+    (1) \qquad (1\; 3\; 2) \qquad (1\; 2\; 3)
+  \]
+  \[
+    (1\; 2) \qquad (1\; 3) \qquad (2\; 3) 
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{align*}
+    \sigma = \begin{pmatrix}
+      1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+      7 & 3 & 6 & 2 & 5 & 4 & 1
+    \end{pmatrix} &=
+    (1\;7) (2\;3) (3\;6) (6\;4) \\
+    &= (1\;7) (3\;6) (2\;5) (6\;4) (4\;5) (2\;5)
+  \end{align*}
+
+  \pause
+  \vspace{0.30cm}
+  \begin{theorem}[Parity (奇偶性) of Permutations]
+    将一个置换表示成若干对换的乘积, 所用对换个数的奇偶性是唯一的。
+  \end{theorem}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \begin{definition}[Even/Odd Permutations (偶置换/奇置换)]
+    可表示为偶数个对换的乘积的置换称为偶置换; 否则, 称为奇置换。
+  \end{definition}
+
+  \pause
+  \vspace{0.80cm}
+  \begin{definition}[Alternating Group (交错群; $A_{n}$)]
+    由 $S_{n}$ 的\blue{全体偶置换}构成的\cyan{子群}称为 $n$ 次\red{交错群}。
+  \end{definition}
+
+  \pause
+  \[
+    A_{3} = \set{(1), (1\;2\;3), (1\;3\;2)}
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}{}
+  \fig{width = 0.50\textwidth}{figs/triangle-symmetry}
+
+  \[
+    A_{3} = \set{(1), (1\;2\;3), (1\;3\;2)}
+  \]
+  \[
+    (1\;2) A_{3} = \set{(1\;2), (2\;3), (1\;3)}
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}
+  \begin{definition}[Permutation Group (置换群)]
+    Let $M \neq \emptyset$ be a set. \\
+    A \red{permutation group} of $M$ is a \blue{subgroup} of $\text{Sym}(M)$.
+  \end{definition}
+
+  \pause
+  \[
+    S_{3} = \set{(1), (1\; 2), (1\; 3), (2\; 3), (1\; 2\; 3), (1\; 3\; 2)}
+  \]
+  \pause
+  \[
+    H = \set{(1), (1\; 2)} \le S_{3}
+  \]
+  \pause
+  \[
+    H = \set{(1), (1\; 2\; 3), (1\; 3\; 2)} \le S_{3}
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%
