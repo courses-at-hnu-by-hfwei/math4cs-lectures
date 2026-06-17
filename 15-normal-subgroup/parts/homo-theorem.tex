@@ -6,7 +6,7 @@
     Let $(G, \cdot)$ and $(G', \ast)$ be two groups.
     Let $\phi$ be a function such that
     \[
-      \forall a, b \in G.\; \phi(ab) = \phi(a)\phi(b).
+      \forall a, b \in G\; \phi(a \cdot b) = \phi(a) \ast \phi(b).
     \]
     Then $\phi$ is a \red{homomorphism} from $G$ to $G'$.
   \end{definition}
@@ -58,7 +58,7 @@
 %%%%%%%%%%%%%%%
 \begin{frame}{}
   \begin{align*}
-    \phi:\; & \Z \to \R^{\ast} \\[6pt]
+    \phi:\; & (\Z, +) \to (\R^{\ast}, \ast) \\[6pt]
             & n \mapsto (-1)^{n}
   \end{align*}
 
@@ -72,12 +72,13 @@
 %%%%%%%%%%%%%%%
 \begin{frame}{}
   \begin{align*}
-    \phi:\; & \Z \to \Z_{6} \\
+    \phi:\; & (\Z, +) \to (\Z_{6}, +_{6}) \\
             & a \mapsto [a]_{6}
   \end{align*}
 
   \[
-    \phi(a + b) = [a + b]_{6} = \phi(a) + \phi(b)
+    \phi(a + b) = [a + b]_{6} = [a]_{6} +_{6} [b]_{6}
+      = \phi(a) +_{6} \phi(b)
   \]
 \end{frame}
 %%%%%%%%%%%%%%%
@@ -95,7 +96,8 @@
   \end{center}
 
   \[
-    \phi(f(x) + g(x)) = (f(x) + g(x))' = \phi(f(x)) + \phi(g(x))
+    \phi(f(x) + g(x)) = (f(x) + g(x))'
+      = f'(x) + g'(x) = \phi(f(x)) + \phi(g(x))
   \]
 \end{frame}
 %%%%%%%%%%%%%%%
@@ -115,12 +117,12 @@
 
   \pause
   \[
-    e' \phi(e) = \phi(e) = \phi(e e) = \phi(e) \phi(e) \implies \phi(e) = e'
+    e' \phi(e) = \phi(e) = \purple{\phi(e e)} = \phi(e) \phi(e) \implies \phi(e) = e'
   \]
 
   \pause
   \[
-    \phi(a)\phi(a^{-1}) = \phi(aa^{-1}) = \phi(e) = e' = \phi(a)(\phi(a))^{-1}
+    \phi(a)\phi(a^{-1}) = \purple{\phi(aa^{-1})} = \phi(e) = e' = \phi(a)(\phi(a))^{-1}
   \]
 \end{frame}
 %%%%%%%%%%%%%%%
@@ -132,11 +134,11 @@
     \begin{enumerate}[(1)]
       \item
         \[
-          H \le G \implies \phi(H) \le G'
+          H \le G \implies \phi(H) \le \phi(G)
         \]
       \item
         \[
-          H \triangleleft G \implies \phi(H) \triangleleft \phi(G)
+          \purple{H \triangleleft G \implies \phi(H) \triangleleft \phi(G)}
         \]
       \pause
       \item
@@ -154,19 +156,43 @@
 
 %%%%%%%%%%%%%%%
 \begin{frame}
-  \begin{definition}[核 (Kernel)]
-    Suppose that \blue{$\phi$ is a homomorphism from $G$ to $G'$}. \\
-    Let $e'$ be the identity of $G'$.
-    \[
-      \phi^{-1}(\set{e'}) = \set{a \in G \mid \phi(a) = e'}
-    \]
-    is the \red{kernel} of $\phi$, denoted $\text{Ker}\; \phi$.
-  \end{definition}
+  \[
+    \purple{H \triangleleft G \implies \phi(H) \triangleleft \phi(G)}
+  \]
 
   \pause
   \[
-    \text{Ker}\; \phi \triangleleft G
+    \forall a \in G, h \in H\; aha^{-1} \in H
   \]
+  \pause
+  \[
+    \phi(a) \in \phi(G), \quad \phi(h) \in \phi(H)
+  \]
+
+  \pause
+  \[
+    \teal{\phi(a) \phi(h) \phi(a)^{-1}}
+      = \phi(a) \phi(h) \phi(a^{-1})
+      = \phi(aha^{-1}) \teal{\;\in \phi(H)}
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}
+  \[
+    \purple{K \triangleleft G'} \implies \phi^{-1}(K) \blue{\;\triangleleft\; G}
+  \]
+
+  \pause
+  \begin{definition}[同态核 (Kernel)]
+    Suppose that \blue{$\phi$ is a homomorphism from $G$ to $G'$}. \\[3pt]
+    Let $e'$ be the identity of $G'$. Then \purple{$e' \triangleleft G'$}.
+    \[
+      \phi^{-1}(\set{e'}) = \set{a \in G \mid \phi(a) = e'} \blue{\;\triangleleft\; G}
+    \]
+    is the \red{kernel} of $\phi$, denoted $\text{Ker}\; \phi$.
+  \end{definition}
 \end{frame}
 %%%%%%%%%%%%%%%
 
@@ -216,7 +242,7 @@
 
 %%%%%%%%%%%%%%%
 \begin{frame}
-  \begin{theorem}[Fundamental Homomorphism Theorem]
+  \begin{theorem}[Fundamental Homomorphism Theorem (群同态基本定理)]
     Suppose that \blue{$\phi$ is a homomorphism from $G$ to $G'$}. Then
     \[
       G/\text{Ker}\; \phi \cong \phi(G).
@@ -225,30 +251,38 @@
 
   \pause
   \begin{center}
-    \red{同态核可以看作群 $G$ 与其同态像 $\phi(G)$ 之间相似程度的一种度量}
+    \red{同态核可以看作群 $G$ 与其同态像 $\phi(G)$ 之间{\bf 相似程度}的一种度量}
   \end{center}
 
   \pause
-  \fig{width = 0.35\textwidth}{figs/homo-theorem}
-  \[
-    N = \text{Ker}\; \phi
-  \]
-\end{frame}
-%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%
-\begin{frame}
-  \[
-    G/(N \triangleq \text{Ker}\; h) \cong (h(G) \triangleq \text{im}\; h)
-  \]
-
-  \fig{width = 0.70\textwidth}{figs/homo-theorem-proof}
+  \fig{width = 0.50\textwidth}{figs/homo-theorem-proof}
 
   \vspace{-0.80cm}
   \[
-    aN \mapsto h(a)
+    \bar{h}: aN \mapsto h(a)
   \]
+
+  % \pause
+  % \fig{width = 0.35\textwidth}{figs/homo-theorem}
+  % \[
+  %   N = \text{Ker}\; \phi
+  % \]
 \end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+% \begin{frame}
+%   \[
+%     G/(N \triangleq \text{Ker}\; h) \cong (h(G) \triangleq \text{im}\; h)
+%   \]
+
+%   \fig{width = 0.70\textwidth}{figs/homo-theorem-proof}
+
+%   \vspace{-0.80cm}
+%   \[
+%     \bar{h}: aN \mapsto h(a)
+%   \]
+% \end{frame}
 %%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%
@@ -264,7 +298,7 @@
 
   \pause
   \[
-    \Z/(2\Z) = (2\Z, 2\Z + 1) \cong \phi(\Z) = (-1, 1)
+    \Z/(2\Z) = (2\Z, 2\Z + 1) \cong \purple{\phi(\Z)} = \set{-1, 1} \cong \Z_{2}
   \]
 \end{frame}
 %%%%%%%%%%%%%%%
@@ -282,7 +316,7 @@
 
   \pause
   \[
-    \Z/(6\Z) = \set{0 + H, 1 + H, \dots, 5 + H} \cong \phi(\Z) = \Z_{6}
+    \Z/(6\Z) = \set{0 + H, 1 + H, \dots, 5 + H} \cong \purple{\phi(\Z)} = \Z_{6}
   \]
 \end{frame}
 %%%%%%%%%%%%%%%
@@ -305,7 +339,7 @@
 
   \pause
   \[
-    \R[x]/\R \cong \phi(\R[x]) = \R[x]
+    \R[x]/\R \cong \purple{\phi(\R[x])} = \R[x]
   \]
 \end{frame}
 %%%%%%%%%%%%%%%

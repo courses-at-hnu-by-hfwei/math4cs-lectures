@@ -6,7 +6,7 @@
     S_{3} = \set{(1), (1\; 2), (1\; 3), (2\; 3), (1\; 2\; 3), (1\; 3\; 2)}
   \]
   \[
-    H = \set{(1), (1\; 2)} \le S_{3}
+    \blue{H = \set{(1), (1\; 2)} \le S_{3}}
   \]
 
   \pause
@@ -38,7 +38,7 @@
     S_{3} = \set{(1), (1\; 2), (1\; 3), (2\; 3), (1\; 2\; 3), (1\; 3\; 2)}
   \]
   \[
-    H = \set{(1), (1\; 2\; 3), (1\; 3\; 2)} \le S_{3}
+    \blue{H = \set{(1), (1\; 2\; 3), (1\; 3\; 2)} \le S_{3}}
   \]
 
   \pause
@@ -49,7 +49,7 @@
 
   \pause
   \[
-    \blue{\forall a \in S_{3}\; aH = Ha}
+    \purple{\forall a \in S_{3}\; aH = Ha}
   \]
 \end{frame}
 %%%%%%%%%%%%%%%
@@ -71,7 +71,118 @@
 
   \pause
   \[
-    aH = Ha \blue{\implies} \forall h \in H\; \blue{\exists h' \in H.\;} ah = h'a
+    aH = Ha \blue{\implies} \forall h \in H\; \blue{\exists h' \in H\;} ah = h'a
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}
+  \begin{definition}[正规子群的陪集]
+    Suppose that $H \triangleleft G$.
+    \[
+      G/H = \set{aH \mid a \in G}
+    \]
+    is the \red{set of cosets} of $H$ in $G$.
+  \end{definition}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}
+  \begin{definition}[Quotient Group (商群)]
+    Suppose that $H \triangleleft G$.
+    Define
+    \[
+      aH \cdot bH = (ab)H.
+    \]
+    Then $(G/H, \cdot)$ is a \blue{group},
+    called the \red{quotient group} of $G$ by $H$.
+  \end{definition}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}
+  \[
+    aH \cdot bH = (ab)H \text{ is \red{well-defined}}
+  \]
+
+  \pause
+  \begin{center}
+    \blue{结果与代表元的选取无关}
+  \end{center}
+
+  \pause
+  \[
+    aH = a'H \land bH = b'H \implies aH \cdot bH = a'H \cdot b'H
+  \]
+
+  \pause
+  \begin{gather*}
+    (1) H = H = (1\; 2) H \\[6pt]
+    \teal{(1\; 3) H} = \set{(1\; 3), (1\; 2\; 3)} = \teal{(1\; 2\; 3)H} \\[6pt]
+    \cyan{(2\; 3) H} = \set{(2\; 3), (1\; 3\; 2)} = \cyan{(1\; 3\; 2)H}
+  \end{gather*}
+
+  \pause
+  \[
+    \teal{(1\; 3) H} \cdot \cyan{(2\; 3) H} = (1\; 2\; 3)H
+  \]
+  \[
+    \teal{(1\; 2\; 3) H} \cdot \cyan{(1\; 3\; 2) H} = H
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}
+  \[
+    aH \cdot bH = (ab)H \text{ is \red{well-defined}}
+  \]
+
+  \begin{center}
+    \blue{结果与代表元的选取无关}
+  \end{center}
+
+  \[
+    aH = a'H \land bH = b'H \implies aH \cdot bH = a'H \cdot b'H
+  \]
+
+  \pause
+  \begin{align*}
+    a'H \cdot b'H &= (a'b')H \\
+      &= a'(b'H) = a'(b H) = \red{a' (Hb)} \\
+      &= (a'H)b = (aH)b = a(Hb) = \red{a(bH)} \\
+      &= (ab)H = aH \cdot bH
+  \end{align*}
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}
+  \[
+    S_{3} = \set{(1), (1\; 2), (1\; 3), (2\; 3), (1\; 2\; 3), (1\; 3\; 2)}
+  \]
+  \[
+    H = \set{(1), (1\; 2\; 3), (1\; 3\; 2)} \triangleleft S_{3}
+  \]
+
+  \pause
+  \[
+    G/H = \set{(1)H, (1\;2)H} \pause \cong \purple{\Z_{2}}
+  \]
+\end{frame}
+%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%
+\begin{frame}
+  \[
+    G = (\Z, +) \qquad H = (6\Z, +) \triangleleft G
+  \]
+
+  \[
+    G/H = \pause \set{0 + H, 1 + H, \dots, 5 + H} \pause \cong \purple{\Z_{6}}
   \]
 \end{frame}
 %%%%%%%%%%%%%%%
@@ -79,12 +190,19 @@
 %%%%%%%%%%%%%%%
 \begin{frame}
   \begin{theorem}
+    Suppose that \purple{$H \le G$}.
     \[
-      H \triangleleft G \iff \forall \red{a \in G}, \blue{h \in H}\; aha^{-1} \in H
+      H \triangleleft G
+        \iff \forall a \in G\; aHa^{-1} = H
+        \iff \boxed{\forall \red{a \in G}, \blue{h \in H}\; aha^{-1} \in H}
     \]
   \end{theorem}
 
   \pause
+  \[
+    \teal{\boxed{\forall a \in G\;
+      (aH = Ha \to \forall h \in H\; aha^{-1} \in H)}}
+  \]
   \begin{align*}
     aH = Ha &\implies aHa^{-1} = (Ha)a^{-1} = H(aa^{-1}) = H \\
             &\implies aHa^{-1} \subseteq H \\
@@ -93,9 +211,15 @@
 
   \pause
   \[
+    \teal{\boxed{\forall a \in G, h \in H\;
+      (aha^{-1} \in H \to aH = Ha)}}
+  \]
+  \pause
+  \[
     aha^{-1} \in H \implies ah = (aha^{-1})a \in Ha \implies aH \subseteq Ha
   \]
   \pause
+  \vspace{-0.30cm}
   \[
     a^{-1}ha = a^{-1}h(a^{-1})^{-1} \in H \implies ha \in aH \implies Ha \subseteq aH
   \]
@@ -134,76 +258,6 @@
       2 & 1 & 3 \\
       1 & 3 & 2
     \end{pmatrix} = (1\; 3\; 2)
-  \]
-\end{frame}
-%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%
-\begin{frame}
-  \begin{definition}[正规子群的陪集]
-    Suppose that $H \triangleleft G$.
-    \[
-      G/H = \set{aH \mid a \in G}
-    \]
-    is the \red{set of cosets} of $H$ in $G$.
-  \end{definition}
-\end{frame}
-%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%
-\begin{frame}
-  \begin{definition}[Quotient Group (商群)]
-    Suppose that $H \triangleleft G$.
-    Define
-    \[
-      aH \cdot bH = (ab)H.
-    \]
-    Then $(G/H, \cdot)$ is a group, called the \red{quotient group} of $G$ by $H$
-    (denoted \blue{$G/H$}).
-  \end{definition}
-\end{frame}
-%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%
-\begin{frame}
-  \[
-    aH \cdot bH = (ab)H \text{ is \red{well-defined}}
-  \]
-
-  \pause
-  \[
-    aH = a'H \land bH = b'H \implies aH \cdot bH = a'H \cdot b'H
-  \]
-  \begin{center}
-    结果与代表元的选取无关
-  \end{center}
-\end{frame}
-%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%
-\begin{frame}
-  \[
-    S_{3} = \set{(1), (1\; 2), (1\; 3), (2\; 3), (1\; 2\; 3), (1\; 3\; 2)}
-  \]
-  \[
-    H = \set{(1), (1\; 2\; 3), (1\; 3\; 2)} \triangleleft S_{3}
-  \]
-
-  \pause
-  \[
-    G/H = \set{(1)H, (1\;2)H}
-  \]
-\end{frame}
-%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%
-\begin{frame}
-  \[
-    G = \Z \qquad H = 6\Z \triangleleft G
-  \]
-
-  \[
-    G/H = \pause \set{0 + H, 1 + H, \dots, 5 + H}
   \]
 \end{frame}
 %%%%%%%%%%%%%%%
