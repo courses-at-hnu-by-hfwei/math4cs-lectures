@@ -287,3 +287,6 @@ ai/lectures/topics_response.json
 
 ## ai/weekly sync status log (regenerable):
 ai/weekly/sync-status.log
+
+## WorkBuddy automation runner scratch (local only):
+.workbuddy/
