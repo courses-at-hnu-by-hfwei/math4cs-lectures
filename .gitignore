@@ -284,3 +284,6 @@ __pycache__/
 ai/lectures/topics_candidates.json
 ai/lectures/topics_prompt.md
 ai/lectures/topics_response.json
+
+## ai/weekly sync status log (regenerable):
+ai/weekly/sync-status.log

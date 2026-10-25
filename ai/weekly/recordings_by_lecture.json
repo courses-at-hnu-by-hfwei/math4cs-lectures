@@ -47,6 +47,44 @@
   ],
   "8-paths-cycles": [
     {"bvid": "BV14i96BbEra", "date": "2026-04-23"},
-    {"bvid": "BV1Ki96BbEpd", "date": "2026-04-23"}
+    {"bvid": "BV1Ki96BbEpd", "date": "2026-04-23"},
+    {"bvid": "BV1fQ536TE97", "date": "2026-05-12"},
+    {"bvid": "BV1fQ536TEBD", "date": "2026-05-12"}
+  ],
+  "9-trees": [
+    {"bvid": "BV1JQ536MEur", "date": "2026-05-12"},
+    {"bvid": "BV1eR5X6jEz9", "date": "2026-05-14"},
+    {"bvid": "BV1iX5X6mE39", "date": "2026-05-14"},
+    {"bvid": "BV16pVw6GEfX", "date": "2026-05-19"},
+    {"bvid": "BV16pVw6GEat", "date": "2026-05-19"}
+  ],
+  "10-planarity-coloring": [
+    {"bvid": "BV1vaVw6KEmF", "date": "2026-05-21"},
+    {"bvid": "BV1daVw6KE8F", "date": "2026-05-21"},
+    {"bvid": "BV1R9Vc6wEuo", "date": "2026-05-26"},
+    {"bvid": "BV199Vc6wEUd", "date": "2026-05-26"}
+  ],
+  "11-matching-flow": [
+    {"bvid": "BV1R9Vc6wEjv", "date": "2026-05-26"},
+    {"bvid": "BV1mvG96wE8w", "date": "2026-05-28"},
+    {"bvid": "BV1mvG96wEbS", "date": "2026-05-28"},
+    {"bvid": "BV1SeEQ61Edz", "date": "2026-06-04"},
+    {"bvid": "BV1DeEQ61ENa", "date": "2026-06-04"}
+  ],
+  "12-group": [
+    {"bvid": "BV1onEQ6sEtU", "date": "2026-06-09"},
+    {"bvid": "BV1qnEQ6xEyU", "date": "2026-06-09"},
+    {"bvid": "BV1v7Ei6GE3M", "date": "2026-06-11"},
+    {"bvid": "BV157Ei6GEWh", "date": "2026-06-11"}
+  ],
+  "13-permutation-group": [
+    {"bvid": "BV1GyjV6BEp2", "date": "2026-06-16"}
+  ],
+  "14-subgroup": [
+    {"bvid": "BV1GyjV6BERy", "date": "2026-06-16"}
+  ],
+  "15-normal-subgroup": [
+    {"bvid": "BV1VQj76JEN4", "date": "2026-06-18"},
+    {"bvid": "BV1GQj76JEae", "date": "2026-06-18"}
   ]
 }

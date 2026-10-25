@@ -126,6 +126,7 @@ python ai/weekly/weekly.py --cookie "SESSDATA=...; bili_jct=..."
 | `--season-id` | `7582381` | B 站合集 season_id |
 | `--cookie` | 空 | 请求 B 站 API 时附带的 Cookie |
 | `--strict-sync` | 关闭 | 同步失败立即报错退出；默认行为见下 |
+| `--status-log` | 无 | 每次运行向该文件追加一行带时间戳的状态记录 |
 
 ## 错误处理
 
@@ -134,6 +135,32 @@ python ai/weekly/weekly.py --cookie "SESSDATA=...; bili_jct=..."
 ```bash
 python ai/weekly/weekly.py --strict-sync
 ```
+
+## 同步状态标志（SYNC_STATUS）
+
+B 站风控（`-352`）是**间歇性**的：同一命令可能这次失败、下次成功。因此每次运行结束时，脚本都会输出一行机器可判定的状态标志，供自动化流程区分「降级重建」与「真正同步成功」：
+
+| 状态 | 含义 |
+| :--- | :--- |
+| `SYNC_STATUS: ok` | 远端同步真正完成，[recordings_by_lecture.json](recordings_by_lecture.json) 已按远端数据更新 |
+| `SYNC_STATUS: degraded (...)` | 远端同步失败（如 `-352` 风控），周历是基于本地 JSON 的降级重建，**未同步任何远端数据** |
+| `SYNC_STATUS: skipped` | 未尝试远端同步（`--no-sync-recordings` 或 `--dry-run`） |
+
+配合 `--status-log <文件>` 使用时，每次运行还会向该文件追加一行 `<ISO 时间戳>\t<状态>` 记录（该文件已列入 `.gitignore`），便于审计历史运行：
+
+```bash
+python ai/weekly/weekly.py --status-log ai/weekly/sync-status.log
+```
+
+## 自动重试定时任务
+
+因风控可能持续数小时至数天，仓库配有定时任务（WorkBuddy automation，每 30 分钟一次）自动重跑上述同步流程：
+
+- 每次运行执行 `python ai/weekly/weekly.py --status-log ai/weekly/sync-status.log` 并检查 `SYNC_STATUS`；
+- 仅为 `degraded` / `skipped` 时什么都不做，等待下次重试；
+- 只有出现 `SYNC_STATUS: ok`（真正完成远端同步）时，才提交 `recordings_by_lecture.json` 与 `README.md` 的改动、`git push`，并**自动删除该定时任务**（一次性达成即退场）。
+
+手动触发时照常运行脚本即可，无需等待定时任务。
 
 ## 增量更新说明
 

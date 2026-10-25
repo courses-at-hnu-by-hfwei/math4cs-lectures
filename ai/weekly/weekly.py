@@ -5,6 +5,16 @@ This script can do two things in one run:
 1) Sync ai/weekly/recordings_by_lecture.json from Bilibili playlist archives.
 2) Regenerate README.md section "## 周历" as a date-based table.
 
+Every run ends with a machine-readable status line:
+  SYNC_STATUS: ok        remote sync completed, recordings JSON updated
+  SYNC_STATUS: degraded  remote sync failed (e.g. Bilibili -352 risk
+                         control); the weekly table is rebuilt from the
+                         local recordings JSON instead
+  SYNC_STATUS: skipped   no remote sync attempted (--no-sync-recordings,
+                         --dry-run)
+With --status-log <file>, each run also appends a timestamped status line
+to that file for auditing.
+
 The recordings map format is:
 {
   "_comment": "...",
@@ -94,6 +104,12 @@ def parse_args() -> argparse.Namespace:
 		action="store_true",
 		help="Fail immediately if remote sync fails",
 	)
+	parser.add_argument(
+		"--status-log",
+		type=Path,
+		default=None,
+		help="Append a timestamped SYNC_STATUS line to this file",
+	)
 	return parser.parse_args()
 
 
@@ -131,14 +147,33 @@ def load_recordings_map(path: Path) -> dict[str, list[dict[str, str]]]:
 
 
 def write_recordings_map(path: Path, data: dict[str, list[dict[str, str]]], week_start: str) -> None:
-	"""Write map with stable ordering and metadata keys."""
+	"""Write map with stable ordering, metadata keys, and one line per recording.
+
+	Compact per-entry rendering keeps diffs reviewable: adding a recording
+	touches only the new lines instead of reformatting the whole file.
+	"""
 	ordered: dict[str, object] = {
 		"_comment": "date: actual class date extracted from video title (YYYYMMDD prefix in title), NOT upload date.",
 		"_week_start": week_start,
 	}
 	for lecture in sorted(data.keys(), key=lecture_sort_key):
 		ordered[lecture] = data[lecture]
-	path.write_text(json.dumps(ordered, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+
+	lines = ["{"]
+	items = list(ordered.items())
+	for i, (key, value) in enumerate(items):
+		last = i == len(items) - 1
+		key_json = json.dumps(key, ensure_ascii=False)
+		if isinstance(value, list):
+			lines.append(f"  {key_json}: [")
+			for j, entry in enumerate(value):
+				entry_last = j == len(value) - 1
+				lines.append(f"    {json.dumps(entry, ensure_ascii=False)}{'' if entry_last else ','}")
+			lines.append(f"  ]{'' if last else ','}")
+		else:
+			lines.append(f"  {key_json}: {json.dumps(value, ensure_ascii=False)}{'' if last else ','}")
+	lines.append("}")
+	path.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
 
 
 def lecture_sort_key(name: str) -> tuple[int, str]:
@@ -290,6 +325,15 @@ def replace_weekly_section(readme_text: str, table_text: str) -> str:
 	return prefix + new_section + suffix.lstrip("\n")
 
 
+def log_sync_status(path: Path | None, status: str) -> None:
+	"""Append one timestamped status line (auditable run history)."""
+	if not path:
+		return
+	stamp = dt.datetime.now().isoformat(timespec="seconds")
+	with path.open("a", encoding="utf-8") as fh:
+		fh.write(f"{stamp}\t{status}\n")
+
+
 def main() -> None:
 	args = parse_args()
 	repo_root = args.repo_root.resolve()
@@ -306,6 +350,12 @@ def main() -> None:
 	week1_monday = dt.date.fromisoformat(args.week_start)
 	recordings_map = load_recordings_map(recordings_map_path)
 
+	# Machine-readable outcome of the remote sync (printed as SYNC_STATUS):
+	#   ok       remote sync completed and recordings JSON was updated
+	#   degraded remote sync failed (e.g. Bilibili -352 risk control); the
+	#            weekly table is rebuilt from the local JSON instead
+	#   skipped  no remote sync attempted (--no-sync-recordings / --dry-run)
+	sync_status = "skipped"
 	if not args.no_sync_recordings:
 		try:
 			lecture_folders = discover_lecture_folders(repo_root)
@@ -316,20 +366,28 @@ def main() -> None:
 			recordings_map = merge_archives_into_recordings(recordings_map, archives, lecture_folders)
 			if not args.dry_run:
 				write_recordings_map(recordings_map_path, recordings_map, args.week_start)
+				sync_status = "ok"
+			else:
+				sync_status = "skipped (dry-run)"
 		except Exception as exc:
 			if args.strict_sync:
 				raise
 			print(f"Warning: recordings sync skipped due to error: {exc}")
+			sync_status = f"degraded ({exc})"
 
 	table_text = build_table(recordings_map, week1_monday)
 	if args.dry_run:
 		print(table_text)
+		print(f"SYNC_STATUS: {sync_status}")
+		log_sync_status(args.status_log, sync_status)
 		return
 
 	readme_text = readme.read_text(encoding="utf-8")
 	new_text = replace_weekly_section(readme_text, table_text)
 	readme.write_text(new_text, encoding="utf-8", newline="\n")
 	print(f"Updated weekly schedule in {readme}")
+	print(f"SYNC_STATUS: {sync_status}")
+	log_sync_status(args.status_log, sync_status)
 
 
 if __name__ == "__main__":

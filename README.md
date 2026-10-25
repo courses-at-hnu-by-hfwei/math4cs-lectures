@@ -52,6 +52,17 @@ Lectures on [Mathematics for Computer Science@Hunan University](https://github.c
 | 7 | 2026-04-16 | [7-ordering-(1)](https://www.bilibili.com/video/BV1acdbB6EMs/); [7-ordering-(2)](https://www.bilibili.com/video/BV1QcdbB6ENE/) |
 | 8 | 2026-04-21 | [7-ordering-(3)](https://www.bilibili.com/video/BV1ta9BBWENy/); [7-ordering-(4)](https://www.bilibili.com/video/BV14a9BBWEX5/) |
 | 8 | 2026-04-23 | [8-paths-cycles-(1)](https://www.bilibili.com/video/BV14i96BbEra/); [8-paths-cycles-(2)](https://www.bilibili.com/video/BV1Ki96BbEpd/) |
+| 11 | 2026-05-12 | [8-paths-cycles-(3)](https://www.bilibili.com/video/BV1fQ536TE97/); [8-paths-cycles-(4)](https://www.bilibili.com/video/BV1fQ536TEBD/); [9-trees-(1)](https://www.bilibili.com/video/BV1JQ536MEur/) |
+| 11 | 2026-05-14 | [9-trees-(2)](https://www.bilibili.com/video/BV1eR5X6jEz9/); [9-trees-(3)](https://www.bilibili.com/video/BV1iX5X6mE39/) |
+| 12 | 2026-05-19 | [9-trees-(4)](https://www.bilibili.com/video/BV16pVw6GEfX/); [9-trees-(5)](https://www.bilibili.com/video/BV16pVw6GEat/) |
+| 12 | 2026-05-21 | [10-planarity-coloring-(1)](https://www.bilibili.com/video/BV1vaVw6KEmF/); [10-planarity-coloring-(2)](https://www.bilibili.com/video/BV1daVw6KE8F/) |
+| 13 | 2026-05-26 | [10-planarity-coloring-(3)](https://www.bilibili.com/video/BV1R9Vc6wEuo/); [10-planarity-coloring-(4)](https://www.bilibili.com/video/BV199Vc6wEUd/); [11-matching-flow-(1)](https://www.bilibili.com/video/BV1R9Vc6wEjv/) |
+| 13 | 2026-05-28 | [11-matching-flow-(2)](https://www.bilibili.com/video/BV1mvG96wE8w/); [11-matching-flow-(3)](https://www.bilibili.com/video/BV1mvG96wEbS/) |
+| 14 | 2026-06-04 | [11-matching-flow-(4)](https://www.bilibili.com/video/BV1SeEQ61Edz/); [11-matching-flow-(5)](https://www.bilibili.com/video/BV1DeEQ61ENa/) |
+| 15 | 2026-06-09 | [12-group-(1)](https://www.bilibili.com/video/BV1onEQ6sEtU/); [12-group-(2)](https://www.bilibili.com/video/BV1qnEQ6xEyU/) |
+| 15 | 2026-06-11 | [12-group-(3)](https://www.bilibili.com/video/BV1v7Ei6GE3M/); [12-group-(4)](https://www.bilibili.com/video/BV157Ei6GEWh/) |
+| 16 | 2026-06-16 | [13-permutation-group-(1)](https://www.bilibili.com/video/BV1GyjV6BEp2/); [14-subgroup-(1)](https://www.bilibili.com/video/BV1GyjV6BERy/) |
+| 16 | 2026-06-18 | [15-normal-subgroup-(1)](https://www.bilibili.com/video/BV1VQj76JEN4/); [15-normal-subgroup-(2)](https://www.bilibili.com/video/BV1GQj76JEae/) |
 
 ## 后续课程建设计划
 - Official math4cs website
