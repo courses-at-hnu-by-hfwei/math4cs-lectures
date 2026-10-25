@@ -13,24 +13,24 @@ Lectures on [Mathematics for Computer Science@Hunan University](https://github.c
 
 ## 课件
 
-| 序号 | 课件 |
-| :---: | :---: |
-| 0 | [0-overview](/0-overview/0-overview.pdf); [0-overview-handout](/0-overview/0-overview-handout.pdf) |
-| 1 | [1-prop-logic](/1-prop-logic/1-prop-logic.pdf); [1-prop-logic-handout](/1-prop-logic/1-prop-logic-handout.pdf) |
-| 2 | [2-predicate-logic](/2-predicate-logic/2-predicate-logic.pdf); [2-predicate-logic-handout](/2-predicate-logic/2-predicate-logic-handout.pdf) |
-| 3 | [3-set](/3-set/3-set.pdf); [3-set-handout](/3-set/3-set-handout.pdf) |
-| 4 | [4-relation](/4-relation/4-relation.pdf); [4-relation-handout](/4-relation/4-relation-handout.pdf) |
-| 5 | [5-function](/5-function/5-function.pdf); [5-function-handout](/5-function/5-function-handout.pdf) |
-| 6 | [6-infinity](/6-infinity/6-infinity.pdf); [6-infinity-handout](/6-infinity/6-infinity-handout.pdf) |
-| 7 | [7-ordering](/7-ordering/7-ordering.pdf); [7-ordering-handout](/7-ordering/7-ordering-handout.pdf) |
-| 8 | [8-paths-cycles](/8-paths-cycles/8-paths-cycles.pdf); [8-paths-cycles-handout](/8-paths-cycles/8-paths-cycles-handout.pdf) |
-| 9 | [9-trees](/9-trees/9-trees.pdf); [9-trees-handout](/9-trees/9-trees-handout.pdf) |
-| 10 | [10-planarity-coloring](/10-planarity-coloring/10-planarity-coloring.pdf); [10-planarity-coloring-handout](/10-planarity-coloring/10-planarity-coloring-handout.pdf) |
-| 11 | [11-matching-flow](/11-matching-flow/11-matching-flow.pdf); [11-matching-flow-handout](/11-matching-flow/11-matching-flow-handout.pdf) |
-| 12 | [12-group](/12-group/12-group.pdf); [12-group-handout](/12-group/12-group-handout.pdf) |
-| 13 | [13-permutation-group](/13-permutation-group/13-permutation-group.pdf); [13-permutation-group-handout](/13-permutation-group/13-permutation-group-handout.pdf) |
-| 14 | [14-subgroup](/14-subgroup/14-subgroup.pdf); [14-subgroup-handout](/14-subgroup/14-subgroup-handout.pdf) |
-| 15 | [15-normal-subgroup](/15-normal-subgroup/15-normal-subgroup.pdf); [15-normal-subgroup-handout](/15-normal-subgroup/15-normal-subgroup-handout.pdf) |
+| 序号 | 课件 | 知识点 |
+| :---: | :---: | :--- |
+| 0 | [0-overview](/0-overview/0-overview.pdf); [0-overview-handout](/0-overview/0-overview-handout.pdf) | Axiomatic Systems; Mathematical Induction; Ramsey Theory; Stable Matching; Winning Strategies |
+| 1 | [1-prop-logic](/1-prop-logic/1-prop-logic.pdf); [1-prop-logic-handout](/1-prop-logic/1-prop-logic-handout.pdf) | Syntax & Semantics; Truth Tables; Natural Deduction; Tautology & Satisfiability; Soundness & Completeness |
+| 2 | [2-predicate-logic](/2-predicate-logic/2-predicate-logic.pdf); [2-predicate-logic-handout](/2-predicate-logic/2-predicate-logic-handout.pdf) | Quantifiers; Free & Bound Variables; Substitution; Structures & Assignments; Soundness & Completeness |
+| 3 | [3-set](/3-set/3-set.pdf); [3-set-handout](/3-set/3-set-handout.pdf) | Axiomatic Set Theory (ZFC); Union & Intersection; Power Set; Set Families; Russell's Paradox |
+| 4 | [4-relation](/4-relation/4-relation.pdf); [4-relation-handout](/4-relation/4-relation-handout.pdf) | Cartesian Products; Relations & Properties; Equivalence Relations; Partitions & Quotient Sets; Relation Composition |
+| 5 | [5-function](/5-function/5-function.pdf); [5-function-handout](/5-function/5-function-handout.pdf) | Functions as Sets/Relations; Injective/Surjective/Bijective; Composition; Inverse Images; Cantor's Theorem |
+| 6 | [6-infinity](/6-infinity/6-infinity.pdf); [6-infinity-handout](/6-infinity/6-infinity-handout.pdf) | Equipotent Sets; Countable & Uncountable Sets; Cantor's Theorem; Cantor–Schröder–Bernstein; Continuum Hypothesis |
+| 7 | [7-ordering](/7-ordering/7-ordering.pdf); [7-ordering-handout](/7-ordering/7-ordering-handout.pdf) | Posets & Hasse Diagrams; Chains & Antichains; Well-Ordering & Zorn's Lemma; Lattices; Dilworth's Theorem |
+| 8 | [8-paths-cycles](/8-paths-cycles/8-paths-cycles.pdf); [8-paths-cycles-handout](/8-paths-cycles/8-paths-cycles-handout.pdf) | Walks, Trails & Paths; Eulerian Trails & Circuits; Hamiltonian Cycles; Ore's Condition; Bipartite Graphs |
+| 9 | [9-trees](/9-trees/9-trees.pdf); [9-trees-handout](/9-trees/9-trees-handout.pdf) | Trees & Forests; Spanning Trees & MST; Cut & Cycle Properties; Kruskal's & Prim's Algorithms; Cayley's Formula |
+| 10 | [10-planarity-coloring](/10-planarity-coloring/10-planarity-coloring.pdf); [10-planarity-coloring-handout](/10-planarity-coloring/10-planarity-coloring-handout.pdf) | Planar Graphs; Kuratowski's Theorem; Graph Coloring; Four-Color Theorem; Brooks's Theorem |
+| 11 | [11-matching-flow](/11-matching-flow/11-matching-flow.pdf); [11-matching-flow-handout](/11-matching-flow/11-matching-flow-handout.pdf) | Matchings; Hall's Theorem; M-Augmenting Paths; Network Flow; Max-Flow Min-Cut Theorem |
+| 12 | [12-group](/12-group/12-group.pdf); [12-group-handout](/12-group/12-group-handout.pdf) | Group Axioms; Cayley Tables; Cyclic Groups & Generators; Order of Elements; Isomorphism |
+| 13 | [13-permutation-group](/13-permutation-group/13-permutation-group.pdf); [13-permutation-group-handout](/13-permutation-group/13-permutation-group-handout.pdf) | Permutations as Bijections; Symmetric Group; Cycle Notation; Transpositions; Parity & Alternating Group |
+| 14 | [14-subgroup](/14-subgroup/14-subgroup.pdf); [14-subgroup-handout](/14-subgroup/14-subgroup-handout.pdf) | Subgroups; Left & Right Cosets; Coset Partition; Lagrange's Theorem; Index of a Subgroup |
+| 15 | [15-normal-subgroup](/15-normal-subgroup/15-normal-subgroup.pdf); [15-normal-subgroup-handout](/15-normal-subgroup/15-normal-subgroup-handout.pdf) | Normal Subgroups; Quotient Groups; Homomorphisms; Kernel; Fundamental Homomorphism Theorem |
 
 ## 周历
 

@@ -5,9 +5,13 @@
 ## 目录说明
 
 - [lectures.py](lectures.py)
-  - 唯一脚本，纯标准库实现（`argparse` / `re` / `pathlib`），无第三方依赖。
-  - 扫描仓库根目录 → 过滤「课件 + 讲义双 PDF 齐全」的目录 → 生成表格 → 原地替换根 README.md 的 `## 课件` 段落。
-  - 可重复执行且幂等：内容无变化时重写结果与原文一致。
+	- 唯一脚本，纯标准库实现（`argparse` / `json` / `re` / `pathlib`），无第三方依赖。
+	- 扫描仓库根目录 → 过滤「课件 + 讲义双 PDF 齐全」的目录 → 生成表格 → 原地替换根 README.md 的 `## 课件` 段落。
+	- 可重复执行且幂等：内容无变化时重写结果与原文一致。
+- [topics.json](topics.json)
+	- 「知识点」列的数据源：`课件目录名 -> 英文关键词列表`，每讲最多 5 个。
+	- 新增讲次时在此补一条条目；缺失的条目在表格中渲染为 `—`。
+	- 以 `_` 开头的键为元数据，不参与表格生成。
 
 ## 工作原理
 
@@ -26,14 +30,12 @@
 
 根目录 [README.md](../../README.md) 的 `## 课件` 表格：
 
-| 序号 | 课件 |
-| :---: | :---: |
+| 序号 | 课件 | 知识点 |
+| :---: | :---: | :--- |
 
-每行由分号分隔的两个相对链接组成，例如：
-
-```
-| 1 | [1-prop-logic](/1-prop-logic/1-prop-logic.pdf); [1-prop-logic-handout](/1-prop-logic/1-prop-logic-handout.pdf) |
-```
+- 「课件」列由分号分隔的两个相对链接组成，例如：
+  `[1-prop-logic](/1-prop-logic/1-prop-logic.pdf); [1-prop-logic-handout](/1-prop-logic/1-prop-logic-handout.pdf)`
+- 「知识点」列取自 [topics.json](topics.json)，关键词以 `; ` 分隔；未收录的讲次显示 `—`。
 
 ## 运行方式
 
@@ -57,12 +59,14 @@ python ai/lectures/lectures.py --dry-run
 | :--- | :--- | :--- |
 | `--repo-root` | `Path(__file__).resolve().parents[2]` | 仓库根目录路径 |
 | `--readme` | `<repo-root>/README.md` | 目标 README.md 路径 |
+| `--topics` | `ai/lectures/topics.json`（脚本同目录） | 知识点 JSON 路径 |
 | `--dry-run` | 关闭 | 只把表格打印到 stdout，不写 README.md |
 
 ## 增量维护流程
 
 1. 新建课件目录（如 `16-xxx/`），编译产出 `16-xxx.pdf` 与 `16-xxx-handout.pdf` 并放入该目录；
-2. 在仓库根目录运行 `python ai/lectures/lectures.py`；
-3. 根 README.md 的 `## 课件` 表格自动刷新，新课件出现在对应序号行。
+2. 在 [topics.json](topics.json) 中为该讲补充不超过 5 个英文关键词（从讲义中着重强调处提取：粗体/斜体、颜色高亮、彩色框、定理标题等）；
+3. 在仓库根目录运行 `python ai/lectures/lectures.py`；
+4. 根 README.md 的 `## 课件` 表格自动刷新，新课件出现在对应序号行。
 
 注意：只有课件与讲义**两个 PDF 都就绪**后目录才会出现在表格中；若只想让某一讲暂不露出，移除任一 PDF 再重跑即可。

@@ -3,17 +3,23 @@
 
 Table section: ## 课件
 Output columns:
-  | 序号 | 课件 |
+  | 序号 | 课件 | 知识点 |
+
+The 知识点 column is filled from ai/lectures/topics.json
+(lecture folder name -> list of English keywords, max 5 each).
+Lectures without an entry render as an em dash.
 
 Incremental update behavior:
 - Discover lecture folders (e.g. 0-overview, 1-prop-logic, ...).
 - Include only folders containing both <name>.pdf and <name>-handout.pdf.
 - Re-run the script after adding new lecture folders to refresh README.
+- Add a topics.json entry for each new lecture to fill its 知识点 cell.
 """
 
 from __future__ import annotations
 
 import argparse
+import json
 import re
 from pathlib import Path
 
@@ -31,6 +37,12 @@ def parse_args() -> argparse.Namespace:
 		type=Path,
 		default=None,
 		help="Path to README.md (default: <repo-root>/README.md)",
+	)
+	parser.add_argument(
+		"--topics",
+		type=Path,
+		default=None,
+		help="Path to topics JSON (default: ai/lectures/topics.json)",
 	)
 	parser.add_argument(
 		"--dry-run",
@@ -57,17 +69,32 @@ def discover_lectures_with_pdf(repo_root: Path) -> list[tuple[int, str]]:
 	return lectures
 
 
-def build_table(lectures: list[tuple[int, str]]) -> str:
+def load_topics(path: Path) -> dict[str, list[str]]:
+	"""Load lecture -> keywords mapping; a missing file yields an empty mapping."""
+	if not path.exists():
+		return {}
+	raw = json.loads(path.read_text(encoding="utf-8"))
+	topics: dict[str, list[str]] = {}
+	for lecture, keywords in raw.items():
+		if lecture.startswith("_") or not isinstance(keywords, list):
+			continue
+		cleaned = [str(k).strip() for k in keywords if str(k).strip()]
+		topics[lecture] = cleaned
+	return topics
+
+
+def build_table(lectures: list[tuple[int, str]], topics: dict[str, list[str]]) -> str:
 	lines = [
-		"| 序号 | 课件 |",
-		"| :---: | :---: |",
+		"| 序号 | 课件 | 知识点 |",
+		"| :---: | :---: | :--- |",
 	]
 	for index, name in lectures:
 		links = (
 			f"[{name}](/{name}/{name}.pdf); "
 			f"[{name}-handout](/{name}/{name}-handout.pdf)"
 		)
-		lines.append(f"| {index} | {links} |")
+		keywords = "; ".join(topics.get(name, [])) or "—"
+		lines.append(f"| {index} | {links} | {keywords} |")
 	return "\n".join(lines)
 
 
@@ -93,12 +120,18 @@ def main() -> None:
 	args = parse_args()
 	repo_root = args.repo_root.resolve()
 	readme = args.readme.resolve() if args.readme else repo_root / "README.md"
+	topics_path = (
+		args.topics.resolve()
+		if args.topics
+		else Path(__file__).resolve().parent / "topics.json"
+	)
 
 	if not readme.exists():
 		raise FileNotFoundError(f"README.md not found: {readme}")
 
 	lectures = discover_lectures_with_pdf(repo_root)
-	table_text = build_table(lectures)
+	topics = load_topics(topics_path)
+	table_text = build_table(lectures, topics)
 
 	if args.dry_run:
 		print(table_text)

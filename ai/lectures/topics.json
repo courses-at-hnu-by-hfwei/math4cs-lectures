@@ -1,0 +1,115 @@
+{
+  "_comment": "lecture folder name -> English keywords (max 5 each), rendered in the 知识点 column of README.md. Keys starting with '_' are metadata. Add an entry when a new lecture is published; missing entries render as '—'.",
+  "0-overview": [
+    "Axiomatic Systems",
+    "Mathematical Induction",
+    "Ramsey Theory",
+    "Stable Matching",
+    "Winning Strategies"
+  ],
+  "1-prop-logic": [
+    "Syntax & Semantics",
+    "Truth Tables",
+    "Natural Deduction",
+    "Tautology & Satisfiability",
+    "Soundness & Completeness"
+  ],
+  "2-predicate-logic": [
+    "Quantifiers",
+    "Free & Bound Variables",
+    "Substitution",
+    "Structures & Assignments",
+    "Soundness & Completeness"
+  ],
+  "3-set": [
+    "Axiomatic Set Theory (ZFC)",
+    "Union & Intersection",
+    "Power Set",
+    "Set Families",
+    "Russell's Paradox"
+  ],
+  "4-relation": [
+    "Cartesian Products",
+    "Relations & Properties",
+    "Equivalence Relations",
+    "Partitions & Quotient Sets",
+    "Relation Composition"
+  ],
+  "5-function": [
+    "Functions as Sets/Relations",
+    "Injective/Surjective/Bijective",
+    "Composition",
+    "Inverse Images",
+    "Cantor's Theorem"
+  ],
+  "6-infinity": [
+    "Equipotent Sets",
+    "Countable & Uncountable Sets",
+    "Cantor's Theorem",
+    "Cantor–Schröder–Bernstein",
+    "Continuum Hypothesis"
+  ],
+  "7-ordering": [
+    "Posets & Hasse Diagrams",
+    "Chains & Antichains",
+    "Well-Ordering & Zorn's Lemma",
+    "Lattices",
+    "Dilworth's Theorem"
+  ],
+  "8-paths-cycles": [
+    "Walks, Trails & Paths",
+    "Eulerian Trails & Circuits",
+    "Hamiltonian Cycles",
+    "Ore's Condition",
+    "Bipartite Graphs"
+  ],
+  "9-trees": [
+    "Trees & Forests",
+    "Spanning Trees & MST",
+    "Cut & Cycle Properties",
+    "Kruskal's & Prim's Algorithms",
+    "Cayley's Formula"
+  ],
+  "10-planarity-coloring": [
+    "Planar Graphs",
+    "Kuratowski's Theorem",
+    "Graph Coloring",
+    "Four-Color Theorem",
+    "Brooks's Theorem"
+  ],
+  "11-matching-flow": [
+    "Matchings",
+    "Hall's Theorem",
+    "M-Augmenting Paths",
+    "Network Flow",
+    "Max-Flow Min-Cut Theorem"
+  ],
+  "12-group": [
+    "Group Axioms",
+    "Cayley Tables",
+    "Cyclic Groups & Generators",
+    "Order of Elements",
+    "Isomorphism"
+  ],
+  "13-permutation-group": [
+    "Permutations as Bijections",
+    "Symmetric Group",
+    "Cycle Notation",
+    "Transpositions",
+    "Parity & Alternating Group"
+  ],
+  "14-subgroup": [
+    "Subgroups",
+    "Left & Right Cosets",
+    "Coset Partition",
+    "Lagrange's Theorem",
+    "Index of a Subgroup"
+  ],
+  "15-normal-subgroup": [
+    "Normal Subgroups",
+    "Quotient Groups",
+    "Homomorphisms",
+    "Kernel",
+    "Fundamental Homomorphism Theorem"
+  ]
+}
