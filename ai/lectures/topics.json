@@ -1,5 +1,5 @@
 {
-  "_comment": "lecture folder name -> English keywords (max 5 each), rendered in the 知识点 column of README.md. Keys starting with '_' are metadata. Add an entry when a new lecture is published; missing entries render as '—'.",
+  "_comment": "lecture folder name -> English keywords (max 5 each), rendered in the 知识点 column of README.md. Curated via ai/lectures/extract_topics.py (harvest -> LLM curate -> validate/merge); keys starting with '_' are metadata.",
   "0-overview": [
     "Axiomatic Systems",
     "Mathematical Induction",
@@ -73,9 +73,9 @@
   "10-planarity-coloring": [
     "Planar Graphs",
     "Kuratowski's Theorem",
+    "Euler's Formula",
     "Graph Coloring",
-    "Four-Color Theorem",
-    "Brooks's Theorem"
+    "Four-Color & Brooks' Theorems"
   ],
   "11-matching-flow": [
     "Matchings",

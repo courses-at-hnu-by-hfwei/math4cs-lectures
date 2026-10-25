@@ -279,3 +279,8 @@ TSWLatexianTemp*
 ## Python:
 __pycache__/
 *.pyc
+
+## ai/lectures knowledge-point pipeline intermediates (regenerable):
+ai/lectures/topics_candidates.json
+ai/lectures/topics_prompt.md
+ai/lectures/topics_response.json
