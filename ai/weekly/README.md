@@ -154,13 +154,14 @@ python ai/weekly/weekly.py --status-log ai/weekly/sync-status.log
 
 ## 自动重试定时任务
 
-因风控可能持续数小时至数天，仓库配有定时任务（WorkBuddy automation，每 30 分钟一次）自动重跑上述同步流程：
+因风控可能持续数小时至数天，仓库配有一对定时任务（WorkBuddy automation，任务 A 与任务 B）自动重跑上述同步流程。平台单个任务的最小间隔为 1 小时，因此用两个**错相 30 分钟**的整点任务合起来实现「每 30 分钟一次」的重试节奏：
 
+- 任务 A：每小时的 :53 分运行；任务 B：每小时的 :23 分运行，交替即每 30 分钟一次；
 - 每次运行执行 `python ai/weekly/weekly.py --status-log ai/weekly/sync-status.log` 并检查 `SYNC_STATUS`；
 - 仅为 `degraded` / `skipped` 时什么都不做，等待下次重试；
-- 只有出现 `SYNC_STATUS: ok`（真正完成远端同步）时，才提交 `recordings_by_lecture.json` 与 `README.md` 的改动、`git push`，并**自动删除该定时任务**（一次性达成即退场）。
+- 只有出现 `SYNC_STATUS: ok`（真正完成远端同步）时，才提交 `recordings_by_lecture.json` 与 `README.md` 的改动、`git push`，并**自动删除这一对定时任务**（一次性达成即退场，两个任务都会移除）。
 
-手动触发时照常运行脚本即可，无需等待定时任务。
+手动触发时照常运行脚本即可，无需等待定时任务。任务的运行审计可查看 `ai/weekly/sync-status.log`（本地文件，已忽略入库）。
 
 ## 增量更新说明
 
