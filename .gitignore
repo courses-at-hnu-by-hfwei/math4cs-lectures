@@ -275,3 +275,7 @@ TSWLatexianTemp*
 # Makeindex log files
 *.lpz
 .history
+
+## Python:
+__pycache__/
+*.pyc

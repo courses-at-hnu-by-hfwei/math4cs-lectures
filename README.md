@@ -24,6 +24,13 @@ Lectures on [Mathematics for Computer Science@Hunan University](https://github.c
 | 6 | [6-infinity](/6-infinity/6-infinity.pdf); [6-infinity-handout](/6-infinity/6-infinity-handout.pdf) |
 | 7 | [7-ordering](/7-ordering/7-ordering.pdf); [7-ordering-handout](/7-ordering/7-ordering-handout.pdf) |
 | 8 | [8-paths-cycles](/8-paths-cycles/8-paths-cycles.pdf); [8-paths-cycles-handout](/8-paths-cycles/8-paths-cycles-handout.pdf) |
+| 9 | [9-trees](/9-trees/9-trees.pdf); [9-trees-handout](/9-trees/9-trees-handout.pdf) |
+| 10 | [10-planarity-coloring](/10-planarity-coloring/10-planarity-coloring.pdf); [10-planarity-coloring-handout](/10-planarity-coloring/10-planarity-coloring-handout.pdf) |
+| 11 | [11-matching-flow](/11-matching-flow/11-matching-flow.pdf); [11-matching-flow-handout](/11-matching-flow/11-matching-flow-handout.pdf) |
+| 12 | [12-group](/12-group/12-group.pdf); [12-group-handout](/12-group/12-group-handout.pdf) |
+| 13 | [13-permutation-group](/13-permutation-group/13-permutation-group.pdf); [13-permutation-group-handout](/13-permutation-group/13-permutation-group-handout.pdf) |
+| 14 | [14-subgroup](/14-subgroup/14-subgroup.pdf); [14-subgroup-handout](/14-subgroup/14-subgroup-handout.pdf) |
+| 15 | [15-normal-subgroup](/15-normal-subgroup/15-normal-subgroup.pdf); [15-normal-subgroup-handout](/15-normal-subgroup/15-normal-subgroup-handout.pdf) |
 
 ## 周历
 
